@@ -2,47 +2,63 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - My ASP.NET Bootstrap 3 MVC Application</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Computer Bucket","Index","Home",null, new {@class="navbar-brand"})
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home","Index","Home")</li>
+                            <li>@Html.ActionLink("BuildPC","Index","BuildPC")</li>
+                            <li>@Html.ActionLink("Help","Index","Help")</li>
+                            <li>@Html.ActionLink("Contact","Index","Contact")</li>
+                            <li>@Html.ActionLink("About","Index","About")</li>
                         </ul>
-                    </nav>
+                    </div><!--/.navbar-collapse -->
                 </div>
             </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+        
+            <div class="jumbotron">
+                <div class="container">
+                    @RenderSection("featured", required: false)
+                    @*<p><a class="btn btn-primary btn-lg">Learn more »</a></p>*@
                 </div>
             </div>
-        </footer>
 
+
+        
+        <div class="container">
+            @RenderBody()
+            <footer>
+                <p>© ComputerBucket 2013</p>
+            </footer>
+        </div>
+        
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")  @* necessary for Ajax.BeginForm() *@
         @RenderSection("scripts", required: false)
+        <script>
+            /* Update the current page with the 'active' class to reflect this to navbar.
+               This is done by looking for the link that references the current page and 
+               setting its parent (a <li> tag) to have 'active' class
+            */
+            $(function () {
+                $('a[href="' +
+                    this.location.pathname + '"]').parent().addClass('active');
+            });
+        </script>
     </body>
 </html>
