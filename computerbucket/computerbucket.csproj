@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -181,13 +183,55 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Category_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Comparison_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="computerbucketModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>computerbucketModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="computerbucketModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="computerbucketModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>computerbucketModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CustumerOrder.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Custumer_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Motherboard_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderMotherboard_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPart_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Orders_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parts_tbl.cs">
+      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +302,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="computerbucketModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>computerbucketModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="computerbucketModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>computerbucketModel.edmx</DependentUpon>
+      <LastGenOutput>computerbucketModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="computerbucketModel.edmx.diagram">
+      <DependentUpon>computerbucketModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="computerbucketModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>computerbucketModel.edmx</DependentUpon>
+      <LastGenOutput>computerbucketModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -319,6 +380,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
