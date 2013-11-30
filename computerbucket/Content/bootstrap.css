@@ -815,6 +815,7 @@ pre code {
 .row {
   margin-right: -15px;
   margin-left: -15px;
+  padding-top:5px;
 }
 
 .row:before,
@@ -2240,19 +2241,20 @@ textarea.input-lg {
 }
 
 .btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.428571429;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
+   -moz-user-select: none;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 24px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -2293,8 +2295,8 @@ fieldset[disabled] .btn {
 
 .btn-default {
   color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
+  background-color: #efefef;
+  
 }
 
 .btn-default:hover,
@@ -4383,7 +4385,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-collapse {
   max-height: 340px;
   padding-right: 15px;
-  padding-left: 15px;
   overflow-x: visible;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
