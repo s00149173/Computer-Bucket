@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="computerbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="computerbucketModelStoreContainer">
+    <EntitySet Name="Category_tbl" EntityType="computerbucketModel.Store.Category_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="Comparison_tbl" EntityType="computerbucketModel.Store.Comparison_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="Custumer_tbl" EntityType="computerbucketModel.Store.Custumer_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="CustumerOrder" EntityType="computerbucketModel.Store.CustumerOrder" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="Motherboard_tbl" EntityType="computerbucketModel.Store.Motherboard_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="OrderMotherboard_tbl" EntityType="computerbucketModel.Store.OrderMotherboard_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="OrderPart_tbl" EntityType="computerbucketModel.Store.OrderPart_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="Orders_tbl" EntityType="computerbucketModel.Store.Orders_tbl" store:Type="Tables" Schema="computerbucket" />
+    <EntitySet Name="Parts_tbl" EntityType="computerbucketModel.Store.Parts_tbl" store:Type="Tables" Schema="computerbucket" />
+    <AssociationSet Name="FK_Comparison_tbl_Motherboard_tbl" Association="computerbucketModel.Store.FK_Comparison_tbl_Motherboard_tbl">
+      <End Role="Motherboard_tbl" EntitySet="Motherboard_tbl" />
+      <End Role="Comparison_tbl" EntitySet="Comparison_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comparison_tbl_Parts_tbl" Association="computerbucketModel.Store.FK_Comparison_tbl_Parts_tbl">
+      <End Role="Parts_tbl" EntitySet="Parts_tbl" />
+      <End Role="Comparison_tbl" EntitySet="Comparison_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustumerOrder_Custumer_tbl" Association="computerbucketModel.Store.FK_CustumerOrder_Custumer_tbl">
+      <End Role="Custumer_tbl" EntitySet="Custumer_tbl" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustumerOrder_Order_tbl" Association="computerbucketModel.Store.FK_CustumerOrder_Order_tbl">
+      <End Role="Orders_tbl" EntitySet="Orders_tbl" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMotherboard_tbl_Motherboard_tbl" Association="computerbucketModel.Store.FK_OrderMotherboard_tbl_Motherboard_tbl">
+      <End Role="Motherboard_tbl" EntitySet="Motherboard_tbl" />
+      <End Role="OrderMotherboard_tbl" EntitySet="OrderMotherboard_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderMotherboard_tbl_Orders_tbl" Association="computerbucketModel.Store.FK_OrderMotherboard_tbl_Orders_tbl">
+      <End Role="Orders_tbl" EntitySet="Orders_tbl" />
+      <End Role="OrderMotherboard_tbl" EntitySet="OrderMotherboard_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderPart_tbl_Orders_tbl" Association="computerbucketModel.Store.FK_OrderPart_tbl_Orders_tbl">
+      <End Role="Orders_tbl" EntitySet="Orders_tbl" />
+      <End Role="OrderPart_tbl" EntitySet="OrderPart_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parts_tbl_Category_tbl" Association="computerbucketModel.Store.FK_Parts_tbl_Category_tbl">
+      <End Role="Category_tbl" EntitySet="Category_tbl" />
+      <End Role="Parts_tbl" EntitySet="Parts_tbl" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category_tbl">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Comparison_tbl">
+    <Key>
+      <PropertyRef Name="comparision_id" />
+    </Key>
+    <Property Name="comparision_id" Type="int" Nullable="false" />
+    <Property Name="part_id" Type="int" Nullable="false" />
+    <Property Name="motherboard_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Custumer_tbl">
+    <Key>
+      <PropertyRef Name="custumer_id" />
+    </Key>
+    <Property Name="custumer_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="adress" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CustumerOrder">
+    <Key>
+      <PropertyRef Name="custumer_id" />
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="custumer_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="total_price" Type="money" />
+  </EntityType>
+  <EntityType Name="Motherboard_tbl">
+    <Key>
+      <PropertyRef Name="motherboard_id" />
+    </Key>
+    <Property Name="motherboard_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="brand" Type="varchar" MaxLength="20" />
+    <Property Name="model" Type="varchar" MaxLength="20" />
+    <Property Name="price" Type="money" />
+    <Property Name="qty_stock" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderMotherboard_tbl">
+    <Key>
+      <PropertyRef Name="OM_id" />
+    </Key>
+    <Property Name="OM_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="motherboard_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderPart_tbl">
+    <Key>
+      <PropertyRef Name="order_id" />
+      <PropertyRef Name="part_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="part_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders_tbl">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="date_ordered" Type="date" />
+  </EntityType>
+  <EntityType Name="Parts_tbl">
+    <Key>
+      <PropertyRef Name="part_id" />
+    </Key>
+    <Property Name="part_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="category_id" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="qty_stock" Type="int" />
+    <Property Name="price" Type="money" />
+  </EntityType>
+  <Association Name="FK_Comparison_tbl_Motherboard_tbl">
+    <End Role="Motherboard_tbl" Type="computerbucketModel.Store.Motherboard_tbl" Multiplicity="1" />
+    <End Role="Comparison_tbl" Type="computerbucketModel.Store.Comparison_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motherboard_tbl">
+        <PropertyRef Name="motherboard_id" />
+      </Principal>
+      <Dependent Role="Comparison_tbl">
+        <PropertyRef Name="motherboard_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comparison_tbl_Parts_tbl">
+    <End Role="Parts_tbl" Type="computerbucketModel.Store.Parts_tbl" Multiplicity="1" />
+    <End Role="Comparison_tbl" Type="computerbucketModel.Store.Comparison_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parts_tbl">
+        <PropertyRef Name="part_id" />
+      </Principal>
+      <Dependent Role="Comparison_tbl">
+        <PropertyRef Name="part_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustumerOrder_Custumer_tbl">
+    <End Role="Custumer_tbl" Type="computerbucketModel.Store.Custumer_tbl" Multiplicity="1" />
+    <End Role="CustumerOrder" Type="computerbucketModel.Store.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Custumer_tbl">
+        <PropertyRef Name="custumer_id" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="custumer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustumerOrder_Order_tbl">
+    <End Role="Orders_tbl" Type="computerbucketModel.Store.Orders_tbl" Multiplicity="1" />
+    <End Role="CustumerOrder" Type="computerbucketModel.Store.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders_tbl">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMotherboard_tbl_Motherboard_tbl">
+    <End Role="Motherboard_tbl" Type="computerbucketModel.Store.Motherboard_tbl" Multiplicity="1" />
+    <End Role="OrderMotherboard_tbl" Type="computerbucketModel.Store.OrderMotherboard_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motherboard_tbl">
+        <PropertyRef Name="motherboard_id" />
+      </Principal>
+      <Dependent Role="OrderMotherboard_tbl">
+        <PropertyRef Name="motherboard_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderMotherboard_tbl_Orders_tbl">
+    <End Role="Orders_tbl" Type="computerbucketModel.Store.Orders_tbl" Multiplicity="1" />
+    <End Role="OrderMotherboard_tbl" Type="computerbucketModel.Store.OrderMotherboard_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders_tbl">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="OrderMotherboard_tbl">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderPart_tbl_Orders_tbl">
+    <End Role="Orders_tbl" Type="computerbucketModel.Store.Orders_tbl" Multiplicity="1" />
+    <End Role="OrderPart_tbl" Type="computerbucketModel.Store.OrderPart_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders_tbl">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="OrderPart_tbl">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parts_tbl_Category_tbl">
+    <End Role="Category_tbl" Type="computerbucketModel.Store.Category_tbl" Multiplicity="0..1" />
+    <End Role="Parts_tbl" Type="computerbucketModel.Store.Parts_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category_tbl">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="Parts_tbl">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

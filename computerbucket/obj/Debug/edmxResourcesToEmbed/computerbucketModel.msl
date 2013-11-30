@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="computerbucketModelStoreContainer" CdmEntityContainer="computerbucketEntities">
+    <EntitySetMapping Name="Category_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Category_tbl">
+        <MappingFragment StoreEntitySet="Category_tbl">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comparison_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Comparison_tbl">
+        <MappingFragment StoreEntitySet="Comparison_tbl">
+          <ScalarProperty Name="comparision_id" ColumnName="comparision_id" />
+          <ScalarProperty Name="part_id" ColumnName="part_id" />
+          <ScalarProperty Name="motherboard_id" ColumnName="motherboard_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Custumer_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Custumer_tbl">
+        <MappingFragment StoreEntitySet="Custumer_tbl">
+          <ScalarProperty Name="custumer_id" ColumnName="custumer_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustumerOrders">
+      <EntityTypeMapping TypeName="computerbucketModel.CustumerOrder">
+        <MappingFragment StoreEntitySet="CustumerOrder">
+          <ScalarProperty Name="custumer_id" ColumnName="custumer_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Motherboard_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Motherboard_tbl">
+        <MappingFragment StoreEntitySet="Motherboard_tbl">
+          <ScalarProperty Name="motherboard_id" ColumnName="motherboard_id" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="qty_stock" ColumnName="qty_stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderMotherboard_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.OrderMotherboard_tbl">
+        <MappingFragment StoreEntitySet="OrderMotherboard_tbl">
+          <ScalarProperty Name="OM_id" ColumnName="OM_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="motherboard_id" ColumnName="motherboard_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPart_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.OrderPart_tbl">
+        <MappingFragment StoreEntitySet="OrderPart_tbl">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="part_id" ColumnName="part_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Orders_tbl">
+        <MappingFragment StoreEntitySet="Orders_tbl">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="date_ordered" ColumnName="date_ordered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parts_tbl">
+      <EntityTypeMapping TypeName="computerbucketModel.Parts_tbl">
+        <MappingFragment StoreEntitySet="Parts_tbl">
+          <ScalarProperty Name="part_id" ColumnName="part_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="qty_stock" ColumnName="qty_stock" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
