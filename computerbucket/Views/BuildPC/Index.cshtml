@@ -2,5 +2,24 @@
     ViewBag.Title = "BUILD PC";
 }
 
-<h3>Page here the user will choose the parts of the computer</h3>
 
+<h4>Please choise your motherboard</h4>
+<!-- Showing list of Motherboards-->
+
+@using (@Ajax.BeginForm("Index","BuildPC", 
+    null, 
+    new {@class="form-horizontal", @role="form"})){
+    <div class="row form-group">
+        <div class="col-sm-2">
+            @Html.DropDownList("chosenMotherboard", new SelectList(ViewBag.motherboardList,"motherboard_id","title",0),
+                     "- Please Select -", new{@class="form-control", onchange="$(this.form).submit();"})
+        </div>
+        <div class="col-sm-2">
+            @Ajax.ActionLink("select ajax", "Index", new { chosenmotherboard = 1}, new AjaxOptions { UpdateTargetId = "partialDivComponents" }, new { @class = "btn btn-md btn-success" })
+        </div>
+    </div>
+}
+    
+<div id="partialDivComponents">
+
+</div>

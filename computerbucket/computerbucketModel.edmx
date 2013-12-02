@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="computerbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="computerbucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="computerbucketModelStoreContainer">
           <EntitySet Name="Category_tbl" EntityType="computerbucketModel.Store.Category_tbl" store:Type="Tables" Schema="computerbucket" />
           <EntitySet Name="Comparison_tbl" EntityType="computerbucketModel.Store.Comparison_tbl" store:Type="Tables" Schema="computerbucket" />
@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="comparision_id" />
           </Key>
-          <Property Name="comparision_id" Type="int" Nullable="false" />
+          <Property Name="comparision_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="part_id" Type="int" Nullable="false" />
           <Property Name="motherboard_id" Type="int" Nullable="false" />
         </EntityType>
@@ -87,6 +87,7 @@
             <PropertyRef Name="motherboard_id" />
           </Key>
           <Property Name="motherboard_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
           <Property Name="brand" Type="varchar" MaxLength="20" />
           <Property Name="model" Type="varchar" MaxLength="20" />
           <Property Name="price" Type="money" />
@@ -222,8 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="computerbucketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -321,6 +321,7 @@
           <Property Name="qty_stock" Type="Int32" />
           <NavigationProperty Name="Comparison_tbl" Relationship="computerbucketModel.FK_Comparison_tbl_Motherboard_tbl" FromRole="Motherboard_tbl" ToRole="Comparison_tbl" />
           <NavigationProperty Name="OrderMotherboard_tbl" Relationship="computerbucketModel.FK_OrderMotherboard_tbl_Motherboard_tbl" FromRole="Motherboard_tbl" ToRole="OrderMotherboard_tbl" />
+          <Property Type="String" Name="title" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderMotherboard_tbl">
           <Key>
@@ -506,6 +507,7 @@
           <EntitySetMapping Name="Motherboard_tbl">
             <EntityTypeMapping TypeName="computerbucketModel.Motherboard_tbl">
               <MappingFragment StoreEntitySet="Motherboard_tbl">
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="motherboard_id" ColumnName="motherboard_id" />
                 <ScalarProperty Name="brand" ColumnName="brand" />
                 <ScalarProperty Name="model" ColumnName="model" />

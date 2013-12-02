@@ -41,6 +41,7 @@
     <EntitySetMapping Name="Motherboard_tbl">
       <EntityTypeMapping TypeName="computerbucketModel.Motherboard_tbl">
         <MappingFragment StoreEntitySet="Motherboard_tbl">
+          <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="motherboard_id" ColumnName="motherboard_id" />
           <ScalarProperty Name="brand" ColumnName="brand" />
           <ScalarProperty Name="model" ColumnName="model" />

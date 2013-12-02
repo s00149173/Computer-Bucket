@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2074938384bc4b7b8586cf30c6416a09" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="computerbucketModel.Category_tbl" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.Comparison_tbl" Width="1.5" PointX="10.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.Custumer_tbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.CustumerOrder" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.Motherboard_tbl" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.OrderMotherboard_tbl" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.OrderPart_tbl" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.Orders_tbl" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="computerbucketModel.Parts_tbl" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="2074938384bc4b7b8586cf30c6416a09" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="computerbucketModel.Category_tbl" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.Comparison_tbl" Width="1.5" PointX="1.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.Custumer_tbl" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.CustumerOrder" Width="1.5" PointX="7.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.Motherboard_tbl" Width="1.5" PointX="1" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.OrderMotherboard_tbl" Width="2.125" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.OrderPart_tbl" Width="1.5" PointX="3.375" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.Orders_tbl" Width="1.5" PointX="5.875" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="computerbucketModel.Parts_tbl" Width="1.5" PointX="3.875" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="computerbucketModel.FK_Parts_tbl_Category_tbl" ManuallyRouted="false" />
         <AssociationConnector Association="computerbucketModel.FK_Comparison_tbl_Motherboard_tbl" ManuallyRouted="false" />
         <AssociationConnector Association="computerbucketModel.FK_Comparison_tbl_Parts_tbl" ManuallyRouted="false" />

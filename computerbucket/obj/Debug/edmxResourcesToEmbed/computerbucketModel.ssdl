@@ -54,7 +54,7 @@
     <Key>
       <PropertyRef Name="comparision_id" />
     </Key>
-    <Property Name="comparision_id" Type="int" Nullable="false" />
+    <Property Name="comparision_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="part_id" Type="int" Nullable="false" />
     <Property Name="motherboard_id" Type="int" Nullable="false" />
   </EntityType>
@@ -82,6 +82,7 @@
       <PropertyRef Name="motherboard_id" />
     </Key>
     <Property Name="motherboard_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
     <Property Name="brand" Type="varchar" MaxLength="20" />
     <Property Name="model" Type="varchar" MaxLength="20" />
     <Property Name="price" Type="money" />

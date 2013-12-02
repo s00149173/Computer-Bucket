@@ -1,0 +1,65 @@
+﻿
+
+<h4>Please choise your Processor</h4>
+<!-- Showing list of Graphic Cards compatible-->
+@using (@Ajax.BeginForm("Index","BuildPC", 
+    null, 
+    new {@class="form-horizontal", @role="form"})){
+    <div class="row form-group">
+        <div class="col-sm-2">
+            @Html.DropDownList("chosenMotherboard", new SelectList(ViewBag.ProcessorList,"Value","Text",0),
+                    "- Please Select -", new{@class="form-control", onchange="$(this.form).submit();"})
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-primary">Select</button>
+        </div>
+    </div>
+}
+
+<div id="partialDivGraphicCards">
+
+</div>
+
+
+
+
+<h4>Please choise your Graphic Card</h4>
+<!-- Showing list of Graphic Cards compatible-->
+@using (@Ajax.BeginForm("Index","BuildPC", 
+    null, 
+    new {@class="form-horizontal", @role="form"})){
+    <div class="row form-group">
+        <div class="col-sm-2">
+            @Html.DropDownList("chosenMotherboard", new SelectList(ViewBag.GraphicCardList,"Value","Text",0),
+                    "- Please Select -", new{@class="form-control", onchange="$(this.form).submit();"})
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-primary">Select</button>
+        </div>
+    </div>
+}
+
+<div id="partialDivRAMs">
+
+</div>
+
+
+
+<h4>Please choise your RAM(s)</h4>
+<!-- Showing list of RAMs compatible-->
+@using (@Ajax.BeginForm("Index","BuildPC", 
+    null, 
+    new {@class="form-horizontal", @role="form"})){
+    <div class="row form-group">
+        <div class="col-sm-2">
+            @Html.DropDownList("chosenMotherboard", new SelectList(ViewBag.RAMList,"Value","Text",0),
+                    "- Please Select -", new{@class="form-control", onchange="$(this.form).submit();"})
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-primary">Select</button>
+
+
+        </div>
+    </div>
+}
+

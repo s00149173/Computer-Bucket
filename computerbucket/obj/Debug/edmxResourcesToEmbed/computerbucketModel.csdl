@@ -94,6 +94,7 @@
     <Property Name="qty_stock" Type="Int32" />
     <NavigationProperty Name="Comparison_tbl" Relationship="computerbucketModel.FK_Comparison_tbl_Motherboard_tbl" FromRole="Motherboard_tbl" ToRole="Comparison_tbl" />
     <NavigationProperty Name="OrderMotherboard_tbl" Relationship="computerbucketModel.FK_OrderMotherboard_tbl_Motherboard_tbl" FromRole="Motherboard_tbl" ToRole="OrderMotherboard_tbl" />
+    <Property Type="String" Name="title" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="OrderMotherboard_tbl">
     <Key>

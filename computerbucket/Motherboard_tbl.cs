@@ -25,6 +25,7 @@ namespace computerbucket
         public string model { get; set; }
         public Nullable<decimal> price { get; set; }
         public Nullable<int> qty_stock { get; set; }
+        public string title { get; set; }
     
         public virtual ICollection<Comparison_tbl> Comparison_tbl { get; set; }
         public virtual ICollection<OrderMotherboard_tbl> OrderMotherboard_tbl { get; set; }
