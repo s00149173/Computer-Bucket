@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using PagedList;
 
 namespace computerbucket.Controllers
 {
@@ -14,27 +16,44 @@ namespace computerbucket.Controllers
         //Connection to the database
         private computerbucketEntities db = new computerbucketEntities();
 
-        public ActionResult Index(int chosenMotherboard = 0)
+        public ActionResult Index(int? page)
         {
-            ViewBag.motherboardList = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToList();
+            int pageNumber = page ?? 1;
+            int pageSize = 5;
 
-            if (Request.IsAjaxRequest() && chosenMotherboard != 0)
+            //ViewBag.motherboardList = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
+            
+            
+            if (Request.IsAjaxRequest())
             {
-                ViewBag.processorList = this.ListOfPartsCompatible("Processor", chosenMotherboard);
-                ViewBag.graphicCardList = this.ListOfPartsCompatible("Graphic Card", chosenMotherboard);
-                ViewBag.RAMList = this.ListOfPartsCompatible("RAM", chosenMotherboard);
-                //ViewBag.motherboard = db.Motherboard_tbl.Where(m => m.motherboard_id == chosenMotherboard);
-                //this._MotherboardInfo(chosenMotherboard);
-                return PartialView("_ViewComponents");
+                //ViewBag.processorList = (this.ListOfPartsCompatible("Processor", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
+                //ViewBag.graphicCardList = (this.ListOfPartsCompatible("Graphic Card", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
+                //ViewBag.RAMList = (this.ListOfPartsCompatible("RAM", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
+                var mothbs = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
+                return PartialView("_ViewComponents", mothbs);
             }
-
-            return View();
+            var motherbs  = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
+            return View(motherbs);
         }
 
         public ActionResult _MotherboardInfo(int chosenMotherboard)
         {
             var model = db.Motherboard_tbl.Where(m => m.motherboard_id == chosenMotherboard);
             return PartialView("_MotherboardInfo", model);
+        }
+
+        public ActionResult _Processors(int id, int? page)
+        {
+            int pageNumber = page ?? 1;
+            int pageSize = 5;
+            ViewBag.motherboardId = id;
+            var category = db.Category_tbl.Where(c => c.description == "Processor").Select(c => c.category_id);
+            int categoryID=int.Parse(category.First().ToString());
+
+            var processors = db.selectPartCompatible(id, categoryID).ToList().ToPagedList(pageNumber, pageSize);
+
+            return PartialView("_Processors", processors);
+            
         }
 
         private List<SelectListItem> ListOfPartsCompatible(string category, int chosenMotherboard)

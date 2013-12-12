@@ -1,0 +1,26 @@
+﻿@model PagedList.IPagedList<computerbucket.selectPartCompatible_Result>
+@using PagedList.Mvc
+
+<table id="tblProcessors" class="table table-striped table-condensed table-hover" 
+       style="table-layout: fixed; -ms-word-wrap: break-word">
+    
+    <thead>
+        <tr>
+            <th style="width:80%">@Html.DisplayNameFor(p => p.FirstOrDefault().title)</th>
+            <th style="width:20%">@Html.DisplayNameFor(p => p.FirstOrDefault().qty_stock)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var processor in Model)
+        {
+            <tr>
+                <td>
+                    @String.Format("{0:d}",processor.title)
+                </td>
+                <td>
+                    <label class="label label-info pull-right">@processor.part_id</label>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

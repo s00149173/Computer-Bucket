@@ -1,25 +1,69 @@
-﻿@{
+﻿@model PagedList.IPagedList<computerbucket.Motherboard_tbl>
+@using PagedList.Mvc
+
+@{
     ViewBag.Title = "BUILD PC";
 }
 
+@section scripts
+{
+    <script>
+        /* Handles listing of Orders when clicking on Customer */
+        function listParts(motherboardId) {
+            $.ajax({
+                url: '@Url.Action("_Processors")',
+                data: { id: motherboardId },
+                success: function(data) {
+                    /*$('#tblCustOrders').animate({ opacity: '1' }, 'slow');*/
+                    $('#ProcessorsPanel').fadeTo(100, 0.6);
+                    $('#ProcessorsPanel').fadeTo('slow', 1.0);
+                    $('#tblProcessors').html(data);
+                    shrinkPageControls();
+                }
+            });
+            $(this).toggleClass('success');
+        }
 
-<h4>Please choise your motherboard</h4>
-<!-- Showing list of Motherboards-->
+/* Onload set smaller pagination styling */
 
-@using (@Ajax.BeginForm("Index","BuildPC", 
-    null, 
-    new {@class="form-horizontal", @role="form"})){
-    <div class="row form-group">
-        <div class="col-sm-2">
-            @Html.DropDownList("chosenMotherboard", new SelectList(ViewBag.motherboardList,"motherboard_id","title",0),
-                     "- Please Select -", new{@class="form-control", onchange="$(this.form).submit();"})
-        </div>
-        <div class="col-sm-2">
-            @Ajax.ActionLink("select ajax", "Index", new { chosenmotherboard = 1}, new AjaxOptions { UpdateTargetId = "partialDivComponents" }, new { @class = "btn btn-md btn-success" })
-        </div>
-    </div>
+        function shrinkPageControls() {
+            $('ul.pagination').addClass('pagination-sm');
+        }
+
+        ;
+
+        $(shrinkPageControls());
+    </script>
 }
-    
-<div id="partialDivComponents">
 
+<div class="container body-content">
+    <h1>Build your own PC</h1>
+    <div class="page-header">
+        <small>Please select motherboard</small>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">Choose a motherboard</div>
+                <div class="panel-body" id="tblMotherboards">
+                    @* invoke _Cust partial view with model;
+                    only used on first render, thereafter with ajax call on paginator
+                *@
+                    @{ Html.RenderPartial("_Motherboards", Model); }
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8"></div>
+    </div>
+
+    <div class="row">
+        <div id="ProcessorsPanel" class="col-sm-4" style="display:none">
+            <div class="panel panel-info">
+                <div class="panel-heading">Choose a Processor</div>
+                <div class="panel-body" id="tblProcessors">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8"></div>
+    </div>
 </div>
