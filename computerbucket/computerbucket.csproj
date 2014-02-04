@@ -189,26 +189,23 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Category_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    <Compile Include="Category.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Comparison_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="computerbucketModel.Context.cs">
+    <Compile Include="computerBucket.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerbucketModel.Context.tt</DependentUpon>
+      <DependentUpon>computerBucket.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="computerbucketModel.cs">
+    <Compile Include="computerBucket.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="computerbucketModel.Designer.cs">
+    <Compile Include="computerBucket.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerbucketModel.edmx</DependentUpon>
+      <DependentUpon>computerBucket.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -216,44 +213,30 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="CustumerOrder.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Custumer_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    <Compile Include="Customer.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Motherboard_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    <Compile Include="Order.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderMotherboard_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    <Compile Include="Order_Detail.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderPart_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Orders_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Parts_tbl.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
+    <Compile Include="Product.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="selectPartCompatible_Result.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>computerbucketModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ComputerBucket.mdf" />
+    <Content Include="App_Data\ComputerBucket_log.ldf">
+      <DependentUpon>ComputerBucket.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -319,26 +302,26 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
-    <EntityDeploy Include="computerbucketModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>computerbucketModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="computerbucketModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>computerbucketModel.edmx</DependentUpon>
-      <LastGenOutput>computerbucketModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="computerbucketModel.edmx.diagram">
-      <DependentUpon>computerbucketModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="computerbucketModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>computerbucketModel.edmx</DependentUpon>
-      <LastGenOutput>computerbucketModel.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="computerBucket.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>computerBucket.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="computerBucket.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>computerBucket.edmx</DependentUpon>
+      <LastGenOutput>computerBucket.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="computerBucket.edmx.diagram">
+      <DependentUpon>computerBucket.edmx</DependentUpon>
+    </Content>
+    <Content Include="computerBucket.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>computerBucket.edmx</DependentUpon>
+      <LastGenOutput>computerBucket.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -401,9 +384,7 @@
     <Content Include="Views\BuildPC\_Motherboards.cshtml" />
     <Content Include="Views\BuildPC\_Processors.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
