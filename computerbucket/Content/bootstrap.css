@@ -1649,7 +1649,6 @@ th {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
 }
 
 .table > thead > tr > th {
@@ -4051,6 +4050,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 18px;
 }
 
 .nav:before,

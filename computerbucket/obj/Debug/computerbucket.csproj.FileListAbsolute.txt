@@ -15,6 +15,8 @@ C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Micro
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Newtonsoft.Json.dll
+C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\PagedList.dll
+C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\PagedList.Mvc.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\System.Net.Http.Formatting.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\System.Spatial.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\System.Web.Helpers.dll
@@ -30,6 +32,8 @@ C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Syste
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\WebGrease.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\WebMatrix.Data.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\WebMatrix.WebData.dll
+C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\PagedList.xml
+C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\PagedList.Mvc.xml
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\EntityFramework.xml
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\Newtonsoft.Json.xml
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\System.Net.Http.Formatting.xml

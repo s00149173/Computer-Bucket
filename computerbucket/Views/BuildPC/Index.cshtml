@@ -1,69 +1,194 @@
-﻿@model PagedList.IPagedList<computerbucket.Motherboard_tbl>
-@using PagedList.Mvc
+﻿@using computerbucket
+@model computerbucket.Product
 
 @{
-    ViewBag.Title = "BUILD PC";
+    ViewBag.Title = "Index";
 }
 
-@section scripts
-{
-    <script>
-        /* Handles listing of Orders when clicking on Customer */
-        function listParts(motherboardId) {
-            $.ajax({
-                url: '@Url.Action("_Processors")',
-                data: { id: motherboardId },
-                success: function(data) {
-                    /*$('#tblCustOrders').animate({ opacity: '1' }, 'slow');*/
-                    $('#ProcessorsPanel').fadeTo(100, 0.6);
-                    $('#ProcessorsPanel').fadeTo('slow', 1.0);
-                    $('#tblProcessors').html(data);
-                    shrinkPageControls();
-                }
-            });
-            $(this).toggleClass('success');
-        }
+<script>
+    //heads to empDetails Actionlink in the HomeController
+    function proDetail(custId) {
+        $.ajax({
+            url: '@Url.Action("prodDetails")',
+            data: { id: custId },
+            success: function (data) {
+                //#tblEmployees recieves _empDetails with populated data
+                $('#prodDetail').html(data);
 
-/* Onload set smaller pagination styling */
+            }
+        });
+    }
+</script>
 
-        function shrinkPageControls() {
-            $('ul.pagination').addClass('pagination-sm');
-        }
 
-        ;
-
-        $(shrinkPageControls());
-    </script>
-}
-
-<div class="container body-content">
-    <h1>Build your own PC</h1>
-    <div class="page-header">
-        <small>Please select motherboard</small>
+<div class="container">
+    <div class="pageHeading">
+        Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product,
+        please chick on the product and additional information will be shown in the right panel.
     </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-info">
-                <div class="panel-heading">Choose a motherboard</div>
-                <div class="panel-body" id="tblMotherboards">
-                    @* invoke _Cust partial view with model;
-                    only used on first render, thereafter with ajax call on paginator
-                *@
-                    @{ Html.RenderPartial("_Motherboards", Model); }
+    @using (@Html.BeginForm(FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right"> MOTHER BOARD</span>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.motherboardList, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Processors</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenProcessor",
+                            new SelectList(ViewBag.Processors, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">RAMs</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.RAMs, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Hard Drives</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.HardDrives, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">SSDs</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.SSDs, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Power Supplies</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.PowerSupplies, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">CPU Cooling</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.CPUCooling, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Thermal Paste</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.ThermalPaste, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Internal Drives</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.InternalDrives, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Operating System</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.OperatingSystems, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="text-align:right">Graphic Cards</span>
+                        <img src="~/Images/q_icon.png" />
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+                
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                       
+                    </div>
+                    <div class="col-md-8">                                         
+                        <input type="button" value="Check out" class="checkoutbtn" />
+                        
+                        <input type="reset" value="Reset form" class="form-reset" />    
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <span style="width:30%; font-size:24px;">Product Details</span>
+                <div id="prodDetail">
+
                 </div>
             </div>
         </div>
-        <div class="col-sm-8"></div>
-    </div>
+        
+       
 
-    <div class="row">
-        <div id="ProcessorsPanel" class="col-sm-4" style="display:none">
-            <div class="panel panel-info">
-                <div class="panel-heading">Choose a Processor</div>
-                <div class="panel-body" id="tblProcessors">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8"></div>
-    </div>
+    }
+
 </div>
+
+<!--http://johnculviner.com/clearreset-mvc-3-form-and-unobtrusive-jquery-client-validation/-->
+<script>  
+    $(function () {
+        $('.form-reset').live('click', function () {
+            $(this).formReset();
+            return false;
+        });
+
+        $('input[type=reset]').live('click', function () {
+            $(this).resetValidation();
+        });
+    })
+</script>

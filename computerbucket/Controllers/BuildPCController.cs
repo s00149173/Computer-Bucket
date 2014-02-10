@@ -4,78 +4,58 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using computerbucket.Models;
 using PagedList;
 
 namespace computerbucket.Controllers
 {
     public class BuildPCController : Controller
-    {
-        //
-        // GET: /BuildPC/
+    {       
+        private readonly ComputerBucketEntities _db = new ComputerBucketEntities();
 
-        //Connection to the database
-        private computerbucketEntities db = new computerbucketEntities();
-
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
-            int pageNumber = page ?? 1;
-            int pageSize = 5;
+            ViewBag.motherboardList = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 1);
+            ViewBag.Processors = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 2);
+            ViewBag.RAMs = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 3);
+            ViewBag.HardDrives = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 4);
+            ViewBag.SSDs = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 5);
+            ViewBag.PowerSupplies = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 6);
+            ViewBag.CPUCooling = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 7);
+            ViewBag.ThermalPaste = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 8);
+            ViewBag.InternalDrives = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 9);
+            ViewBag.OperatingSystems = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 12);
+            ViewBag.GraphicCards = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 13);
 
-            //ViewBag.motherboardList = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
-            
-            
-            if (Request.IsAjaxRequest())
-            {
-                //ViewBag.processorList = (this.ListOfPartsCompatible("Processor", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
-                //ViewBag.graphicCardList = (this.ListOfPartsCompatible("Graphic Card", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
-                //ViewBag.RAMList = (this.ListOfPartsCompatible("RAM", chosenMotherboard)).ToPagedList(pageNumber, pageSize);
-                var mothbs = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
-                return PartialView("_ViewComponents", mothbs);
-            }
-            var motherbs  = db.Motherboard_tbl.OrderBy(m => new { m.motherboard_id, m.brand }).ToPagedList(pageNumber, pageSize);
-            return View(motherbs);
+            return View();
         }
 
-        public ActionResult _MotherboardInfo(int chosenMotherboard)
-        {
-            var model = db.Motherboard_tbl.Where(m => m.motherboard_id == chosenMotherboard);
-            return PartialView("_MotherboardInfo", model);
+        public ActionResult ProdDetails(int id)
+        {         
+            var prod = from e in _db.Products.Where(e => e.ProductID == id)
+                      select new ProductModel()
+                      {
+                           ProductId = e.ProductID,
+                           ProductName = e.ProductName,
+                           UnitPrice = (decimal) e.UnitPrice,
+                           UnitsInStock = (int) e.UnitsInStock,
+                           
+                                                 
+                      };          
+            return PartialView("_prodDetails", prod);
+           
         }
 
-        public ActionResult _Processors(int id, int? page)
+        [HttpGet]
+        public ActionResult Create()
         {
-            int pageNumber = page ?? 1;
-            int pageSize = 5;
-            ViewBag.motherboardId = id;
-            var category = db.Category_tbl.Where(c => c.description == "Processor").Select(c => c.category_id);
-            int categoryID=int.Parse(category.First().ToString());
-
-            var processors = db.selectPartCompatible(id, categoryID).ToList().ToPagedList(pageNumber, pageSize);
-
-            return PartialView("_Processors", processors);
-            
+            return View();
         }
 
-        private List<SelectListItem> ListOfPartsCompatible(string category, int chosenMotherboard)
+        [HttpPost]
+        public ActionResult Create(Order order)
         {
-            var result = new List<SelectListItem>();
-            //var ctx = new YourContext();
-
-            var items = from ct in db.Comparison_tbl.AsEnumerable()
-                        where (ct.motherboard_id == chosenMotherboard)
-                        join p in db.Parts_tbl.AsEnumerable() on ct.part_id equals p.part_id
-                        join c in db.Category_tbl.AsEnumerable() on p.category_id equals c.category_id
-                        where c.description.Equals(category)
-                        select new SelectListItem
-                        {
-                            Text = p.title,
-                            Value = p.part_id.ToString()
-
-                        };
-
-            foreach (var item in items)
-                result.Add(item);
-            return result;
+            return View();
         }
     }
 }

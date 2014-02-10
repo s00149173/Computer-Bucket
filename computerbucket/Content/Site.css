@@ -15,8 +15,49 @@
     width:100%;
     height:auto;
     background-color:#ffffff;
-    color:#252525
+    color: #252525;
    
+}
+
+.pageHeading {
+    width: 100%;   
+    padding: 16px;
+    color: #efefef;
+    background-color: #483d8b;
+    font-size: 14px;
+    font-family: Arial;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-reset {   
+    background-color: #ff1769; 
+    border: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    float: right;
+}
+
+.checkoutbtn {
+    background-color: #3cb371; 
+    border: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin: 10px;
+    margin-right: 0;
+
 }
 
 
