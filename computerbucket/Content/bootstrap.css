@@ -1646,7 +1646,7 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
+  padding: 5px;
   line-height: 1.428571429;
   vertical-align: top;
 }
@@ -1702,7 +1702,7 @@ th {
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9f9f9;
+  background-color: #313131;
 }
 
 .table-hover > tbody > tr:hover > td,
@@ -4326,7 +4326,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   margin-bottom: 20px;
-  
 }
 
 .navbar:before,

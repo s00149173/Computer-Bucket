@@ -1,26 +1,40 @@
 ﻿@model IEnumerable<computerbucket.Models.ProductModel>
 
-<table class="table">
+<table class="table table-striped">
 
     @foreach (var item in Model)
     {
         <tr>
-            <td> <span style="font-weight:bold">ID :</span>    @Html.DisplayFor(modelItem => item.ProductId)</td>
+            <td> <span style="font-weight:bold">ID :</span> </td>
         </tr>
         <tr>
-            <td><span style="font-weight:bold">Name :</span>    @Html.DisplayFor(modelItem => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
+        </tr>
+        <tr>
+            <td><span style="font-weight:bold">Name :</span></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+        </tr>
+        <tr>
+            <td><span style="font-weight:bold">Description :</span></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+        </tr>
+        <tr>
+            <td><span style="font-weight:bold">Unit price :</span></td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+        </tr>
+        <tr>
+            <td><span style="font-weight:bold">Units in stock :</span> </td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.UnitsInStock)</td>
         </tr>
 
-        <tr>
-            <td> <span style="font-weight:bold">Description :</span>    @Html.DisplayFor(modelItem => item.Description)</td>
-
-        </tr>
-        <tr>
-            <td><span style="font-weight:bold">Unit price :</span>    @Html.DisplayFor(modelItem => item.UnitPrice)</td>
-        </tr>
-        <tr>
-            <td> <span style="font-weight:bold">Units in stock :</span>    @Html.DisplayFor(modelItem => item.UnitsInStock)</td>
-        </tr>
     }
 
 </table>
