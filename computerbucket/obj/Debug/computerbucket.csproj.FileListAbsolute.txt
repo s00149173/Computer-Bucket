@@ -87,4 +87,3 @@ C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\zh-Ha
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\obj\Debug\computerbucket.dll
 C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\obj\Debug\computerbucket.pdb
-C:\Users\ronan\Desktop\Rich_Applictions\Computer-Bucket\computerbucket\obj\Debug\computerbucket.csprojResolveAssemblyReference.cache

@@ -22,16 +22,17 @@
 .pageHeading {
     width: 100%;   
     padding: 16px;
+    padding-left: 0;
     color: #efefef;
     background-color: #483d8b;
     font-size: 14px;
     font-family: Arial;
-    margin-top: 20px;
     margin-bottom: 20px;
+    border-bottom: 1px solid dimgray;
 }
 
 .form-reset {   
-    background-color: #ff1769; 
+    background-color: #708090; 
     border: 0;
     padding-left: 25px;
     padding-right: 25px;
@@ -43,6 +44,11 @@
     font-weight: bold;
     float: right;
 }
+
+    .form-reset:hover {
+           background-color: #ffffff;
+        color: #252525;
+    }
 
 .checkoutbtn {
     background-color: #3cb371; 
@@ -60,5 +66,9 @@
 
 }
 
+    .checkoutbtn:hover {
+        background-color: #ffffff;
+        color: #252525;
+    }
 
 

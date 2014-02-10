@@ -20,19 +20,35 @@
     }
 </script>
 
+<div class="pageHeading">
+    <div class="container">
+        <div class="col-md-12">
+            <h2 style="margin-top: 0;">Build your PC here!</h2>
+            Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product,
+            please chick on the product and additional information will be shown in the right panel.
+            <br />
+            <br />
+            On the left hand side of our website click either "build your own desktop" or "build your own laptop" depending
+            on what type of computer you are looking for. Now choose from either an AMD based computer, an Intel based computer.
+            Both processor manufacturers' offer exceptional performance and value - you may wish to play around with both options.
+            Once you click through you will be presented with different options ranging from home & office computers right through
+            to high end gaming systems. Click through on the option that's most suited to your requirements.
 
-<div class="container">
-    <div class="pageHeading">
-        Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product,
-        please chick on the product and additional information will be shown in the right panel.
+        </div>
     </div>
+</div>
+<div class="container">
+
     @using (@Html.BeginForm(FormMethod.Get))
     {
         <div class="row">
             <div class="col-lg-9">
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right"> MOTHER BOARD</span>
+                        <span style="float:right;">
+                            Mother Board
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -42,8 +58,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Processors</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Processors 
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenProcessor",
@@ -55,8 +73,10 @@
 
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">RAMs</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            RAMs
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -66,8 +86,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Hard Drives</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Hard Drives
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -77,8 +99,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">SSDs</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            SSDs
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -88,8 +112,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Power Supplies</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Power Supplies
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -99,8 +125,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">CPU Cooling</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            CPU Cooling
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -110,8 +138,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Thermal Paste</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Thermal Paste
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -121,8 +151,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Internal Drives</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Internal Drives
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -132,8 +164,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Operating System</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Operating System
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -143,8 +177,10 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-lg-4">
-                        <span style="text-align:right">Graphic Cards</span>
-                        <img src="~/Images/q_icon.png" />
+                        <span style="float:right;">
+                            Graphic Cards
+                            <img src="~/Images/q_icon.png" />
+                        </span>
                     </div>
                     <div class="col-md-8">
                         @Html.DropDownList("chosenMotherBoard",
@@ -152,15 +188,19 @@
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                
+
                 <div class="row form-group">
                     <div class="col-lg-4">
-                       
+
                     </div>
-                    <div class="col-md-8">                                         
-                        <input type="button" value="Check out" class="checkoutbtn" />
-                        
-                        <input type="reset" value="Reset form" class="form-reset" />    
+                    <div class="col-md-8">
+                        <button type="button" value="Check out" class="checkoutbtn">
+                            <span class="glyphicon glyphicon-ok"></span> CHECK OUT
+                        </button>
+                        <button type="reset" value="Reset form" class="form-reset">
+                            <span class=" glyphicon glyphicon-refresh">
+                            </span> RESET FORM
+                        </button>
                     </div>
                 </div>
             </div>
@@ -172,15 +212,15 @@
                 </div>
             </div>
         </div>
-        
-       
+
+
 
     }
 
 </div>
 
 <!--http://johnculviner.com/clearreset-mvc-3-form-and-unobtrusive-jquery-client-validation/-->
-<script>  
+<script>
     $(function () {
         $('.form-reset').live('click', function () {
             $(this).formReset();
