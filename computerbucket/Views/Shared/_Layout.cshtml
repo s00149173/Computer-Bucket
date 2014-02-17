@@ -2,56 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - My ASP.NET Bootstrap 3 MVC Application</title>
+    <title>@ViewBag.Title - Computer Bucket</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")  
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    
-
 
 </head>
 <body>
-    <!--header start-->
 
-    <header>
+
+    <div class="navbar navbar-inverse">
         <div class="container">
-
-            <div class="row">
-                <div class="col-md-6"><h1>Computer bucket</h1></div>
-              
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Home">Computer Bucket</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("BuildPC", "Index", "BuildPC")</li>
+                    <li>@Html.ActionLink("Help", "Index", "Help")</li>
+                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                </ul>
             </div>
         </div>
-        <div class="row">
+    </div>
 
-            <div class="col-md-12">
-                <div class="navbar navbar-inverse">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
 
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                <li>@Html.ActionLink("BuildPC", "Index", "BuildPC")</li>
-                                <li>@Html.ActionLink("Help", "Index", "Help")</li>
-                                <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                                <li>@Html.ActionLink("About", "Index", "About")</li>
-                            </ul>
-                        </div><!--/.navbar-collapse -->
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </header>
-    <!--header end-->
     @RenderBody()
     <footer class=" container">
         <p>© ComputerBucket 2013</p>
