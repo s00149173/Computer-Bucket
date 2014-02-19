@@ -6128,11 +6128,13 @@ button.close {
   position: absolute;
   z-index: 1030;
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: visible;
+  width: 400px;
+  padding: 5px;
 }
 
 .tooltip.in {
@@ -6162,9 +6164,8 @@ button.close {
 
 .tooltip-inner {
   max-width: 200px;
-  padding: 3px 8px;
+  padding: 10px 8px;
   color: #ffffff;
-  text-align: center;
   text-decoration: none;
   background-color: #000000;
   border-radius: 4px;

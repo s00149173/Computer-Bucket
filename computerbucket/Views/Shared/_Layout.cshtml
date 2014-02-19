@@ -5,7 +5,7 @@
     <title>@ViewBag.Title - Computer Bucket</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -48,6 +48,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")  @* necessary for Ajax.BeginForm() *@
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/tooltip.js"></script>
     <script>
         /* Update the current page with the 'active' class to reflect this to navbar.
            This is done by looking for the link that references the current page and
