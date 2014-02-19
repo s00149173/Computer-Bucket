@@ -28,7 +28,7 @@ namespace computerbucket
         public Nullable<short> UnitsInStock { get; set; }
         public Nullable<short> UnitsOnOrder { get; set; }
         public Nullable<short> ReorderLevel { get; set; }
-        public bool Discontinued { get; set; }
+        public bool Discontinued { get; set; }        
     
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
     }

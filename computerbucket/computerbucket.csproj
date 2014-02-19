@@ -298,6 +298,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\banner_2.gif" />
+    <Content Include="Images\banner_3_gaming.gif" />
+    <Content Include="Images\banner_inslideprice.gif" />
     <Content Include="Images\q_icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

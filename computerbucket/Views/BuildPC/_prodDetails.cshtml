@@ -4,6 +4,9 @@
 
     @foreach (var item in Model)
     {
+          <tr>
+              <td><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 210px; height: 210px;" /></td>
+        </tr>
         <tr>
             <td> <span style="font-weight:bold">ID :</span> </td>
         </tr>

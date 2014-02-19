@@ -47,7 +47,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             Mother Board
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A motherboard (sometimes alternatively known as the mainboard, system board, planar board or logic board,[1] or colloquially, a mobo) is the main printed circuit board (PCB) found in computers and other expandable systems. It holds many of the crucial electronic components of the system, such as the central processing unit (CPU) and memory, and provides connectors for other peripherals. Unlike a backplane, a motherboard contains significant sub-systems such as the processor and other components." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -59,8 +59,8 @@
                 <div class="row form-group">
                     <div class="col-lg-4">
                         <span style="float:right;">
-                            Processors 
-                            <img src="~/Images/q_icon.png" />
+                            Processors
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A processor incorporates the functions of a computer's central processing unit (CPU) on a single integrated circuit (IC),[1] or at most a few integrated circuits.[2] All modern CPUs are processors making the micro- prefix redundant. The processor is a multipurpose, programmable device that accepts digital data as input, processes it according to instructions stored in its memory, and provides results as output. It is an example of sequential digital logic, as it has internal memory. Processors operate on numbers and symbols represented in the binary numeral system." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -69,13 +69,25 @@
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-
+                <div class="row form-group">
+                    <div class="col-lg-4">
+                        <span style="float:right;">
+                            Graphic Cards
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A Graphics card is an expansion card which generates a feed of output images to a display (such as a computer monitor)." src="~/Images/q_icon.png" />
+                        </span>
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownList("chosenMotherBoard",
+                            new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
 
                 <div class="row form-group">
                     <div class="col-lg-4">
                         <span style="float:right;">
                             RAMs
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Random-access memory (RAM /ræm/) is a form of computer data storage. A random-access device allows stored data to be accessed directly in any random order. In contrast, other data storage media such as hard disks, CDs, DVDs and magnetic tape, as well as early primary memory types such as drum memory, read and write data only in a predetermined order, consecutively, because of mechanical design limitations. Therefore, the time to access a given data location varies significantly depending on its physical location." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -88,7 +100,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             Hard Drives
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A hard disk drive (HDD)[note 2] is a data storage device used for storing and retrieving digital information using rapidly rotating disks (platters) coated with magnetic material. An HDD retains its data even when powered off. Data is read in a random-access manner, meaning individual blocks of data can be stored or retrieved in any order rather than sequentially. An HDD consists of one or more rigid (" hard") rapidly rotating disks (platters) with magnetic heads arranged on a moving actuator arm to read and write data to the surfaces." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -101,7 +113,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             SSDs
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="SSDs are most effective for server applications and server systems, where I/O response time is crucial. Data stored on SSDs should include anything that creates bottlenecks, such as databases, swap files, library and index files, and authorization and login information." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -114,7 +126,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             Power Supplies
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A power supply unit (PSU) converts mains AC to low-voltage regulated DC power for the internal components of a computer. Modern personal computers universally use a switched-mode power supply. Some power supplies have a manual selector for input voltage, while others automatically adapt to the supply voltage." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -127,7 +139,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             CPU Cooling
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Computer cooling is required to remove the waste heat produced by computer components, to keep components within permissible operating temperature limits. Components that are susceptible to temporary malfunction or permanent failure if overheated include integrated circuits such as CPUs, chipset, graphics cards, and hard disk drives." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -140,7 +152,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             Thermal Paste
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Thermal grease (also called thermal gel, thermal compound, thermal paste, heat paste, heat sink paste or heat sink compound) is a viscous fluid substance, originally with properties akin to grease, which increases the thermal conductivity of a thermal interface by filling microscopic air-gaps present due to the imperfectly flat and smooth surfaces of the components; the compound has far greater thermal conductivity than air (but far less than metal). In electronics, it is often used to aid a component's thermal dissipation via a heat sink." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -152,8 +164,8 @@
                 <div class="row form-group">
                     <div class="col-lg-4">
                         <span style="float:right;">
-                            Internal Drives
-                            <img src="~/Images/q_icon.png" />
+                            CD Drives
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="" src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -166,7 +178,7 @@
                     <div class="col-lg-4">
                         <span style="float:right;">
                             Operating System
-                            <img src="~/Images/q_icon.png" />
+                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system. Application programs usually require an operating system to function." src="~/Images/q_icon.png" />
                         </span>
                     </div>
                     <div class="col-md-8">
@@ -175,19 +187,7 @@
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Graphic Cards
-                            <img src="~/Images/q_icon.png" />
-                        </span>
-                    </div>
-                    <div class="col-md-8">
-                        @Html.DropDownList("chosenMotherBoard",
-                            new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
-                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
-                    </div>
-                </div>
+
 
                 <div class="row form-group">
                     <div class="col-lg-4">
