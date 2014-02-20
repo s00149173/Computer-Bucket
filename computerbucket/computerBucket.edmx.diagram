@@ -7,11 +7,15 @@
       <Diagram DiagramId="f9b5582f63fd46329900a1ff83ba2a5b" Name="Diagram1">
         <EntityTypeShape EntityType="ComputerBucketModel.Category" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ComputerBucketModel.Customer" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Order_Detail" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Order" Width="1.5" PointX="5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Order_Detail" Width="1.5" PointX="3.125" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Order" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ComputerBucketModel.Product" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ComputerBucketModel.FK_Orders_Customers" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_Order_Details_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ComputerBucketModel.GamingPCs" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ComputerBucketModel.HomePCs" Width="1.5" PointX="5.375" PointY="8.75" />
+        <AssociationConnector Association="ComputerBucketModel.FK_Category_Products" />
+        <AssociationConnector Association="ComputerBucketModel.FK_Order_Details_Orders" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -216,8 +216,14 @@
       <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="GamingPCs.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HomePCs.cs">
+      <DependentUpon>computerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Order.cs">

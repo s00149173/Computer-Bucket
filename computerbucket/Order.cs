@@ -14,10 +14,16 @@ namespace computerbucket
     
     public partial class Order
     {
+        public Order()
+        {
+            this.Order_Details = new HashSet<Order_Detail>();
+        }
+    
         public int OrderID { get; set; }
         public string CustomerID { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<Order_Detail> Order_Details { get; set; }
     }
 }

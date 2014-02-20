@@ -30,5 +30,7 @@ namespace computerbucket
         public DbSet<Order_Detail> Order_Details { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<GamingPCs> GamingPCs { get; set; }
+        public DbSet<HomePCs> HomePCs { get; set; }
     }
 }

@@ -19,7 +19,9 @@ namespace computerbucket
         public decimal UnitPrice { get; set; }
         public short Quantity { get; set; }
         public float Discount { get; set; }
+        public int OrderDeatilsID { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual Order Orders { get; set; }
     }
 }
