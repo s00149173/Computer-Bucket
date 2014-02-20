@@ -12,10 +12,11 @@
         <EntityTypeShape EntityType="ComputerBucketModel.Product" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ComputerBucketModel.FK_Orders_Customers" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_Order_Details_Products" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ComputerBucketModel.GamingPCs" Width="1.5" PointX="7.375" PointY="3.75" />
-        <EntityTypeShape EntityType="ComputerBucketModel.HomePCs" Width="1.5" PointX="5.375" PointY="8.75" />
         <AssociationConnector Association="ComputerBucketModel.FK_Category_Products" />
         <AssociationConnector Association="ComputerBucketModel.FK_Order_Details_Orders" />
+        <EntityTypeShape EntityType="ComputerBucketModel.PCTypes" Width="1.5" PointX="7.75" PointY="4.375" />
+        <EntityTypeShape EntityType="ComputerBucketModel.PreBuildPCs" Width="1.5" PointX="9.5" PointY="3.125" />
+        <AssociationConnector Association="ComputerBucketModel.FK_PreBuildPCs_PCTypes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

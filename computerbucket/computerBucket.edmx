@@ -29,46 +29,6 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
         </EntityType>
-        <EntityType Name="GamingPCs">
-          <Key>
-            <PropertyRef Name="GamingPcId" />
-          </Key>
-          <Property Name="GamingPcId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Motherboad" Type="nchar" MaxLength="10" />
-          <Property Name="Processor" Type="nchar" MaxLength="10" />
-          <Property Name="GraphicCard" Type="nchar" MaxLength="10" />
-          <Property Name="RAM" Type="nchar" MaxLength="10" />
-          <Property Name="Hard Drive" Type="nchar" MaxLength="10" />
-          <Property Name="SSD" Type="nchar" MaxLength="10" />
-          <Property Name="PowerSupply" Type="nchar" MaxLength="10" />
-          <Property Name="CPUCooling" Type="nchar" MaxLength="10" />
-          <Property Name="ThermalPaste" Type="nchar" MaxLength="10" />
-          <Property Name="InternalDrive" Type="nchar" MaxLength="10" />
-          <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
-          <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
-          <Property Name="UnitsInStock" Type="int" />
-          <Property Name="Price" Type="smallmoney" />
-        </EntityType>
-        <EntityType Name="HomePCs">
-          <Key>
-            <PropertyRef Name="HomePcId" />
-          </Key>
-          <Property Name="HomePcId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Motherboad" Type="nchar" MaxLength="10" />
-          <Property Name="Processor" Type="nchar" MaxLength="10" />
-          <Property Name="GraphicCard" Type="nchar" MaxLength="10" />
-          <Property Name="RAM" Type="nchar" MaxLength="10" />
-          <Property Name="Hard Drive" Type="nchar" MaxLength="10" />
-          <Property Name="SSD" Type="nchar" MaxLength="10" />
-          <Property Name="PowerSupply" Type="nchar" MaxLength="10" />
-          <Property Name="CPUCooling" Type="nchar" MaxLength="10" />
-          <Property Name="ThermalPaste" Type="nchar" MaxLength="10" />
-          <Property Name="InternalDrive" Type="nchar" MaxLength="10" />
-          <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
-          <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
-          <Property Name="UnitsInStock" Type="int" />
-          <Property Name="Price" Type="smallmoney" />
-        </EntityType>
         <EntityType Name="Order Details">
           <Key>
             <PropertyRef Name="OrderDeatilsID" />
@@ -87,6 +47,34 @@
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="nchar" MaxLength="5" />
           <Property Name="OrderDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PCTypes">
+          <Key>
+            <PropertyRef Name="PCTypeID" />
+          </Key>
+          <Property Name="PCTypeID" Type="int" Nullable="false" />
+          <Property Name="TypeNae" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PreBuildPCs">
+          <Key>
+            <PropertyRef Name="PreBuildPCID" />
+          </Key>
+          <Property Name="PreBuildPCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Motherboad" Type="nchar" MaxLength="10" />
+          <Property Name="Processor" Type="nchar" MaxLength="10" />
+          <Property Name="GraphicCard" Type="nchar" MaxLength="10" />
+          <Property Name="RAM" Type="nchar" MaxLength="10" />
+          <Property Name="Hard Drive" Type="nchar" MaxLength="10" />
+          <Property Name="SSD" Type="nchar" MaxLength="10" />
+          <Property Name="PowerSupply" Type="nchar" MaxLength="10" />
+          <Property Name="CPUCooling" Type="nchar" MaxLength="10" />
+          <Property Name="ThermalPaste" Type="nchar" MaxLength="10" />
+          <Property Name="InternalDrive" Type="nchar" MaxLength="10" />
+          <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
+          <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
+          <Property Name="UnitsInStock" Type="int" />
+          <Property Name="Price" Type="smallmoney" />
+          <Property Name="PCTypeID" Type="int" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -151,13 +139,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PreBuildPCs_PCTypes">
+          <End Role="PCTypes" Type="Self.PCTypes" Multiplicity="0..1" />
+          <End Role="PreBuildPCs" Type="Self.PreBuildPCs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCTypes">
+              <PropertyRef Name="PCTypeID" />
+            </Principal>
+            <Dependent Role="PreBuildPCs">
+              <PropertyRef Name="PCTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ComputerBucketModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GamingPCs" EntityType="Self.GamingPCs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HomePCs" EntityType="Self.HomePCs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order Details" EntityType="Self.Order Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCTypes" EntityType="Self.PCTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreBuildPCs" EntityType="Self.PreBuildPCs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Category_Products" Association="Self.FK_Category_Products">
             <End Role="Categories" EntitySet="Categories" />
@@ -174,6 +174,10 @@
           <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreBuildPCs_PCTypes" Association="Self.FK_PreBuildPCs_PCTypes">
+            <End Role="PCTypes" EntitySet="PCTypes" />
+            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -197,8 +201,6 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Order_Details" EntitySet="Order_Details" />
           </AssociationSet>
-          <EntitySet Name="GamingPCs" EntityType="ComputerBucketModel.GamingPCs" />
-          <EntitySet Name="HomePCs" EntityType="ComputerBucketModel.HomePCs" />
           <AssociationSet Name="FK_Category_Products" Association="ComputerBucketModel.FK_Category_Products">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
@@ -206,6 +208,12 @@
           <AssociationSet Name="FK_Order_Details_Orders" Association="ComputerBucketModel.FK_Order_Details_Orders">
             <End Role="Order" EntitySet="Orders" />
             <End Role="Order_Detail" EntitySet="Order_Details" />
+          </AssociationSet>
+          <EntitySet Name="PCTypes" EntityType="ComputerBucketModel.PCTypes" />
+          <EntitySet Name="PreBuildPCs" EntityType="ComputerBucketModel.PreBuildPCs" />
+          <AssociationSet Name="FK_PreBuildPCs_PCTypes" Association="ComputerBucketModel.FK_PreBuildPCs_PCTypes">
+            <End Role="PCTypes" EntitySet="PCTypes" />
+            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
@@ -307,46 +315,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="GamingPCs">
-          <Key>
-            <PropertyRef Name="GamingPcId" />
-          </Key>
-          <Property Name="GamingPcId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Motherboad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Processor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="GraphicCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="RAM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Hard_Drive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="SSD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PowerSupply" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CPUCooling" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ThermalPaste" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="InternalDrive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="OperatingSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ComputerCase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitsInStock" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
-        </EntityType>
-        <EntityType Name="HomePCs">
-          <Key>
-            <PropertyRef Name="HomePcId" />
-          </Key>
-          <Property Name="HomePcId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Motherboad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Processor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="GraphicCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="RAM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Hard_Drive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="SSD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PowerSupply" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CPUCooling" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ThermalPaste" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="InternalDrive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="OperatingSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ComputerCase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitsInStock" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
-        </EntityType>
         <Association Name="FK_Category_Products">
           <End Type="ComputerBucketModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="ComputerBucketModel.Product" Role="Product" Multiplicity="*" />
@@ -368,6 +336,48 @@
             </Principal>
             <Dependent Role="Order_Detail">
               <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PCTypes">
+          <Key>
+            <PropertyRef Name="PCTypeID" />
+          </Key>
+          <Property Name="PCTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TypeNae" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="PreBuildPCs" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PCTypes" ToRole="PreBuildPCs" />
+        </EntityType>
+        <EntityType Name="PreBuildPCs">
+          <Key>
+            <PropertyRef Name="PreBuildPCID" />
+          </Key>
+          <Property Name="PreBuildPCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Motherboad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Processor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="GraphicCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RAM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Hard_Drive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SSD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PowerSupply" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CPUCooling" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ThermalPaste" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="InternalDrive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ComputerCase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UnitsInStock" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="PCTypeID" Type="Int32" />
+          <NavigationProperty Name="PCTypes" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PreBuildPCs" ToRole="PCTypes" />
+        </EntityType>
+        <Association Name="FK_PreBuildPCs_PCTypes">
+          <End Type="ComputerBucketModel.PCTypes" Role="PCTypes" Multiplicity="0..1" />
+          <End Type="ComputerBucketModel.PreBuildPCs" Role="PreBuildPCs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCTypes">
+              <PropertyRef Name="PCTypeID" />
+            </Principal>
+            <Dependent Role="PreBuildPCs">
+              <PropertyRef Name="PCTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -440,9 +450,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GamingPCs">
-            <EntityTypeMapping TypeName="ComputerBucketModel.GamingPCs">
-              <MappingFragment StoreEntitySet="GamingPCs">
+          <EntitySetMapping Name="PCTypes">
+            <EntityTypeMapping TypeName="ComputerBucketModel.PCTypes">
+              <MappingFragment StoreEntitySet="PCTypes">
+                <ScalarProperty Name="TypeNae" ColumnName="TypeNae" />
+                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreBuildPCs">
+            <EntityTypeMapping TypeName="ComputerBucketModel.PreBuildPCs">
+              <MappingFragment StoreEntitySet="PreBuildPCs">
+                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
                 <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
@@ -457,32 +476,11 @@
                 <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
                 <ScalarProperty Name="Processor" ColumnName="Processor" />
                 <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
-                <ScalarProperty Name="GamingPcId" ColumnName="GamingPcId" />
+                <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HomePCs">
-            <EntityTypeMapping TypeName="ComputerBucketModel.HomePCs">
-              <MappingFragment StoreEntitySet="HomePCs">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
-                <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
-                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
-                <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
-                <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
-                <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
-                <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
-                <ScalarProperty Name="SSD" ColumnName="SSD" />
-                <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
-                <ScalarProperty Name="Processor" ColumnName="Processor" />
-                <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
-                <ScalarProperty Name="HomePcId" ColumnName="HomePcId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
