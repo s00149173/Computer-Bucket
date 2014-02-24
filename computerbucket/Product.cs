@@ -14,26 +14,17 @@ namespace computerbucket
     
     public partial class Product
     {
-        public Product()
-        {
-            this.Order_Details = new HashSet<Order_Detail>();
-        }
-    
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public Nullable<int> SupplierID { get; set; }
         public Nullable<int> CategoryID { get; set; }
-        public string QuantityPerUnit { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<short> UnitsInStock { get; set; }
         public Nullable<short> UnitsOnOrder { get; set; }
-        public Nullable<short> ReorderLevel { get; set; }
         public Nullable<bool> Discontinued { get; set; }
         public string Description { get; set; }
         public string ExtraInfo { get; set; }
         public string ImageUrl { get; set; }
     
-        public virtual ICollection<Order_Detail> Order_Details { get; set; }
-        public virtual Category Categories { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

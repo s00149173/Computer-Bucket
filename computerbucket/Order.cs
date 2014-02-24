@@ -16,14 +16,14 @@ namespace computerbucket
     {
         public Order()
         {
-            this.Order_Details = new HashSet<Order_Detail>();
+            this.OrderDetails = new HashSet<OrderDetail>();
         }
     
         public int OrderID { get; set; }
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual ICollection<Order_Detail> Order_Details { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -1,65 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ComputerBucketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ComputerBucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ComputerBucketModelStoreContainer">
+          <EntitySet Name="BuildPCs" EntityType="ComputerBucketModel.Store.BuildPCs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="ComputerBucketModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="ComputerBucketModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetails" EntityType="ComputerBucketModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItems" EntityType="ComputerBucketModel.Store.OrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="ComputerBucketModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PCTypes" EntityType="ComputerBucketModel.Store.PCTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreBuildPCs" EntityType="ComputerBucketModel.Store.PreBuildPCs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="ComputerBucketModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Category_Products" Association="ComputerBucketModel.Store.FK_Category_Products">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_OrderItems" Association="ComputerBucketModel.Store.FK_OrderDetails_OrderItems">
+            <End Role="OrderItems" EntitySet="OrderItems" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="ComputerBucketModel.Store.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_BuildPCs" Association="ComputerBucketModel.Store.FK_OrderItems_BuildPCs">
+            <End Role="BuildPCs" EntitySet="BuildPCs" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_PreBuildPCs" Association="ComputerBucketModel.Store.FK_OrderItems_PreBuildPCs">
+            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="ComputerBucketModel.Store.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreBuildPCs_PCTypes" Association="ComputerBucketModel.Store.FK_PreBuildPCs_PCTypes">
+            <End Role="PCTypes" EntitySet="PCTypes" />
+            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BuildPCs">
+          <Key>
+            <PropertyRef Name="BuildPCID" />
+          </Key>
+          <Property Name="BuildPCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Motherboad" Type="nchar" MaxLength="10" />
+          <Property Name="Processor" Type="nchar" MaxLength="10" />
+          <Property Name="GraphicCard" Type="nchar" MaxLength="10" />
+          <Property Name="RAM" Type="nchar" MaxLength="10" />
+          <Property Name="Hard Drive" Type="nchar" MaxLength="10" />
+          <Property Name="SSD" Type="nchar" MaxLength="10" />
+          <Property Name="PowerSupply" Type="nchar" MaxLength="10" />
+          <Property Name="CPUCooling" Type="nchar" MaxLength="10" />
+          <Property Name="ThermalPaste" Type="nchar" MaxLength="10" />
+          <Property Name="InternalDrive" Type="nchar" MaxLength="10" />
+          <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
+          <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="smallmoney" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Description" Type="ntext" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="nchar" MaxLength="5" Nullable="false" />
-          <Property Name="ContactName" Type="nvarchar" MaxLength="30" />
-          <Property Name="ContactTitle" Type="nvarchar" MaxLength="30" />
-          <Property Name="Address" Type="nvarchar" MaxLength="60" />
-          <Property Name="City" Type="nvarchar" MaxLength="15" />
+          <Property Name="CustomerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="Region" Type="nvarchar" MaxLength="15" />
           <Property Name="PostalCode" Type="nvarchar" MaxLength="10" />
-          <Property Name="Country" Type="nvarchar" MaxLength="15" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Order Details">
+        <EntityType Name="OrderDetails">
           <Key>
-            <PropertyRef Name="OrderDeatilsID" />
+            <PropertyRef Name="OrderDetailsID" />
           </Key>
+          <Property Name="OrderDetailsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BuildPCID" Type="int" />
+          <Property Name="PreBuildPCID" Type="int" />
+          <Property Name="UnitPrice" Type="money" />
           <Property Name="Quantity" Type="smallint" Nullable="false" />
           <Property Name="Discount" Type="real" Nullable="false" />
-          <Property Name="OrderDeatilsID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="nchar" MaxLength="5" />
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PCTypes">
           <Key>
             <PropertyRef Name="PCTypeID" />
           </Key>
-          <Property Name="PCTypeID" Type="int" Nullable="false" />
-          <Property Name="TypeNae" Type="nchar" MaxLength="20" />
+          <Property Name="PCTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="nchar" Nullable="false" MaxLength="20" />
         </EntityType>
         <EntityType Name="PreBuildPCs">
           <Key>
             <PropertyRef Name="PreBuildPCID" />
           </Key>
-          <Property Name="PreBuildPCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PreBuildPCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PCTypeID" Type="int" Nullable="false" />
           <Property Name="Motherboad" Type="nchar" MaxLength="10" />
           <Property Name="Processor" Type="nchar" MaxLength="10" />
           <Property Name="GraphicCard" Type="nchar" MaxLength="10" />
@@ -74,14 +139,13 @@
           <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
           <Property Name="UnitsInStock" Type="int" />
           <Property Name="Price" Type="smallmoney" />
-          <Property Name="PCTypeID" Type="int" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="150" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="UnitPrice" Type="smallmoney" />
           <Property Name="UnitsInStock" Type="smallint" />
@@ -92,8 +156,8 @@
           <Property Name="ImageUrl" Type="nchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK_Category_Products">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <End Role="Categories" Type="ComputerBucketModel.Store.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="ComputerBucketModel.Store.Products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
@@ -103,33 +167,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Details_Orders">
-          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
-          <End Role="Order Details" Type="Self.Order Details" Multiplicity="*" />
+        <Association Name="FK_OrderDetails_OrderItems">
+          <End Role="OrderItems" Type="ComputerBucketModel.Store.OrderItems" Multiplicity="1" />
+          <End Role="OrderDetails" Type="ComputerBucketModel.Store.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderItems">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="ComputerBucketModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="ComputerBucketModel.Store.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orders">
               <PropertyRef Name="OrderID" />
             </Principal>
-            <Dependent Role="Order Details">
+            <Dependent Role="OrderDetails">
               <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Details_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="Order Details" Type="Self.Order Details" Multiplicity="*" />
+        <Association Name="FK_OrderItems_BuildPCs">
+          <End Role="BuildPCs" Type="ComputerBucketModel.Store.BuildPCs" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="ComputerBucketModel.Store.OrderItems" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
+            <Principal Role="BuildPCs">
+              <PropertyRef Name="BuildPCID" />
             </Principal>
-            <Dependent Role="Order Details">
-              <PropertyRef Name="ProductID" />
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="BuildPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItems_PreBuildPCs">
+          <End Role="PreBuildPCs" Type="ComputerBucketModel.Store.PreBuildPCs" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="ComputerBucketModel.Store.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreBuildPCs">
+              <PropertyRef Name="PreBuildPCID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="PreBuildPCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Customers">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="Customers" Type="ComputerBucketModel.Store.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="ComputerBucketModel.Store.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
               <PropertyRef Name="CustomerID" />
@@ -140,8 +228,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PreBuildPCs_PCTypes">
-          <End Role="PCTypes" Type="Self.PCTypes" Multiplicity="0..1" />
-          <End Role="PreBuildPCs" Type="Self.PreBuildPCs" Multiplicity="*" />
+          <End Role="PCTypes" Type="ComputerBucketModel.Store.PCTypes" Multiplicity="1" />
+          <End Role="PreBuildPCs" Type="ComputerBucketModel.Store.PreBuildPCs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PCTypes">
               <PropertyRef Name="PCTypeID" />
@@ -151,124 +239,158 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ComputerBucketModelStoreContainer">
-          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order Details" EntityType="Self.Order Details" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PCTypes" EntityType="Self.PCTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PreBuildPCs" EntityType="Self.PreBuildPCs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Category_Products" Association="Self.FK_Category_Products">
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ComputerBucketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ComputerBucketEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BuildPCs" EntityType="ComputerBucketModel.BuildPC" />
+          <EntitySet Name="Categories" EntityType="ComputerBucketModel.Category" />
+          <EntitySet Name="Customers" EntityType="ComputerBucketModel.Customer" />
+          <EntitySet Name="OrderDetails" EntityType="ComputerBucketModel.OrderDetail" />
+          <EntitySet Name="OrderItems" EntityType="ComputerBucketModel.OrderItem" />
+          <EntitySet Name="Orders" EntityType="ComputerBucketModel.Order" />
+          <EntitySet Name="PCTypes" EntityType="ComputerBucketModel.PCType" />
+          <EntitySet Name="PreBuildPCs" EntityType="ComputerBucketModel.PreBuildPC" />
+          <EntitySet Name="Products" EntityType="ComputerBucketModel.Product" />
+          <AssociationSet Name="FK_OrderItems_BuildPCs" Association="ComputerBucketModel.FK_OrderItems_BuildPCs">
+            <End Role="BuildPCs" EntitySet="BuildPCs" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Products" Association="ComputerBucketModel.FK_Category_Products">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Details_Orders" Association="Self.FK_Order_Details_Orders">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="Order Details" EntitySet="Order Details" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Details_Products" Association="Self.FK_Order_Details_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Order Details" EntitySet="Order Details" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PreBuildPCs_PCTypes" Association="Self.FK_PreBuildPCs_PCTypes">
-            <End Role="PCTypes" EntitySet="PCTypes" />
-            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="ComputerBucketModel" Alias="Self" p1:UseStrongSpatialTypes="false"
-              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
-              xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
-              xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ComputerBucketEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="ComputerBucketModel.Category" />
-          <EntitySet Name="Customers" EntityType="ComputerBucketModel.Customer" />
-          <EntitySet Name="Order_Details" EntityType="ComputerBucketModel.Order_Detail" />
-          <EntitySet Name="Orders" EntityType="ComputerBucketModel.Order" />
-          <EntitySet Name="Products" EntityType="ComputerBucketModel.Product" />
           <AssociationSet Name="FK_Orders_Customers" Association="ComputerBucketModel.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Details_Products" Association="ComputerBucketModel.FK_Order_Details_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Order_Details" EntitySet="Order_Details" />
+          <AssociationSet Name="FK_OrderDetails_OrderItems" Association="ComputerBucketModel.FK_OrderDetails_OrderItems">
+            <End Role="OrderItems" EntitySet="OrderItems" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_Category_Products" Association="ComputerBucketModel.FK_Category_Products">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="ComputerBucketModel.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Details_Orders" Association="ComputerBucketModel.FK_Order_Details_Orders">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="Order_Detail" EntitySet="Order_Details" />
+          <AssociationSet Name="FK_OrderItems_PreBuildPCs" Association="ComputerBucketModel.FK_OrderItems_PreBuildPCs">
+            <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
-          <EntitySet Name="PCTypes" EntityType="ComputerBucketModel.PCTypes" />
-          <EntitySet Name="PreBuildPCs" EntityType="ComputerBucketModel.PreBuildPCs" />
           <AssociationSet Name="FK_PreBuildPCs_PCTypes" Association="ComputerBucketModel.FK_PreBuildPCs_PCTypes">
             <End Role="PCTypes" EntitySet="PCTypes" />
             <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BuildPC">
+          <Key>
+            <PropertyRef Name="BuildPCID" />
+          </Key>
+          <Property Name="BuildPCID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Motherboad" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Processor" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="GraphicCard" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="RAM" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Hard_Drive" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="SSD" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="PowerSupply" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="CPUCooling" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ThermalPaste" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="InternalDrive" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ComputerCase" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
+          <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_BuildPCs" FromRole="BuildPCs" ToRole="OrderItems" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="20" Unicode="true"
-                    FixedLength="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Products" Relationship="ComputerBucketModel.FK_Category_Products" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="ComputerBucketModel.FK_Category_Products" FromRole="Categories" ToRole="Products" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="true" />
-          <Property Name="ContactName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="ContactTitle" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Address" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
-          <Property Name="City" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
           <Property Name="Region" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
           <Property Name="PostalCode" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Country" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
           <Property Name="Phone" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
-          <Property Name="Fax" Type="String" MaxLength="24" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Orders" Relationship="ComputerBucketModel.FK_Orders_Customers" FromRole="Customers"
-                              ToRole="Orders" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="ComputerBucketModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
         </EntityType>
-        <EntityType Name="Order_Detail">
+        <EntityType Name="OrderDetail">
           <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="OrderDeatilsID" />
+            <PropertyRef Name="OrderDetailsID" />
           </Key>
+          <Property Name="OrderDetailsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderItem" Relationship="ComputerBucketModel.FK_OrderDetails_OrderItems" FromRole="OrderDetails" ToRole="OrderItems" />
+          <NavigationProperty Name="Order" Relationship="ComputerBucketModel.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildPCID" Type="Int32" />
+          <Property Name="PreBuildPCID" Type="Int32" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Quantity" Type="Int16" Nullable="false" />
           <Property Name="Discount" Type="Single" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="ComputerBucketModel.FK_Order_Details_Products"
-                              FromRole="Order_Details" ToRole="Products" />
-          <Property Name="OrderDeatilsID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="ComputerBucketModel.FK_Order_Details_Orders" FromRole="Order_Detail" ToRole="Order" />
+          <NavigationProperty Name="BuildPC" Relationship="ComputerBucketModel.FK_OrderItems_BuildPCs" FromRole="OrderItems" ToRole="BuildPCs" />
+          <NavigationProperty Name="OrderDetails" Relationship="ComputerBucketModel.FK_OrderDetails_OrderItems" FromRole="OrderItems" ToRole="OrderDetails" />
+          <NavigationProperty Name="PreBuildPC" Relationship="ComputerBucketModel.FK_OrderItems_PreBuildPCs" FromRole="OrderItems" ToRole="PreBuildPCs" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="String" MaxLength="5" Unicode="true" FixedLength="true" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Customer" Relationship="ComputerBucketModel.FK_Orders_Customers" FromRole="Orders"
-                              ToRole="Customers" />
-          <NavigationProperty Name="Order_Details" Relationship="ComputerBucketModel.FK_Order_Details_Orders" FromRole="Order" ToRole="Order_Detail" />
+          <NavigationProperty Name="Customer" Relationship="ComputerBucketModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="OrderDetails" Relationship="ComputerBucketModel.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="PCType">
+          <Key>
+            <PropertyRef Name="PCTypeID" />
+          </Key>
+          <Property Name="PCTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="PreBuildPCs" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PCTypes" ToRole="PreBuildPCs" />
+        </EntityType>
+        <EntityType Name="PreBuildPC">
+          <Key>
+            <PropertyRef Name="PreBuildPCID" />
+          </Key>
+          <Property Name="PreBuildPCID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PCTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Motherboad" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Processor" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="GraphicCard" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="RAM" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Hard_Drive" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="SSD" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="PowerSupply" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="CPUCooling" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ThermalPaste" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="InternalDrive" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ComputerCase" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="UnitsInStock" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
+          <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_PreBuildPCs" FromRole="PreBuildPCs" ToRole="OrderItems" />
+          <NavigationProperty Name="PCType" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PreBuildPCs" ToRole="PCTypes" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -276,23 +398,42 @@
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="SupplierID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="QuantityPerUnit" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="10" Scale="4" />
           <Property Name="UnitsInStock" Type="Int16" />
           <Property Name="UnitsOnOrder" Type="Int16" />
-          <Property Name="ReorderLevel" Type="Int16" />
           <Property Name="Discontinued" Type="Boolean" />
-          <NavigationProperty Name="Order_Details" Relationship="ComputerBucketModel.FK_Order_Details_Products"
-                              FromRole="Products" ToRole="Order_Details" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="ExtraInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Categories" Relationship="ComputerBucketModel.FK_Category_Products" FromRole="Product" ToRole="Category" />
+          <Property Name="Description" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="ExtraInfo" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="Category" Relationship="ComputerBucketModel.FK_Category_Products" FromRole="Products" ToRole="Categories" />
         </EntityType>
+        <Association Name="FK_OrderItems_BuildPCs">
+          <End Role="BuildPCs" Type="ComputerBucketModel.BuildPC" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="ComputerBucketModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildPCs">
+              <PropertyRef Name="BuildPCID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="BuildPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Products">
+          <End Role="Categories" Type="ComputerBucketModel.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="ComputerBucketModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_Customers">
-          <End Role="Customers" Type="ComputerBucketModel.Customer" Multiplicity="0..1" />
+          <End Role="Customers" Type="ComputerBucketModel.Customer" Multiplicity="1" />
           <End Role="Orders" Type="ComputerBucketModel.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -303,75 +444,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Details_Products">
-          <End Role="Products" Type="ComputerBucketModel.Product" Multiplicity="1" />
-          <End Role="Order_Details" Type="ComputerBucketModel.Order_Detail" Multiplicity="*" />
+        <Association Name="FK_OrderDetails_OrderItems">
+          <End Role="OrderItems" Type="ComputerBucketModel.OrderItem" Multiplicity="1" />
+          <End Role="OrderDetails" Type="ComputerBucketModel.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
+            <Principal Role="OrderItems">
+              <PropertyRef Name="ItemID" />
             </Principal>
-            <Dependent Role="Order_Details">
-              <PropertyRef Name="ProductID" />
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ItemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Category_Products">
-          <End Type="ComputerBucketModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="ComputerBucketModel.Product" Role="Product" Multiplicity="*" />
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="ComputerBucketModel.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="ComputerBucketModel.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Details_Orders">
-          <End Type="ComputerBucketModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="ComputerBucketModel.Order_Detail" Role="Order_Detail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="Orders">
               <PropertyRef Name="OrderID" />
             </Principal>
-            <Dependent Role="Order_Detail">
+            <Dependent Role="OrderDetails">
               <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PCTypes">
-          <Key>
-            <PropertyRef Name="PCTypeID" />
-          </Key>
-          <Property Name="PCTypeID" Type="Int32" Nullable="false" />
-          <Property Name="TypeNae" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="PreBuildPCs" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PCTypes" ToRole="PreBuildPCs" />
-        </EntityType>
-        <EntityType Name="PreBuildPCs">
-          <Key>
-            <PropertyRef Name="PreBuildPCID" />
-          </Key>
-          <Property Name="PreBuildPCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Motherboad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Processor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="GraphicCard" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="RAM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Hard_Drive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="SSD" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PowerSupply" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="CPUCooling" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ThermalPaste" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="InternalDrive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="OperatingSystem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ComputerCase" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitsInStock" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
-          <Property Name="PCTypeID" Type="Int32" />
-          <NavigationProperty Name="PCTypes" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PreBuildPCs" ToRole="PCTypes" />
-        </EntityType>
+        <Association Name="FK_OrderItems_PreBuildPCs">
+          <End Role="PreBuildPCs" Type="ComputerBucketModel.PreBuildPC" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="ComputerBucketModel.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreBuildPCs">
+              <PropertyRef Name="PreBuildPCID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="PreBuildPCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PreBuildPCs_PCTypes">
-          <End Type="ComputerBucketModel.PCTypes" Role="PCTypes" Multiplicity="0..1" />
-          <End Type="ComputerBucketModel.PreBuildPCs" Role="PreBuildPCs" Multiplicity="*" />
+          <End Role="PCTypes" Type="ComputerBucketModel.PCType" Multiplicity="1" />
+          <End Role="PreBuildPCs" Type="ComputerBucketModel.PreBuildPC" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PCTypes">
               <PropertyRef Name="PCTypeID" />
@@ -386,8 +497,27 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ComputerBucketModelStoreContainer"
-                                CdmEntityContainer="ComputerBucketEntities">
+        <EntityContainerMapping StorageEntityContainer="ComputerBucketModelStoreContainer" CdmEntityContainer="ComputerBucketEntities">
+          <EntitySetMapping Name="BuildPCs">
+            <EntityTypeMapping TypeName="ComputerBucketModel.BuildPC">
+              <MappingFragment StoreEntitySet="BuildPCs">
+                <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />
+                <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
+                <ScalarProperty Name="SSD" ColumnName="SSD" />
+                <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
+                <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
+                <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
+                <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ComputerBucketModel.Category">
               <MappingFragment StoreEntitySet="Categories">
@@ -402,23 +532,31 @@
               <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Region" ColumnName="Region" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order_Details">
-            <EntityTypeMapping TypeName="ComputerBucketModel.Order_Detail">
-              <MappingFragment StoreEntitySet="Order Details">
-                <ScalarProperty Name="OrderDeatilsID" ColumnName="OrderDeatilsID" />
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="ComputerBucketModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailsID" ColumnName="OrderDetailsID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="ComputerBucketModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />
+                <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -434,12 +572,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PCTypes">
+            <EntityTypeMapping TypeName="ComputerBucketModel.PCType">
+              <MappingFragment StoreEntitySet="PCTypes">
+                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreBuildPCs">
+            <EntityTypeMapping TypeName="ComputerBucketModel.PreBuildPC">
+              <MappingFragment StoreEntitySet="PreBuildPCs">
+                <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
+                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
+                <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
+                <ScalarProperty Name="SSD" ColumnName="SSD" />
+                <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
+                <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
+                <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
+                <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ComputerBucketModel.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
@@ -447,40 +612,13 @@
                 <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
                 <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
                 <ScalarProperty Name="Discontinued" ColumnName="Discontinued" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PCTypes">
-            <EntityTypeMapping TypeName="ComputerBucketModel.PCTypes">
-              <MappingFragment StoreEntitySet="PCTypes">
-                <ScalarProperty Name="TypeNae" ColumnName="TypeNae" />
-                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PreBuildPCs">
-            <EntityTypeMapping TypeName="ComputerBucketModel.PreBuildPCs">
-              <MappingFragment StoreEntitySet="PreBuildPCs">
-                <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
-                <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
-                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
-                <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
-                <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
-                <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
-                <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
-                <ScalarProperty Name="SSD" ColumnName="SSD" />
-                <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
-                <ScalarProperty Name="Processor" ColumnName="Processor" />
-                <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
-                <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -494,10 +632,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

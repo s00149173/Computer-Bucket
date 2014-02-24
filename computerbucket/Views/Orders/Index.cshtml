@@ -1,0 +1,39 @@
+﻿@model computerbucket.Order
+
+@{
+    ViewBag.Title = "Orders!  --- NOT FINISHED, SHOWING DUMP INFORMATION---";
+}
+<div class="container">
+
+    <h2>@ViewBag.Title</h2>
+    <fieldset>
+        <legend>Orders</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.OrderID)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OrderID)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CustomerID)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OrderDate)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+
+        @Html.ActionLink("Go to Checkout", "Checkout", new { id = Model.OrderID }, new {@class="btn btn-primary" })
+    </p>
+</div>

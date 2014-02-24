@@ -25,12 +25,14 @@ namespace computerbucket
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<BuildPC> BuildPCs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Order_Detail> Order_Details { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<PCType> PCTypes { get; set; }
+        public DbSet<PreBuildPC> PreBuildPCs { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<PCTypes> PCTypes { get; set; }
-        public DbSet<PreBuildPCs> PreBuildPCs { get; set; }
     }
 }

@@ -189,31 +189,35 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BuildPC.cs">
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="computerBucket.Context.cs">
+    <Compile Include="ComputerBucket.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerBucket.Context.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="computerBucket.cs">
+    <Compile Include="ComputerBucket.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerBucket.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="computerBucket.Designer.cs">
+    <Compile Include="ComputerBucket.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>computerBucket.edmx</DependentUpon>
+      <DependentUpon>ComputerBucket.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BuildPCController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Customer.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,19 +225,22 @@
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Order.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Order_Detail.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="PCTypes.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+    <Compile Include="OrderItem.cs">
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="PreBuildPCs.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+    <Compile Include="PCType.cs">
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PreBuildPC.cs">
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>computerBucket.tt</DependentUpon>
+      <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -314,22 +321,22 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="computerBucket.edmx">
+    <EntityDeploy Include="ComputerBucket.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>computerBucket.Designer.cs</LastGenOutput>
+      <LastGenOutput>ComputerBucket.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="computerBucket.Context.tt">
+    <Content Include="ComputerBucket.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>computerBucket.edmx</DependentUpon>
-      <LastGenOutput>computerBucket.Context.cs</LastGenOutput>
+      <DependentUpon>ComputerBucket.edmx</DependentUpon>
+      <LastGenOutput>ComputerBucket.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="computerBucket.edmx.diagram">
-      <DependentUpon>computerBucket.edmx</DependentUpon>
+    <Content Include="ComputerBucket.edmx.diagram">
+      <DependentUpon>ComputerBucket.edmx</DependentUpon>
     </Content>
-    <Content Include="computerBucket.tt">
+    <Content Include="ComputerBucket.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>computerBucket.edmx</DependentUpon>
-      <LastGenOutput>computerBucket.cs</LastGenOutput>
+      <DependentUpon>ComputerBucket.edmx</DependentUpon>
+      <LastGenOutput>ComputerBucket.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -399,6 +406,13 @@
     <Content Include="Views\BuildPC\_Processors.cshtml" />
     <Content Include="Views\BuildPC\Index.cshtml" />
     <Content Include="Views\BuildPC\_prodDetails.cshtml" />
+    <Content Include="Views\OrderBasket\Index.cshtml" />
+    <Content Include="Views\OrderBasket\Details.cshtml" />
+    <Content Include="Views\OrderBasket\Create.cshtml" />
+    <Content Include="Views\OrderBasket\Edit.cshtml" />
+    <Content Include="Views\OrderBasket\Delete.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
