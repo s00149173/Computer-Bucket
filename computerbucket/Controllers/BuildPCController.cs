@@ -39,7 +39,7 @@ namespace computerbucket.Controllers
                            ProductName = e.ProductName,
                            UnitPrice = (decimal) e.UnitPrice,
                            UnitsInStock = (int) e.UnitsInStock,
-                           ImageUrl = "https://www.asus.com/websites/global/News/aFpGZ4W8zTa9IOQl/Rampage-IV-Black-Edition-3D-1.jpg"                                                                                                           
+                           ImageUrl = e.ImageUrl                                                                                                
                       };          
             return PartialView("_prodDetails", prod);
            
@@ -56,5 +56,7 @@ namespace computerbucket.Controllers
         {
             return View();
         }
+
+      
     }
 }

@@ -8,10 +8,11 @@ namespace computerbucket.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ComputerBucketEntities _db = new ComputerBucketEntities();
+
         public ActionResult Index()
         {
             
-
             return View();
         }
 
@@ -27,6 +28,13 @@ namespace computerbucket.Controllers
             
 
             return View();
+        }
+
+        public ActionResult PreBuildComputers(int typeId)
+        {
+            var query = _db.PreBuildPCs.Where(p => p.PCTypeID == typeId).ToList();
+
+            return View(query);
         }
     }
 }

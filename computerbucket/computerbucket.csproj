@@ -223,6 +223,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PreBuildModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>ComputerBucket.tt</DependentUpon>
@@ -413,6 +414,7 @@
     <Content Include="Views\OrderBasket\Delete.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Checkout.cshtml" />
+    <Content Include="Views\Home\PreBuildComputers.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

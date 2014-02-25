@@ -1,6 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ComputerBucketModelStoreContainer" CdmEntityContainer="ComputerBucketEntities">
+    <EntitySetMapping Name="BuildPCs">
+      <EntityTypeMapping TypeName="ComputerBucketModel.BuildPC">
+        <MappingFragment StoreEntitySet="BuildPCs">
+          <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />
+          <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
+          <ScalarProperty Name="SSD" ColumnName="SSD" />
+          <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
+          <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
+          <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
+          <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
+          <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+          <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="ComputerBucketModel.Category">
         <MappingFragment StoreEntitySet="Categories">
@@ -15,22 +35,31 @@
         <MappingFragment StoreEntitySet="Customers">
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-          <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Order_Details">
-      <EntityTypeMapping TypeName="ComputerBucketModel.Order_Detail">
-        <MappingFragment StoreEntitySet="Order Details">
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="ComputerBucketModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderDetailsID" ColumnName="OrderDetailsID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="ComputerBucketModel.OrderItem">
+        <MappingFragment StoreEntitySet="OrderItems">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />
+          <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -46,19 +75,49 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PCTypes">
+      <EntityTypeMapping TypeName="ComputerBucketModel.PCType">
+        <MappingFragment StoreEntitySet="PCTypes">
+          <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreBuildPCs">
+      <EntityTypeMapping TypeName="ComputerBucketModel.PreBuildPC">
+        <MappingFragment StoreEntitySet="PreBuildPCs">
+          <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
+          <ScalarProperty Name="PCTypeID" ColumnName="PCTypeID" />
+          <ScalarProperty Name="Motherboad" ColumnName="Motherboad" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="GraphicCard" ColumnName="GraphicCard" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="Hard_Drive" ColumnName="Hard Drive" />
+          <ScalarProperty Name="SSD" ColumnName="SSD" />
+          <ScalarProperty Name="PowerSupply" ColumnName="PowerSupply" />
+          <ScalarProperty Name="CPUCooling" ColumnName="CPUCooling" />
+          <ScalarProperty Name="ThermalPaste" ColumnName="ThermalPaste" />
+          <ScalarProperty Name="InternalDrive" ColumnName="InternalDrive" />
+          <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+          <ScalarProperty Name="ComputerCase" ColumnName="ComputerCase" />
+          <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="ComputerBucketModel.Product">
         <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="ProductID" ColumnName="ProductID" />
           <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="QuantityPerUnit" ColumnName="QuantityPerUnit" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
           <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
           <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
-          <ScalarProperty Name="ReorderLevel" ColumnName="ReorderLevel" />
           <ScalarProperty Name="Discontinued" ColumnName="Discontinued" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExtraInfo" ColumnName="ExtraInfo" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

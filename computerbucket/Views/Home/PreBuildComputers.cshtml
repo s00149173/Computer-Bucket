@@ -1,0 +1,110 @@
+﻿@model IEnumerable<computerbucket.PreBuildPC>
+
+@{
+    ViewBag.Title = "PreBuildComputers";
+}
+
+<div class="container">
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PCTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motherboad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GraphicCard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RAM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hard_Drive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PowerSupply)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPUCooling)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThermalPaste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InternalDrive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OperatingSystem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComputerCase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitsInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PCTypeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motherboad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Processor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GraphicCard)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RAM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hard_Drive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SSD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerSupply)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPUCooling)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThermalPaste)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InternalDrive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OperatingSystem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComputerCase)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
