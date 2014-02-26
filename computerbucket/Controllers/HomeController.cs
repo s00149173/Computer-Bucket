@@ -12,8 +12,14 @@ namespace computerbucket.Controllers
 
         public ActionResult Index()
         {
-            
+           
             return View();
+        }
+
+        public ActionResult SearchProducts(string searchTerm)
+        {
+            var query = _db.Products.OrderBy(p => p.ProductName).Where(pr => searchTerm == null || pr.ProductName.Contains(searchTerm));
+            return View(query);
         }
 
         public ActionResult About()
@@ -36,5 +42,7 @@ namespace computerbucket.Controllers
 
             return View(query);
         }
+
+        
     }
 }

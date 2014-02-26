@@ -415,6 +415,7 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Checkout.cshtml" />
     <Content Include="Views\Home\PreBuildComputers.cshtml" />
+    <Content Include="Views\Home\SearchProducts.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<computerbucket.Product>
+
+@{
+    ViewBag.Title = "searchProducts";
+}
+
+<div class="container">
+    <form method="get">
+        <div class="row" role="form">
+            <div class="form-group col-md-2">
+                <button type="submit" class="btn btn-primary form-control">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </div>
+            <div class="form-group col-md-10">
+                <input type="text" name="searchTerm" class="form-control">
+            </div>
+        </div>
+    </form>
+
+
+    @foreach (var item in Model)
+    {
+        <div style="border: 1px solid #585858; padding: 12px; background-color: #575757; margin: 10px;">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px;" />
+                </div>
+
+                <div class="col-md-6">
+                    <h4>@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                    <h5>Price : @Html.DisplayFor(modelItem => item.UnitPrice)</h5>
+                </div>
+
+                <div class="col-md-4">
+                    Units in Stock : @Html.DisplayFor(modelItem => item.UnitsInStock)<br /><br />
+                    Units on Order @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
