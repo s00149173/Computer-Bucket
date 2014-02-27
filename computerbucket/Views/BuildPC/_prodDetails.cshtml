@@ -1,43 +1,30 @@
 ﻿@model IEnumerable<computerbucket.Models.ProductModel>
 
-<table class="table table-striped">
 
-    @foreach (var item in Model)
-    {
-          <tr>
-              <td><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 210px; height: 210px;" /></td>
-        </tr>
-        <tr>
-            <td> <span style="font-weight:bold">ID :</span> </td>
-        </tr>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
-        </tr>
-        <tr>
-            <td><span style="font-weight:bold">Name :</span></td>
-        </tr>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
-        </tr>
-        <tr>
-            <td><span style="font-weight:bold">Description :</span></td>
-        </tr>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Description)</td>
-        </tr>
-        <tr>
-            <td><span style="font-weight:bold">Unit price :</span></td>
-        </tr>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
-        </tr>
-        <tr>
-            <td><span style="font-weight:bold">Units in stock :</span> </td>
-        </tr>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.UnitsInStock)</td>
-        </tr>
 
-    }
+@foreach (var item in Model)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h5>@Html.DisplayFor(modelItem => item.ProductName)</h5>
+        </div>
+        <div class="panel-body">
+            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100%; height: 150px;" />
+            <span style="font-weight:bold">ID :</span>
+            @Html.DisplayFor(modelItem => item.ProductId)
+            <br/>   
+            <span style="font-weight:bold">Description :</span>
+            @Html.DisplayFor(modelItem => item.Description)
+            <br />
+            <span style="font-weight:bold">Unit price :</span>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+            <br/>
+            <span style="font-weight:bold">Units in stock :</span>
+            @Html.DisplayFor(modelItem => item.UnitsInStock)
+           </div>
+        </div>
 
-</table>
+
+}
+
+

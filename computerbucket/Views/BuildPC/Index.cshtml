@@ -24,164 +24,144 @@
     <div class="container">
         <div class="col-md-12">
             <h2 style="margin-top: 0;">Build your PC here!</h2>
-            Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product,
-            please chick on the product and additional information will be shown in the right panel.
-            <br />
-            <br />
-            On the left hand side of our website click either "build your own desktop" or "build your own laptop" depending
-            on what type of computer you are looking for. Now choose from either an AMD based computer, an Intel based computer.
-            Both processor manufacturers' offer exceptional performance and value - you may wish to play around with both options.
-            Once you click through you will be presented with different options ranging from home & office computers right through
-            to high end gaming systems. Click through on the option that's most suited to your requirements.
-
+            <p>
+                Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product,
+                please chick on the product and additional information will be shown in the right panel.
+            </p>
         </div>
     </div>
 </div>
 <div class="container">
-
-    @using (@Html.BeginForm(FormMethod.Get))
+    @using (@Html.BeginForm())
     {
         <div class="row">
+            <div class="col-md-3">
+                
+                <div id="prodDetail" style="position: fixed; width: 220px;">
+
+                </div>
+            </div>
             <div class="col-lg-9">
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Mother Board
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A motherboard (sometimes alternatively known as the mainboard, system board, planar board or logic board,[1] or colloquially, a mobo) is the main printed circuit board (PCB) found in computers and other expandable systems. It holds many of the crucial electronic components of the system, such as the central processing unit (CPU) and memory, and provides connectors for other peripherals. Unlike a backplane, a motherboard contains significant sub-systems such as the processor and other components." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Mother Board</h4>
+                        <p>A motherboard (sometimes alternatively known as the mainboard, system board, planar board or logic board,[1] or colloquially, a mobo) is the main printed circuit board (PCB) found in computers and other expandable systems.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.motherboardList, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Processors
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A processor incorporates the functions of a computer's central processing unit (CPU) on a single integrated circuit (IC),[1] or at most a few integrated circuits.[2] All modern CPUs are processors making the micro- prefix redundant. The processor is a multipurpose, programmable device that accepts digital data as input, processes it according to instructions stored in its memory, and provides results as output. It is an example of sequential digital logic, as it has internal memory. Processors operate on numbers and symbols represented in the binary numeral system." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4> Processors</h4>
+                        <p>A processor incorporates the functions of a computer's central processing unit (CPU) on a single integrated circuit (IC),[1] or at most a few integrated circuits.[2] All modern CPUs are processors making the micro- prefix redundant. The processor is a multipurpose, programmable device that accepts digital data as input, processes it according to instructions stored in its memory.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenProcessor",
                             new SelectList(ViewBag.Processors, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Graphic Cards
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A Graphics card is an expansion card which generates a feed of output images to a display (such as a computer monitor)." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Graphic Cards</h4>
+                        <p>A Graphics card is an expansion card which generates a feed of output images to a display (such as a computer monitor).</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            RAMs
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Random-access memory (RAM /ræm/) is a form of computer data storage. A random-access device allows stored data to be accessed directly in any random order. In contrast, other data storage media such as hard disks, CDs, DVDs and magnetic tape, as well as early primary memory types such as drum memory, read and write data only in a predetermined order, consecutively, because of mechanical design limitations. Therefore, the time to access a given data location varies significantly depending on its physical location." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>RAMs</h4>
+                        <p>Random-access memory (RAM /ræm/) is a form of computer data storage. A random-access device allows stored data to be accessed directly in any random order.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.RAMs, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Hard Drives
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A hard disk drive (HDD)[note 2] is a data storage device used for storing and retrieving digital information using rapidly rotating disks (platters) coated with magnetic material. An HDD retains its data even when powered off. Data is read in a random-access manner, meaning individual blocks of data can be stored or retrieved in any order rather than sequentially. An HDD consists of one or more rigid (" hard") rapidly rotating disks (platters) with magnetic heads arranged on a moving actuator arm to read and write data to the surfaces." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Hard Drives</h4>
+                        <p>A hard disk drive (HDD)[note 2] is a data storage device used for storing and retrieving digital information using rapidly rotating disks (platters) coated with magnetic material. An HDD retains its data even when powered off.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.HardDrives, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            SSDs
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="SSDs are most effective for server applications and server systems, where I/O response time is crucial. Data stored on SSDs should include anything that creates bottlenecks, such as databases, swap files, library and index files, and authorization and login information." src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>SSDs</h4>
+                        <p>SSDs are most effective for server applications and server systems, where I/O response time is crucial. Data stored on SSDs should include anything that creates bottlenecks, such as databases, swap files, library and index files, and authorization and login information.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.SSDs, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Power Supplies
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="A power supply unit (PSU) converts mains AC to low-voltage regulated DC power for the internal components of a computer. Modern personal computers universally use a switched-mode power supply. Some power supplies have a manual selector for input voltage, while others automatically adapt to the supply voltage." src="~/Images/q_icon.png" />
-                        </span>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4> Power Supplies</h4>
+                        <p>A power supply unit (PSU) converts mains AC to low-voltage regulated DC power for the internal components of a computer. Modern personal computers universally use a switched-mode power supply. Some power supplies have a manual selector for input voltage, while others automatically adapt to the supply voltage.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.PowerSupplies, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            CPU Cooling
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Computer cooling is required to remove the waste heat produced by computer components, to keep components within permissible operating temperature limits. Components that are susceptible to temporary malfunction or permanent failure if overheated include integrated circuits such as CPUs, chipset, graphics cards, and hard disk drives." src="~/Images/q_icon.png" />
-                        </span>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>CPU Cooling</h4>
+                        <p>Computer cooling is required to remove the waste heat produced by computer components, to keep components within permissible operating temperature limits. Components that are susceptible to temporary malfunction or permanent failure if overheated include integrated circuits such as CPUs, chipset, graphics cards, and hard disk drives.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.CPUCooling, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Thermal Paste
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="Thermal grease (also called thermal gel, thermal compound, thermal paste, heat paste, heat sink paste or heat sink compound) is a viscous fluid substance, originally with properties akin to grease, which increases the thermal conductivity of a thermal interface by filling microscopic air-gaps present due to the imperfectly flat and smooth surfaces of the components; the compound has far greater thermal conductivity than air (but far less than metal). In electronics, it is often used to aid a component's thermal dissipation via a heat sink." src="~/Images/q_icon.png" />
-                        </span>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Thermal Paste</h4>
+                        <p>Thermal grease (also called thermal gel, thermal compound, thermal paste, heat paste, heat sink paste or heat sink compound) is a viscous fluid substance, originally with properties akin to grease, which increases the thermal conductivity of a thermal interface by filling microscopic air-gaps present due to the imperfectly flat and smooth surfaces of the components; the compound has far greater thermal conductivity than air (but far less than metal). In electronics, it is often used to aid a component's thermal dissipation via a heat sink</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.ThermalPaste, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            CD Drives
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="" src="~/Images/q_icon.png" />
-                        </span>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>CD Drives</h4>
+                        <p></p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.InternalDrives, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-lg-4">
-                        <span style="float:right;">
-                            Operating System
-                            <img class="tooltip_total" data-toggle="tooltip" data-placement="top" title="An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system. Application programs usually require an operating system to function." src="~/Images/q_icon.png" />
-                        </span>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Operating System</h4>
+                        <p>An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system. Application programs usually require an operating system to function.</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="panel-body">
                         @Html.DropDownList("chosenMotherBoard",
                             new SelectList(ViewBag.OperatingSystems, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
@@ -203,21 +183,13 @@
                         </button>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <span style="width:30%; font-size:24px;">Product Details</span>
-                <div id="prodDetail">
 
-                </div>
             </div>
         </div>
-
-
-
-    }
-
+    }   
 </div>
+
 
 <!--http://johnculviner.com/clearreset-mvc-3-form-and-unobtrusive-jquery-client-validation/-->
 <script>
@@ -232,3 +204,4 @@
         });
     })
 </script>
+

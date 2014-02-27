@@ -332,8 +332,8 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
     line-height: 1.428571429;
-    color: #ffffff;
-    background-color: #222222;
+    color: #252525;
+  
 }
 
 input,
@@ -1882,7 +1882,7 @@ th {
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-    background-color: #313131;
+    background-color: #efefef;
 }
 
 .table-hover > tbody > tr:hover > td,

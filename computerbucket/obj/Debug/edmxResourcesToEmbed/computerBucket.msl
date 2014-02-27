@@ -45,19 +45,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderDetails">
-      <EntityTypeMapping TypeName="ComputerBucketModel.OrderDetail">
-        <MappingFragment StoreEntitySet="OrderDetails">
-          <ScalarProperty Name="OrderDetailsID" ColumnName="OrderDetailsID" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="OrderItems">
       <EntityTypeMapping TypeName="ComputerBucketModel.OrderItem">
         <MappingFragment StoreEntitySet="OrderItems">
           <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />
           <ScalarProperty Name="PreBuildPCID" ColumnName="PreBuildPCID" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
