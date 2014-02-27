@@ -228,9 +228,6 @@
     <Compile Include="Order.cs">
       <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetail.cs">
-      <DependentUpon>ComputerBucket.tt</DependentUpon>
-    </Compile>
     <Compile Include="OrderItem.cs">
       <DependentUpon>ComputerBucket.tt</DependentUpon>
     </Compile>
@@ -407,15 +404,11 @@
     <Content Include="Views\BuildPC\_Processors.cshtml" />
     <Content Include="Views\BuildPC\Index.cshtml" />
     <Content Include="Views\BuildPC\_prodDetails.cshtml" />
-    <Content Include="Views\OrderBasket\Index.cshtml" />
-    <Content Include="Views\OrderBasket\Details.cshtml" />
-    <Content Include="Views\OrderBasket\Create.cshtml" />
-    <Content Include="Views\OrderBasket\Edit.cshtml" />
-    <Content Include="Views\OrderBasket\Delete.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Checkout.cshtml" />
     <Content Include="Views\Home\PreBuildComputers.cshtml" />
     <Content Include="Views\Home\SearchProducts.cshtml" />
+    <Content Include="Views\Orders\_OrderItems.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

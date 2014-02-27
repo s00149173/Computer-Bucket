@@ -14,11 +14,20 @@ namespace computerbucket.Controllers
 
         public ActionResult Index(int? id)
         {
+            int? index = 0;
+            if (id > 1)
+            {
+                index = id;
+            }
+            else
+            {
+                index = 1;
+            }
             ViewBag.OrderStatus = "";
             if (id != 0 && id != null)
             {
-                var order = db.Orders.Find(id);
-                return View(order);
+                var query = db.Orders.Find(index);
+                return View(query);
             }
             else
             {

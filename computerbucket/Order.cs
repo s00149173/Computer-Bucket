@@ -16,7 +16,7 @@ namespace computerbucket
     {
         public Order()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public int OrderID { get; set; }
@@ -24,6 +24,6 @@ namespace computerbucket
         public Nullable<System.DateTime> OrderDate { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

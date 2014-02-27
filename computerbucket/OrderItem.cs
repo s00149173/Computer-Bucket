@@ -14,12 +14,8 @@ namespace computerbucket
     
     public partial class OrderItem
     {
-        public OrderItem()
-        {
-            this.OrderDetails = new HashSet<OrderDetail>();
-        }
-    
         public int ItemID { get; set; }
+        public int OrderID { get; set; }
         public Nullable<int> BuildPCID { get; set; }
         public Nullable<int> PreBuildPCID { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
@@ -27,7 +23,7 @@ namespace computerbucket
         public float Discount { get; set; }
     
         public virtual BuildPC BuildPC { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual Order Order { get; set; }
         public virtual PreBuildPC PreBuildPC { get; set; }
     }
 }

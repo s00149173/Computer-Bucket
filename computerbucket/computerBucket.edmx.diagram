@@ -4,21 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fd4aeb011cf54858b01265bb98b9d82b" Name="Diagram1">
-        <EntityTypeShape EntityType="ComputerBucketModel.BuildPC" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Category" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Customer" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.OrderDetail" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.OrderItem" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Order" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.PCType" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.PreBuildPC" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ComputerBucketModel.Product" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+      <Diagram DiagramId="713640beb19d446a9ec4d81c5234a36e" Name="Diagram1">
+        <EntityTypeShape EntityType="ComputerBucketModel.BuildPC" Width="1.5" PointX="8.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Category" Width="1.5" PointX="2.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Customer" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.OrderItem" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Order" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.PCType" Width="1.5" PointX="4.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.PreBuildPC" Width="1.5" PointX="6.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerBucketModel.Product" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_BuildPCs" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_Category_Products" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_Orders_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="ComputerBucketModel.FK_OrderDetails_OrderItems" ManuallyRouted="false" />
-        <AssociationConnector Association="ComputerBucketModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_PreBuildPCs" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_PreBuildPCs_PCTypes" ManuallyRouted="false" />
       </Diagram>
