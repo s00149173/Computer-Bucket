@@ -43,10 +43,10 @@
     float: right;
 }
 
-.form-reset:hover {
-    background-color: #ffffff;
-    color: #252525;
-}
+    .form-reset:hover {
+        background-color: #ffffff;
+        color: #252525;
+    }
 
 .checkoutbtn {
     background-color: #3cb371;
@@ -63,7 +63,38 @@
     margin-right: 0;
 }
 
-.checkoutbtn:hover {
-    background-color: #ffffff;
-    color: #252525;
+    .checkoutbtn:hover {
+        background-color: #ffffff;
+        color: #252525;
+    }
+
+#search {
+    float: right;
+    margin-left: 20px;
+    margin-top: 10px;
 }
+
+#loginCom {
+    font-size: 12px;
+    width: 100%;
+    height: 15px;
+}
+
+#search input[type="text"] {
+    background: url("../Images/search-dark.png") 5px 3px no-repeat scroll #444444;
+    border: none 0;
+    border-radius: 20px 20px 20px 20px;
+    color: #efefef;
+    font: 12px Arial, Helvetica, Sans-serif;
+    margin-top: 5px;
+    padding: 2px 15px 2px 25px;
+    width: 80px;
+    border-radius: 20px;
+    transition: all 0.7s 0s ease;
+}
+
+    #search input[type="text"]:focus {
+        background: url(../Images/search-dark.png) 5px 3px no-repeat #fcfcfc;
+        color: #6a6f75;
+        width: 200px;
+    }

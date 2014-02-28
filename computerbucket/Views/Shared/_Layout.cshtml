@@ -30,6 +30,10 @@
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                 </ul>
+                <form id="search" method="GET" action="">
+                    <input id="search-text" type="text" name="textSearch" value="Search Polls" onfocus="this.value=''" />
+                </form>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         @Html.ActionLink("Shop Basket", "Index", "Orders")
