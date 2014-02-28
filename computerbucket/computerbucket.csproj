@@ -312,6 +312,8 @@
     <Content Include="Images\banner_2.gif" />
     <Content Include="Images\banner_3_gaming.gif" />
     <Content Include="Images\banner_inslideprice.gif" />
+    <Content Include="Images\cart.png" />
+    <Content Include="Images\Logo.png" />
     <Content Include="Images\q_icon.png" />
     <Content Include="Images\search-dark.png" />
     <Content Include="Scripts\bootstrap.js" />
