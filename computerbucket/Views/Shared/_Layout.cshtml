@@ -31,8 +31,9 @@
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                 </ul>
-                <form id="search" method="GET" action="">
-                    <input id="search-text" type="text" name="textSearch" value="Search Polls" onfocus="this.value=''" />
+                <form id="search" method="POST" action="SearchProducts">
+                    @Html.TextBox("SearchProducts", new{@onfocus="this.value''"})
+                    @*<input id="search-text" type="text" name="textSearch" value="Search" onfocus="this.value=''" />*@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
