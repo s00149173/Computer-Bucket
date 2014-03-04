@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <img src="~/Images/Logo.png" style="margin:12px;" />
-              
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,11 +31,10 @@
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                 </ul>
-                <form id="search" method="POST" action="SearchProducts">
-                    @Html.TextBox("SearchProducts", new{@onfocus="this.value''"})
-                    @*<input id="search-text" type="text" name="textSearch" value="Search" onfocus="this.value=''" />*@
-                </form>
-
+                @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
+                {
+                    @Html.TextBox("searchTerm")
+                }
                 <ul class="nav navbar-nav navbar-right">
                     <li style="margin: 8px 15px 0 0;">
                         <img src="~/Images/cart.png" />
