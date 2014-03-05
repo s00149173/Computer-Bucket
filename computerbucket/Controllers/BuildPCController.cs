@@ -13,6 +13,7 @@ namespace computerbucket.Controllers
     {       
         private readonly ComputerBucketEntities _db = new ComputerBucketEntities();
 
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.motherboardList = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 1);
@@ -26,8 +27,20 @@ namespace computerbucket.Controllers
             ViewBag.InternalDrives = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 9);
             ViewBag.OperatingSystems = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 12);
             ViewBag.GraphicCards = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 13);
+            ViewBag.ComputerCases = _db.Products.Select(m => new { brand = m.ProductName, id = m.ProductID, category = m.CategoryID }).Where(c => c.category == 14);
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(BuildPCModel pc)
+        {
+            BuildPC aux = new BuildPC { Motherboad = pc.Motherboard, Processor = pc.Processor, GraphicCard = pc.GraphicCard, RAM = pc.GraphicCard, Hard_Drive = pc.HardDrive, SSD = pc.Ssd, PowerSupply = pc.PowerSupply, CPUCooling = pc.CpuCooling, ThermalPaste = pc.ThermalPaste, InternalDrive = pc.InternalDrive, OperatingSystem = pc.Os, ComputerCase = pc.ComputerCase };
+            _db.BuildPCs.Add(aux);
+            _db.SaveChanges();
+            //var id = aux.BuildPCID;
+
+            return RedirectToAction("InsertBuildPc", "Orders", new { id = aux.BuildPCID });
         }
 
         public ActionResult ProdDetails(int id)

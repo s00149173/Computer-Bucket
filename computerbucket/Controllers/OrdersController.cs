@@ -37,6 +37,21 @@ namespace computerbucket.Controllers
             }
         }
 
+        public ActionResult InsertBuildPc(int id)
+        {
+            Order o = new Order { OrderDate = DateTime.Now };
+            db.Orders.Add(o);
+            db.SaveChanges();
+
+            OrderItem item = new OrderItem { BuildPCID = id, OrderID = o.OrderID, Discount = 0, Quantity = 1 };
+            db.OrderItems.Add(item);
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("Index", "Orders", new { id = o.OrderID });
+        }
+
         public ActionResult Checkout(int id)
         {
             return View("Checkout");

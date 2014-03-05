@@ -20,12 +20,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Images/Logo.png" style="margin:12px;" />
+                
+
+                <a href="~/Home/Index">
+                    <img src="~/Images/Logo.png" style="margin:12px;" "/>
+                </a>
 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("BuildPC", "Index", "BuildPC")</li>
                     <li>@Html.ActionLink("Help", "Index", "Help")</li>
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
@@ -36,10 +40,13 @@
                     @Html.TextBox("searchTerm")
                 }
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <li style="margin: 8px 15px 0 0;">
-                        <img src="~/Images/cart.png" />
-                        @*@Html.ActionLink("Shop Basket", "Index", "Orders")*@
+                        
+                        <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket" onclick="location.href='@Url.Action("Index", "Orders", null)'" />
+                        
                     </li>
+                    
                 </ul>
             </div>
         </div>

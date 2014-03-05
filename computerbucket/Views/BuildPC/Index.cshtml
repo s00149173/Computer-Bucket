@@ -1,5 +1,5 @@
 ﻿@using computerbucket
-@model computerbucket.Product
+@model computerbucket.Models.BuildPCModel
 
 @{
     ViewBag.Title = "Index";
@@ -48,7 +48,7 @@
                         <p>A motherboard (sometimes alternatively known as the mainboard, system board, planar board or logic board,[1] or colloquially, a mobo) is the main printed circuit board (PCB) found in computers and other expandable systems.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("Motherboard",
                             new SelectList(ViewBag.motherboardList, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -59,7 +59,7 @@
                         <p>A processor incorporates the functions of a computer's central processing unit (CPU) on a single integrated circuit (IC),[1] or at most a few integrated circuits.[2] All modern CPUs are processors making the micro- prefix redundant. The processor is a multipurpose, programmable device that accepts digital data as input, processes it according to instructions stored in its memory.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenProcessor",
+                        @Html.DropDownList("Processor",
                             new SelectList(ViewBag.Processors, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -70,7 +70,7 @@
                         <p>A Graphics card is an expansion card which generates a feed of output images to a display (such as a computer monitor).</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("GraphicsCard",
                             new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -81,7 +81,7 @@
                         <p>Random-access memory (RAM /ræm/) is a form of computer data storage. A random-access device allows stored data to be accessed directly in any random order.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("Ram",
                             new SelectList(ViewBag.RAMs, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -92,7 +92,7 @@
                         <p>A hard disk drive (HDD)[note 2] is a data storage device used for storing and retrieving digital information using rapidly rotating disks (platters) coated with magnetic material. An HDD retains its data even when powered off.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("HardDrive",
                             new SelectList(ViewBag.HardDrives, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -103,7 +103,7 @@
                         <p>SSDs are most effective for server applications and server systems, where I/O response time is crucial. Data stored on SSDs should include anything that creates bottlenecks, such as databases, swap files, library and index files, and authorization and login information.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("Ssd",
                             new SelectList(ViewBag.SSDs, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -115,7 +115,7 @@
                         <p>A power supply unit (PSU) converts mains AC to low-voltage regulated DC power for the internal components of a computer. Modern personal computers universally use a switched-mode power supply. Some power supplies have a manual selector for input voltage, while others automatically adapt to the supply voltage.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("PowerSupply",
                             new SelectList(ViewBag.PowerSupplies, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -127,7 +127,7 @@
                         <p>Computer cooling is required to remove the waste heat produced by computer components, to keep components within permissible operating temperature limits. Components that are susceptible to temporary malfunction or permanent failure if overheated include integrated circuits such as CPUs, chipset, graphics cards, and hard disk drives.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("CpuCooling",
                             new SelectList(ViewBag.CPUCooling, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -139,7 +139,7 @@
                         <p>Thermal grease (also called thermal gel, thermal compound, thermal paste, heat paste, heat sink paste or heat sink compound) is a viscous fluid substance, originally with properties akin to grease, which increases the thermal conductivity of a thermal interface by filling microscopic air-gaps present due to the imperfectly flat and smooth surfaces of the components; the compound has far greater thermal conductivity than air (but far less than metal). In electronics, it is often used to aid a component's thermal dissipation via a heat sink</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("ThermalPaste",
                             new SelectList(ViewBag.ThermalPaste, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -150,7 +150,7 @@
                         <p></p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("InternalDrive",
                             new SelectList(ViewBag.InternalDrives, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -162,8 +162,20 @@
                         <p>An operating system (OS) is a collection of software that manages computer hardware resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system. Application programs usually require an operating system to function.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("chosenMotherBoard",
+                        @Html.DropDownList("Os",
                             new SelectList(ViewBag.OperatingSystems, "id", "brand", 0),
+                            "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Computer Cases</h4>
+                        <p></p>
+                    </div>
+                    <div class="panel-body">
+                        @Html.DropDownList("ComputerCase",
+                            new SelectList(ViewBag.ComputerCases, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
                 </div>
@@ -174,8 +186,8 @@
 
                     </div>
                     <div class="col-md-8">
-                        <button type="button" value="Check out" class="checkoutbtn">
-                            <span class="glyphicon glyphicon-ok"></span> CHECK OUT
+                        <button type="submit" value="Check out" class="checkoutbtn" onclick=>
+                            <span class="glyphicon glyphicon-ok"></span> CONTINUE
                         </button>
                         <button type="reset" value="Reset form" class="form-reset">
                             <span class=" glyphicon glyphicon-refresh">
@@ -203,5 +215,18 @@
             $(this).resetValidation();
         });
     })
+
+    function InsertBuildPc(buildPc) {
+        $.ajax({
+            url: '@Url.Action("InsertBuildPc", "Orders")',
+            data: { pc: emplId },
+            success: function (data) {
+                $('#shit').html(data);
+
+            }
+        });
+    }
+
+
 </script>
 

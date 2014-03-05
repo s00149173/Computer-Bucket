@@ -20,8 +20,8 @@ namespace computerbucket
         }
     
         public int OrderID { get; set; }
-        public int CustomerID { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
+        public Nullable<int> CustomerID { get; set; }
+        public System.DateTime OrderDate { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
