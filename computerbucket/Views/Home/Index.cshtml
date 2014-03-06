@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide effect6" data-ride="carousel">
     <!-- Carousel indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -42,10 +42,6 @@
 </div>
 <br />
 
-<div class="container">
-    @Html.ActionLink("Search Products", "SearchProducts")
-
-
 <div class="row">
     <div class="col-md-4">
         <div class="thumbnail">
@@ -80,7 +76,7 @@
                     <h5>Opening a new company? Need new computers to your company? Take a look in our business offers:</h5>
                 </div>
                 <div class="row-fluid text-center">
-                    @Html.ActionLink("Details", "PreBuildComputers", new { typeId = 2 })
+                    <a href="#" class="btn btn-success btn-ss" role="button">See now</a>
                 </div>
             </div>
         </div>
@@ -104,5 +100,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
