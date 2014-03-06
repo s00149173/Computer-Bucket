@@ -20,10 +20,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
 
                 <a href="~/Home/Index">
-                    <img src="~/Images/Logo.png" style="margin:12px;" "/>
+                    <img src="~/Images/Logo.png" style="margin:12px;" " />
                 </a>
 
             </div>
@@ -40,13 +40,13 @@
                     @Html.TextBox("searchTerm")
                 }
                 <ul class="nav navbar-nav navbar-right">
-                    
+
                     <li style="margin: 8px 15px 0 0;">
-                        
+
                         <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket" onclick="location.href='@Url.Action("Index", "Orders", null)'" />
-                        
+
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -56,10 +56,18 @@
     <br />
     <br />
     <br />
-    @RenderBody()
-    <footer class=" container">
-        <br />
-        <p>© ComputerBucket 2013</p>
+    <div id="wrap">
+        <div id="main" class="container">
+            <div class="row">               
+                    @RenderBody()              
+            </div>
+        </div>
+    </div>
+    <div style="min-height: 100%;"></div>
+    <footer>
+        <div class="container">
+            <p>© ComputerBucket 2013</p>
+        </div>
     </footer>
 
 
