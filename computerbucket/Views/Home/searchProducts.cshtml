@@ -25,14 +25,7 @@
         <div class="product">
             <div class="row">
                 <div class="col-md-2">
-                    @if (@Html.DisplayFor(modelItem => item.ImageUrl) != null)
-                    {
-                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px;" />
-                    }
-                    else
-                    {
-                        <img src="~/Images/my_computer_w.png" style="width: 100px; height: 100px;" />
-                    }
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px; background-image: url(/Images/my_computer_w.png);" />
                 </div>
 
                 <div class="col-md-5">
