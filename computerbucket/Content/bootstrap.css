@@ -54,11 +54,12 @@ html {
 
 body {
     margin: 0;
-    height: 100%:
+    background-color: #efefef;
 }
 
 #wrap{
-min-height: 100%; 
+min-height: 100%;
+    margin-top: 15px;
 }
 
 a {
@@ -5014,7 +5015,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     }
 
 .navbar-inverse {
-    background-color: #efefef;
+    background-color: #ffffff;
     background-repeat: repeat-x;
 }
 
@@ -5494,7 +5495,7 @@ a.list-group-item.active > .badge,
     padding: 15px;
     margin-bottom: 20px;
     line-height: 1.428571429;
-    background-color: #ebebeb;
+    background-color: #ffffff;
     border: 1px solid #dddddd;    
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
