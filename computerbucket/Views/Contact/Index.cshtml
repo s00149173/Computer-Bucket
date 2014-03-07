@@ -2,4 +2,68 @@
     ViewBag.Title = "Contact";
 }
 
-<h2>Contacts of the company</h2>
+<div class="container">
+    <h2>Contact us</h2>
+
+    <div class="row well">
+        <div class="col-md-4 well">
+             <span class="glyphicon glyphicon-earphone"></span>Tel:
+        </div>
+        <div class="col-md-8 well">
+            087-456788
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 well">
+            <form class="form-horizontal" role="form">    
+            <fieldset>
+            <legend>Contact Form</legend>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Your Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="textArea" class="col-sm-2 control-label">Your question</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control" rows="6" id="textArea"></textarea>
+                        <span class="help-block">Please enter your enquiry here</span>
+                        </div>
+                </div>
+
+
+
+
+               @* <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                *@
+              @*  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Send</button>
+                    </div>
+                </div>
+
+            </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+

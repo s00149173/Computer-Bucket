@@ -310,6 +310,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Avril.jpg" />
     <Content Include="Images\banner_2.gif" />
     <Content Include="Images\banner_3_gaming.gif" />
     <Content Include="Images\banner_inslideprice.gif" />
@@ -317,8 +318,10 @@
     <Content Include="Images\download.jpg" />
     <Content Include="Images\itsligo.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Marco.jpg" />
     <Content Include="Images\my_computer_w.png" />
     <Content Include="Images\q_icon.png" />
+    <Content Include="Images\Ronan.jpg" />
     <Content Include="Images\search-dark.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
