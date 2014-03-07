@@ -317,6 +317,7 @@
     <Content Include="Images\download.jpg" />
     <Content Include="Images\itsligo.png" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\my_computer_w.png" />
     <Content Include="Images\q_icon.png" />
     <Content Include="Images\search-dark.png" />
     <Content Include="Scripts\bootstrap.js" />

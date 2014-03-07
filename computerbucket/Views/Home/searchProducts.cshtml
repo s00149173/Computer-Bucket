@@ -1,4 +1,5 @@
-﻿@model IEnumerable<computerbucket.Product>
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<computerbucket.Product>
 
 @{
     ViewBag.Title = "searchProducts";
@@ -24,7 +25,14 @@
         <div class="product">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px;" />
+                    @if (@Html.DisplayFor(modelItem => item.ImageUrl) != null)
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px;" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/my_computer_w.png" style="width: 100px; height: 100px;" />
+                    }
                 </div>
 
                 <div class="col-md-5">
