@@ -4,21 +4,25 @@
 @{
     ViewBag.Title = "searchProducts";
 }
-<span class="label label-success" style="float:right">Results : @Model.Count(x => true)</span>
+
 <div class="container">
-   @* <form method="get">
-        <div class="row" role="form">
-            <div class="form-group col-md-2">
-                <button type="submit" class="btn btn-primary form-control">
-                    <span class="glyphicon glyphicon-search"></span> Search
-                </button>
+    @* <form method="get">
+            <div class="row" role="form">
+                <div class="form-group col-md-2">
+                    <button type="submit" class="btn btn-primary form-control">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" name="searchTerm" class="form-control">
+                </div>
             </div>
-            <div class="form-group col-md-10">
-                <input type="text" name="searchTerm" class="form-control">
-            </div>
+        </form>*@
+    <div id="productSearchInfo" class="row">
+        <div class=" col-md-12">
+            @Model.Count(x => true) results for @ViewBag.searchTerm
         </div>
-    </form>*@
-   
+    </div>
 
     @foreach (var item in Model)
     {

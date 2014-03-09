@@ -18,6 +18,7 @@ namespace computerbucket.Controllers
 
         public ActionResult SearchProducts(string searchTerm)
         {
+            ViewBag.searchTerm = searchTerm;
             var query = _db.Products.OrderBy(p => p.ProductName).Where(pr => searchTerm == null || pr.ProductName.Contains(searchTerm));
             return View(query);
         }

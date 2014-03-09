@@ -154,3 +154,11 @@ footer {
         border-radius: 100px / 10px;
     }
 
+#productSearchInfo {
+    background-color: #808080;
+    padding: 5px;
+    width: 98%;
+    margin: 0 auto;
+    color: #efefef;
+    font-size:18px;
+}

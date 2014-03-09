@@ -5017,6 +5017,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse {
     background-color: #ffffff;
     background-repeat: repeat-x;
+    border-bottom: 2px solid rgb(52, 168, 223);
 }
 
     .navbar-inverse .navbar-brand {
