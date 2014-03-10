@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
 
 namespace computerbucket.Controllers
 {
@@ -12,7 +13,7 @@ namespace computerbucket.Controllers
 
         public ActionResult Index()
         {
-           
+
             return View();
         }
 
@@ -32,13 +33,8 @@ namespace computerbucket.Controllers
 
         public ActionResult PreBuildComputer(int id)
         {
-
             var computer = _db.PreBuildPCs.Find(id);
             ViewBag.Image = _db.Products.Find(int.Parse(computer.ComputerCase)).ImageUrl;
-            if (computer.Price != null && computer.Price != 0)
-                ViewBag.price = computer.Price;
-            else
-                ViewBag.price = "Not Defined!";
 
             var computerParts = new List<Product>()
             {
@@ -55,9 +51,29 @@ namespace computerbucket.Controllers
                 _db.Products.Find(int.Parse(computer.OperatingSystem)),
                 _db.Products.Find(int.Parse(computer.ComputerCase))
             };
+
+            computer.Price = ComputerPrice(computerParts);
+            _db.Entry(computer).State = System.Data.EntityState.Modified;
+            _db.SaveChanges();
+
+            if (computer.Price != null && computer.Price != 0)
+                ViewBag.price = computer.Price;
+            else
+                ViewBag.price = "Not Defined!";
+
             return PartialView("_PreBuildComputer", computerParts);
         }
 
-        
+        public decimal ComputerPrice(List<Product> products)
+        {
+            decimal finalPrice = 0.0m;
+            foreach (var prod in products)
+            {
+                finalPrice += (decimal)prod.UnitPrice;
+            }
+            return finalPrice;
+        }
+
+
     }
 }

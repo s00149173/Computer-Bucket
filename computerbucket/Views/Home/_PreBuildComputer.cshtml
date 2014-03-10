@@ -73,13 +73,22 @@
 <div class="col-md-4">
     <div class="row">
         <div class="container">
-            <img src="@ViewBag.Image" style="width: 250px; height: 250px;" />
+            @if (@ViewBag.Image != null)
+            { 
+                <img src="@ViewBag.Image" style="width: 250px; height: 250px;" />
+            }
+            else
+            {
+                <img src="~/Images/my_computer_w.png" style="width: 250px; height: 250px;" />;
+            
+            }
+            
         </div>
     </div>
     <br/>
     <div class="row">
         <div class="container">
-            <h4><b>Price </b> @ViewBag.Price </h4>
+            <h4><b>Price </b> <span  style="color:red"> @ViewBag.Price € </span></h4>
         </div>
     </div>
 

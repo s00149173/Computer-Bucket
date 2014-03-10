@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ComputerBucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ComputerBucketModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ComputerBucketModelStoreContainer">
           <EntitySet Name="BuildPCs" EntityType="ComputerBucketModel.Store.BuildPCs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Categories" EntityType="ComputerBucketModel.Store.Categories" store:Type="Tables" Schema="dbo" />
@@ -56,7 +56,7 @@
           <Property Name="InternalDrive" Type="nchar" MaxLength="10" />
           <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
           <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
-          <Property Name="Price" Type="smallmoney" />
+          <Property Name="Price" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -126,7 +126,7 @@
           <Property Name="OperatingSystem" Type="nchar" MaxLength="10" />
           <Property Name="ComputerCase" Type="nchar" MaxLength="10" />
           <Property Name="UnitsInStock" Type="int" />
-          <Property Name="Price" Type="smallmoney" />
+          <Property Name="Price" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -135,7 +135,7 @@
           <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="150" />
           <Property Name="CategoryID" Type="int" />
-          <Property Name="UnitPrice" Type="smallmoney" />
+          <Property Name="UnitPrice" Type="decimal" Scale="2" />
           <Property Name="UnitsInStock" Type="smallint" />
           <Property Name="UnitsOnOrder" Type="smallint" />
           <Property Name="Discontinued" Type="bit" />
@@ -215,8 +215,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ComputerBucketModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -271,7 +270,7 @@
           <Property Name="InternalDrive" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="OperatingSystem" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="ComputerCase" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_BuildPCs" FromRole="BuildPCs" ToRole="OrderItems" />
         </EntityType>
         <EntityType Name="Category">
@@ -350,7 +349,7 @@
           <Property Name="OperatingSystem" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="ComputerCase" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="UnitsInStock" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_PreBuildPCs" FromRole="PreBuildPCs" ToRole="OrderItems" />
           <NavigationProperty Name="PCType" Relationship="ComputerBucketModel.FK_PreBuildPCs_PCTypes" FromRole="PreBuildPCs" ToRole="PCTypes" />
         </EntityType>
@@ -361,7 +360,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
           <Property Name="CategoryID" Type="Int32" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UnitsInStock" Type="Int16" />
           <Property Name="UnitsOnOrder" Type="Int16" />
           <Property Name="Discontinued" Type="Boolean" />

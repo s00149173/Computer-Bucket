@@ -58,6 +58,17 @@ namespace computerbucket.Controllers
            
         }
 
+        public decimal ComputerPrice(List<Product> products)
+        {
+            decimal finalPrice = 0.0m;
+            foreach (var prod in products)
+            {
+                finalPrice += (decimal)prod.UnitPrice;
+            }
+            return finalPrice;
+        }
+
+
         [HttpGet]
         public ActionResult Create()
         {

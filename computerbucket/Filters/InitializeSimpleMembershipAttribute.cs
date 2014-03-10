@@ -13,7 +13,7 @@ namespace computerbucket.Filters
     {
         //private static SimpleMembershipInitializer _initializer;
         private static object _initializerLock = new object();
-        private static bool _isInitialized;
+        //private static bool _isInitialized; //not being used
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
