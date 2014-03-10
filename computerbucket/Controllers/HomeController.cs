@@ -23,25 +23,39 @@ namespace computerbucket.Controllers
             return View(query);
         }
 
-        public ActionResult About()
-        {
-            
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            
-
-            return View();
-        }
-
         public ActionResult PreBuildComputers(int typeId)
         {
             var query = _db.PreBuildPCs.Where(p => p.PCTypeID == typeId).ToList();
 
             return View(query);
+        }
+
+        public ActionResult PreBuildComputer(int id)
+        {
+
+            var computer = _db.PreBuildPCs.Find(id);
+            ViewBag.Image = _db.Products.Find(int.Parse(computer.ComputerCase)).ImageUrl;
+            if (computer.Price != null && computer.Price != 0)
+                ViewBag.price = computer.Price;
+            else
+                ViewBag.price = "Not Defined!";
+
+            var computerParts = new List<Product>()
+            {
+                _db.Products.Find(int.Parse(computer.Motherboad)),
+                _db.Products.Find(int.Parse(computer.Processor)),
+                _db.Products.Find(int.Parse(computer.GraphicCard)),
+                _db.Products.Find(int.Parse(computer.RAM)),
+                _db.Products.Find(int.Parse(computer.Hard_Drive)),
+                _db.Products.Find(int.Parse(computer.SSD)),
+                _db.Products.Find(int.Parse(computer.PowerSupply)),
+                _db.Products.Find(int.Parse(computer.CPUCooling)),
+                _db.Products.Find(int.Parse(computer.ThermalPaste)),
+                _db.Products.Find(int.Parse(computer.InternalDrive)),
+                _db.Products.Find(int.Parse(computer.OperatingSystem)),
+                _db.Products.Find(int.Parse(computer.ComputerCase))
+            };
+            return PartialView("_PreBuildComputer", computerParts);
         }
 
         

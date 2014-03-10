@@ -1,0 +1,104 @@
+﻿@*@model IEnumerable<computerbucket.Product>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsOnOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discontinued)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+    </tr>
+}
+
+</table>*@
+
+
+@using System.Activities.Expressions
+@using System.Web.Mvc.Html
+@model IEnumerable<computerbucket.Product>
+<div class="col-md-4">
+    <div class="row">
+        <div class="container">
+            <img src="@ViewBag.Image" style="width: 250px; height: 250px;" />
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="container">
+            <h4><b>Price </b> @ViewBag.Price </h4>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-8">
+
+    <table class="table table-striped">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.Category.CategoryName)</b>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

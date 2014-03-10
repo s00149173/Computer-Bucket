@@ -18,7 +18,7 @@ namespace computerbucket.Models
         public string ThermalPaste { get; set; }
         public string InternalDrive { get; set; }
         public string Os { get; set; }
-        public string CokputerCase { get; set; }
+        public string ComputerCase { get; set; }
        
     }
 }
