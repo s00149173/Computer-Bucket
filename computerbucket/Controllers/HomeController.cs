@@ -35,6 +35,7 @@ namespace computerbucket.Controllers
         {
             var computer = _db.PreBuildPCs.Find(id);
             ViewBag.Image = _db.Products.Find(int.Parse(computer.ComputerCase)).ImageUrl;
+            ViewBag.PreBuildPCID = computer.PreBuildPCID;
 
             var computerParts = new List<Product>()
             {

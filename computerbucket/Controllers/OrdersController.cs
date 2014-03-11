@@ -57,6 +57,33 @@ namespace computerbucket.Controllers
             return RedirectToAction("Index", "Orders");
         }
 
+        public ActionResult InsertPreBuildPc(int id)
+        {
+
+
+            //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
+            if (Request.Cookies["OrderId"] == null)
+            {
+                Order o = new Order { OrderDate = DateTime.Now };
+                db.Orders.Add(o);
+                db.SaveChanges();
+
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = o.OrderID + "";
+                //cookie.Expires = DateTime.Now.AddMinutes(60);
+                Response.Cookies.Add(cookie);
+            }
+
+            OrderItem item = new OrderItem { PreBuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+            db.OrderItems.Add(item);
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("Index", "Orders");
+        }
+
+
         public ActionResult Checkout(int id)
         {
             return View("Checkout");
