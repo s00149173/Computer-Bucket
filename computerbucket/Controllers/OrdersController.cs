@@ -12,44 +12,49 @@ namespace computerbucket.Controllers
     {
         private ComputerBucketEntities db = new ComputerBucketEntities();
 
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            int? index = 0;
-            if (id > 1)
-            {
-                index = id;
-            }
-            else
-            {
-                index = 1;
-            }
-            ViewBag.OrderStatus = "";
-            if (id != 0 && id != null)
-            {
-                var query = db.Orders.Find(index);
-                return View(query);
-            }
-            else
+            
+            
+            //var cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
+            if (Request.Cookies["OrderId"]==null)
             {
                 ViewBag.OrderStatus = "You have no items for the moment!";
                 var order = db.Orders.Find(1);
                 return View(order);
             }
+            else
+            {
+                var query = db.Orders.Find(Int32.Parse(Request.Cookies["OrderId"].Value));
+                return View(query);
+                
+            }
         }
 
         public ActionResult InsertBuildPc(int id)
         {
-            Order o = new Order { OrderDate = DateTime.Now };
-            db.Orders.Add(o);
-            db.SaveChanges();
+            
+            
+            //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
+            if (Request.Cookies["OrderId"] == null)
+            {
+                Order o = new Order { OrderDate = DateTime.Now };
+                db.Orders.Add(o);
+                db.SaveChanges();
 
-            OrderItem item = new OrderItem { BuildPCID = id, OrderID = o.OrderID, Discount = 0, Quantity = 1 };
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = o.OrderID + "";
+                //cookie.Expires = DateTime.Now.AddMinutes(60);
+                Response.Cookies.Add(cookie);
+            }
+
+            OrderItem item = new OrderItem { BuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
             db.OrderItems.Add(item);
             db.SaveChanges();
 
 
 
-            return RedirectToAction("Index", "Orders", new { id = o.OrderID });
+            return RedirectToAction("Index", "Orders");
         }
 
         public ActionResult Checkout(int id)
