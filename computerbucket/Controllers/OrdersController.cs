@@ -58,7 +58,7 @@ namespace computerbucket.Controllers
         public ActionResult InsertPreBuildPc(int id)
         {
 
-
+            bool inserted = false;
             //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
             if (Request.Cookies["OrderId"] == null)
             {
@@ -71,24 +71,26 @@ namespace computerbucket.Controllers
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
             }
-            
-            //code to update the order quantity in case of the prebuild computer selected be already on the order
-            //int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
-            //var orders = db.OrderItems.Where(i => i.OrderID == orderID);
-            bool inserted = false;
-            //while(!inserted)
-            //{ 
-            //    foreach(var item in orders)
-            //    {
-            //        if(item.PreBuildPCID == id)
-            //        {
-            //            item.Quantity+=1;
-            //            db.Entry(item).State = EntityState.Modified;
-            //            db.SaveChanges();
-            //            inserted = true;
-            //        }
-            //    }
-            //}
+            else
+            {
+                //code to update the order quantity in case of the prebuild computer selected be already on the order
+                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+                var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+
+                foreach (var item in orders.ToList())
+                {
+                    if (item.PreBuildPCID == id)
+                    {
+                        item.Quantity += 1;
+                        db.OrderItems.Attach(item);
+                        db.Entry(item).State = EntityState.Modified;
+                        db.SaveChanges();
+                        inserted = true;
+                    }
+                }
+
+
+            }
 
             if (!inserted)
             {
@@ -103,6 +105,7 @@ namespace computerbucket.Controllers
 
         public ActionResult InsertProduct(int id)
         {
+            bool inserted = false;
             if (Request.Cookies["OrderId"] == null)
             {
                 Order o = new Order { OrderDate = DateTime.Now };
@@ -116,22 +119,20 @@ namespace computerbucket.Controllers
             }
 
             //code to update the order quantity in case of the prebuild computer selected be already on the order
-            //int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
-            //var orders = db.OrderItems.Where(i => i.OrderID == orderID);
-            bool inserted = false;
-            //while(!inserted)
-            //{ 
-            //    foreach(var item in orders)
-            //    {
-            //        if(item.ProductID == id)
-            //        {
-            //            item.Quantity+=1;
-            //            db.Entry(item).State = EntityState.Modified;
-            //            db.SaveChanges();
-            //            inserted = true;
-            //        }
-            //    }
-            //}
+            int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+            var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+
+            foreach (var item in orders.ToList())
+            {
+                if (item.ProductID == id)
+                {
+                    item.Quantity += 1;
+                    db.OrderItems.Attach(item);
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                    inserted = true;
+                }
+            }
 
             if (!inserted)
             {
