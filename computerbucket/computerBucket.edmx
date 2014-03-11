@@ -30,6 +30,10 @@
             <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
             <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Products" Association="ComputerBucketModel.Store.FK_OrderItems_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_Customers" Association="ComputerBucketModel.Store.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
@@ -91,6 +95,7 @@
           <Property Name="UnitPrice" Type="money" />
           <Property Name="Quantity" Type="smallint" Nullable="false" />
           <Property Name="Discount" Type="real" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -192,6 +197,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderItems_Products">
+          <End Role="Products" Type="ComputerBucketModel.Store.Products" Multiplicity="0..1" />
+          <End Role="OrderItems" Type="ComputerBucketModel.Store.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Orders_Customers">
           <End Role="Customers" Type="ComputerBucketModel.Store.Customers" Multiplicity="0..1" />
           <End Role="Orders" Type="ComputerBucketModel.Store.Orders" Multiplicity="*" />
@@ -253,6 +270,10 @@
             <End Role="PCTypes" EntitySet="PCTypes" />
             <End Role="PreBuildPCs" EntitySet="PreBuildPCs" />
           </AssociationSet>
+          <AssociationSet Name="FK_OrderItems_Products" Association="ComputerBucketModel.FK_OrderItems_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BuildPC">
           <Key>
@@ -312,6 +333,8 @@
           <NavigationProperty Name="BuildPC" Relationship="ComputerBucketModel.FK_OrderItems_BuildPCs" FromRole="OrderItems" ToRole="BuildPCs" />
           <NavigationProperty Name="Order" Relationship="ComputerBucketModel.FK_OrderItems_Orders" FromRole="OrderItems" ToRole="Orders" />
           <NavigationProperty Name="PreBuildPC" Relationship="ComputerBucketModel.FK_OrderItems_PreBuildPCs" FromRole="OrderItems" ToRole="PreBuildPCs" />
+          <Property Type="Int32" Name="ProductID" />
+          <NavigationProperty Name="Product" Relationship="ComputerBucketModel.FK_OrderItems_Products" FromRole="OrderItem" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -370,6 +393,7 @@
           <Property Name="ExtraInfo" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="ImageUrl" Type="String" MaxLength="200" Unicode="true" FixedLength="true" />
           <NavigationProperty Name="Category" Relationship="ComputerBucketModel.FK_Category_Products" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_Products" FromRole="Product" ToRole="OrderItem" />
         </EntityType>
         <Association Name="FK_OrderItems_BuildPCs">
           <End Role="BuildPCs" Type="ComputerBucketModel.BuildPC" Multiplicity="0..1" />
@@ -443,6 +467,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OrderItems_Products">
+          <End Type="ComputerBucketModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ComputerBucketModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -496,6 +532,7 @@
           <EntitySetMapping Name="OrderItems">
             <EntityTypeMapping TypeName="ComputerBucketModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="BuildPCID" ColumnName="BuildPCID" />

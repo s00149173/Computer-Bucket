@@ -14,10 +14,10 @@ namespace computerbucket.Controllers
 
         public ActionResult Index()
         {
-            
-            
+
+
             //var cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
-            if (Request.Cookies["OrderId"]==null)
+            if (Request.Cookies["OrderId"] == null)
             {
                 ViewBag.OrderStatus = "You have no items for the moment!";
                 var order = db.Orders.Find(1);
@@ -27,14 +27,12 @@ namespace computerbucket.Controllers
             {
                 var query = db.Orders.Find(Int32.Parse(Request.Cookies["OrderId"].Value));
                 return View(query);
-                
+
             }
         }
 
         public ActionResult InsertBuildPc(int id)
         {
-            
-            
             //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
             if (Request.Cookies["OrderId"] == null)
             {
@@ -73,11 +71,74 @@ namespace computerbucket.Controllers
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
             }
+            
+            //code to update the order quantity in case of the prebuild computer selected be already on the order
+            //int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+            //var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+            bool inserted = false;
+            //while(!inserted)
+            //{ 
+            //    foreach(var item in orders)
+            //    {
+            //        if(item.PreBuildPCID == id)
+            //        {
+            //            item.Quantity+=1;
+            //            db.Entry(item).State = EntityState.Modified;
+            //            db.SaveChanges();
+            //            inserted = true;
+            //        }
+            //    }
+            //}
 
-            OrderItem item = new OrderItem { PreBuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
-            db.OrderItems.Add(item);
-            db.SaveChanges();
+            if (!inserted)
+            {
+                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+                db.OrderItems.Add(newItem);
+                db.SaveChanges();
+            }
 
+
+            return RedirectToAction("Index", "Orders");
+        }
+
+        public ActionResult InsertProduct(int id)
+        {
+            if (Request.Cookies["OrderId"] == null)
+            {
+                Order o = new Order { OrderDate = DateTime.Now };
+                db.Orders.Add(o);
+                db.SaveChanges();
+
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = o.OrderID + "";
+                //cookie.Expires = DateTime.Now.AddMinutes(60);
+                Response.Cookies.Add(cookie);
+            }
+
+            //code to update the order quantity in case of the prebuild computer selected be already on the order
+            //int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+            //var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+            bool inserted = false;
+            //while(!inserted)
+            //{ 
+            //    foreach(var item in orders)
+            //    {
+            //        if(item.ProductID == id)
+            //        {
+            //            item.Quantity+=1;
+            //            db.Entry(item).State = EntityState.Modified;
+            //            db.SaveChanges();
+            //            inserted = true;
+            //        }
+            //    }
+            //}
+
+            if (!inserted)
+            {
+                OrderItem newItem = new OrderItem { ProductID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+                db.OrderItems.Add(newItem);
+                db.SaveChanges();
+            }
 
 
             return RedirectToAction("Index", "Orders");

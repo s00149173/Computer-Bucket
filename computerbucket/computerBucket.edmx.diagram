@@ -19,6 +19,7 @@
         <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_PreBuildPCs" ManuallyRouted="false" />
         <AssociationConnector Association="ComputerBucketModel.FK_PreBuildPCs_PCTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerBucketModel.FK_OrderItems_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

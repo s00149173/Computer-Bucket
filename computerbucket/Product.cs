@@ -14,6 +14,11 @@ namespace computerbucket
     
     public partial class Product
     {
+        public Product()
+        {
+            this.OrderItems = new HashSet<OrderItem>();
+        }
+    
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public Nullable<int> CategoryID { get; set; }
@@ -26,5 +31,6 @@ namespace computerbucket
         public string ImageUrl { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

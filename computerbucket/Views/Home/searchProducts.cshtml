@@ -43,7 +43,7 @@
 
                 </div>
                 <div class="col-md-1" style="margin-top:3%;">
-                    @Html.ActionLink("Add to basket", "Index", "BuildPC", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Add to basket", "InsertProduct", "Orders", new {id=item.ProductID }, new { @class = "btn btn-info" })
                 </div>
             </div>
         </div>

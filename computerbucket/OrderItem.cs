@@ -21,9 +21,11 @@ namespace computerbucket
         public Nullable<decimal> UnitPrice { get; set; }
         public short Quantity { get; set; }
         public float Discount { get; set; }
+        public Nullable<int> ProductID { get; set; }
     
         public virtual BuildPC BuildPC { get; set; }
         public virtual Order Order { get; set; }
         public virtual PreBuildPC PreBuildPC { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

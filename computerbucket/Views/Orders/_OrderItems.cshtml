@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.PreBuildPCID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.UnitPrice)
         </th>
         <th>
@@ -26,32 +29,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BuildPCID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PreBuildPCID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discount)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderItemID }) |
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildPCID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreBuildPCID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderItemID }) |
             @Html.ActionLink("Details", "Details", new { id=item.OrderItemID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.OrderItemID })*@
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
