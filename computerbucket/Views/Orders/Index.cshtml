@@ -1,18 +1,24 @@
 ﻿@model computerbucket.Order
 
 @{
-    ViewBag.Title = "Orders!  --- NOT FINISHED, SHOWING DUMP INFORMATION---";
+    ViewBag.Title = "Shop Basket";
 }
 
-
+<div class="pageHeading">
+    <div class="container">
+        <div class="col-md-12">
+            <h2 style="margin-top: 0;">Shop Basket</h2>
+            <p>
+                See all your ordered items and details in here.
+            </p>
+        </div>
+    </div>
+</div>
 
 
 <div class="container">
 
-    <h2>@ViewBag.Title</h2>
-    <div>
-        Date:
-    </div>
+              
     @if (Model.OrderID == 1)
     {
         <h3>Your Basket is empty!</h3>
@@ -20,18 +26,25 @@
     }
     else
     {
+        <h3>Date: @Html.DisplayFor(model=>model.OrderDate) </h3>
         <div class="container">
-            @Html.Partial("_OrderItems", Model.OrderItems)
+            @*@Html.Partial("_OrderItems", Model.OrderItems)*@
+            @foreach (var item in Model.OrderItems)
+            {
+                if (item.ProductID != null)
+                {
+                @Html.Partial("_Product", item);
+                }
+                else if (item.PreBuildPCID != null)
+                {
+                @Html.Action("_PreBuildPC", new { item = item });
+                }
+                else if (item.BuildPCID != null)
+                {
+                @Html.Action("_BuildPC", new { item = item });
+                }
+            }
         </div>
     }
 
-    <div class="container">
-    </div>
-
-   @* <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-
-        @Html.ActionLink("Go to Checkout", "Checkout", new { id = Model.OrderID }, new { @class = "btn btn-primary" })
-    </p>*@
 </div>

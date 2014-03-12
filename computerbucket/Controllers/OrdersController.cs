@@ -162,6 +162,24 @@ namespace computerbucket.Controllers
             return items;
         }
 
+        public ActionResult _PreBuildPC(OrderItem item)
+        {
+            var pc = db.PreBuildPCs.Find(item.PreBuildPCID);
+            int pcCase = Int32.Parse(pc.ComputerCase);
+            ViewBag.ImageUrl = db.Products.Find(pcCase).ImageUrl;
+            ViewBag.PcType = pc.PCType.TypeName;
+
+            return PartialView("_PreBuildPC", item);
+        }
+
+        public ActionResult _BuildPC(OrderItem item)
+        {
+            var pc = db.BuildPCs.Find(item.BuildPCID);
+            int pcCase = Int32.Parse(pc.ComputerCase);
+            ViewBag.ImageUrl = db.Products.Find(pcCase).ImageUrl;
+            
+            return PartialView("_BuildPC", item);
+        }
 
         public ActionResult Checkout(int id)
         {

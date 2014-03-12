@@ -416,8 +416,10 @@
     <Content Include="Views\Orders\Checkout.cshtml" />
     <Content Include="Views\Home\PreBuildComputers.cshtml" />
     <Content Include="Views\Home\SearchProducts.cshtml" />
-    <Content Include="Views\Orders\_OrderItems.cshtml" />
     <Content Include="Views\Home\_PreBuildComputer.cshtml" />
+    <Content Include="Views\Orders\_Product.cshtml" />
+    <Content Include="Views\Orders\_PreBuildPC.cshtml" />
+    <Content Include="Views\Orders\_BuildPC.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,0 +1,26 @@
+﻿@model computerbucket.OrderItem
+
+
+<div class="product">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="@ViewBag.ImageUrl" style="width: 100px; height: 100px; background-image: url(/Images/my_computer_w.png);" />
+        </div>
+
+        <div class="col-md-5">
+            <p><b>Computer:</b></p>
+            <h4>Built PC @Html.DisplayFor(model => model.BuildPCID)</h4>
+
+        </div>
+
+        <div class="col-md-2">
+            <h5>Quantity : @Html.DisplayFor(model => model.Quantity)</h5>
+            <br />
+            <h5>Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
+        </div>
+        <div class="col-md-1" style="margin-top: 3%;">
+            <a class="btn btn-success">Details</a>
+            @*@Html.ActionLink("Details", "InsertProduct", "Orders", new { id = item.ProductID }, new { @class = "btn btn-success" })*@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model computerbucket.OrderItem
+
+
+<div class="product">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="@Html.DisplayFor(model => model.Product.ImageUrl)" style="width: 100px; height: 100px; background-image: url(/Images/my_computer_w.png);" />
+        </div>
+
+        <div class="col-md-5">
+            <p><b>Product:</b></p>
+            <h4>@Html.DisplayFor(model => model.Product.ProductName)</h4>
+            
+        </div>
+
+        <div class="col-md-2">
+            <h5>Quantity : @Html.DisplayFor(model => model.Quantity)</h5><br />
+           <h5>Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
+
+        </div>
+
+    </div>
+</div>
