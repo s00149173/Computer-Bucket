@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="~/Home/Index">
-                    <img src="~/Images/Logo.png" style="margin:12px;" />
+                    <img id="logoImage" src="~/Images/Logo.png" />
                 </a>
 
             </div>
@@ -34,23 +34,23 @@
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                 </ul>
-                 @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
+                @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
                 {
                     @Html.TextBox("searchTerm")
                 }
-                
+
                 <ul class="nav navbar-nav navbar-right">
                     @*<li style="margin: 8px 15px 0 0;">
-                        Items(0)
-                    </li>*@
+                            Items(0)
+                        </li>*@
 
-                    <li style="margin: 8px 15px 0 0;" onclick="location.href='@Url.Action("Index", "Orders")'">
-                    @*<li style="margin: 8px 15px 0 0;" onclick="@Html.Action("Index", "Orders")">*@
-                        Items(@Html.Action("getNumberOfItems","Orders"))
-                        <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket"  />
+                    <li id="basket" onclick="location.href='@Url.Action("Index", "Orders")'">
+                        @*<li style="margin: 8px 15px 0 0;" onclick="@Html.Action("Index", "Orders")">*@
+                        Items(@Html.Action("getNumberOfItems", "Orders"))
+                        <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket" />
 
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -62,8 +62,8 @@
     <br />
     <div id="wrap">
         <div id="main" class="container">
-            <div class="row">               
-                    @RenderBody()              
+            <div class="row">
+                @RenderBody()
             </div>
         </div>
     </div>

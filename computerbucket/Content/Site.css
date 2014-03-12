@@ -160,5 +160,29 @@ footer {
     width: 98%;
     margin: 0 auto;
     color: #efefef;
-    font-size:18px;
+    font-size: 18px;
+}
+
+#logoImage {
+    margin: 12px 0;
+}
+
+#basket {
+    margin: 8px 5px 0 0;
+}
+
+#contactForm {
+    background-color: white;
+}
+
+#contactDetails {
+    background-color: white;
+}
+
+#helpTopicsInfo {
+    background-color: white;
+}
+
+#helpTopics {
+    background-color: white;
 }

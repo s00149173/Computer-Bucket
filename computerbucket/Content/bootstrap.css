@@ -4275,7 +4275,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
         .nav > li > a {
             position: relative;
             display: block;
-            padding: 10px 15px;
+            padding: 10px 10px;
         }
 
             .nav > li > a:hover,
@@ -5036,7 +5036,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
     .navbar-inverse .navbar-nav > li > a {
         text-transform: uppercase;
-        font-size: 14px;
+        font-size: 12px;
     }
 
         .navbar-inverse .navbar-nav > li > a:hover,

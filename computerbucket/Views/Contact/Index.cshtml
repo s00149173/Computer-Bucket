@@ -9,8 +9,8 @@
             <h2 style="margin-top: 0;">Contact us</h2>
             <p>
                 Please call us or use the contact form, we are ready to help
-             <br/>
-             <br/>
+                <br />
+                <br />
             </p>
         </div>
     </div>
@@ -18,66 +18,53 @@
 
 
 <div class="container">
-    <div class="row well">
-        <fieldset>
-        <legend>Telephone</legend>
-        <div class="col-md-4 well">
-             <span class="glyphicon glyphicon-earphone"></span>Tel:
+    <div class="row well" id="contactDetails">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-earphone"></span> Tel:
+            </div>
+            <div class="col-md-8">
+                087-456788
+            </div>
         </div>
-        <div class="col-md-8 well">
-            087-456788
+        <div class="row">
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-envelope"></span> Email:
+            </div>
+            <div class="col-md-8">
+                computerbucket@itsligo.ie
+            </div>
         </div>
-        </fieldset>
+
     </div>
 
     <div class="row">
-        <div class="col-md-12 well">
-            <form class="form-horizontal" role="form">    
-            <fieldset>
-            <legend>Contact Form</legend>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Your Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="textArea" class="col-sm-2 control-label">Your question</label>
+        <div class="col-md-12 well" id="contactForm">
+            <form class="form-horizontal" role="form">
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Your Email</label>
                         <div class="col-sm-10">
-                        <textarea class="form-control" rows="6" id="textArea"></textarea>
-                        <span class="help-block">Please enter your enquiry here</span>
-                        </div>
-                </div>
-
-
-
-
-               @* <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
-                *@
-              @*  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">
-                                Remember me
-                            </label>
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                         </div>
                     </div>
-                </div>*@
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Send</button>
+                    <div class="form-group">
+                        <label for="textArea" class="col-sm-2 control-label">Your question</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="6" id="textArea"></textarea>
+                            <span class="help-block">Please enter your enquiry here</span>
+                        </div>
                     </div>
-                </div>
 
-            </fieldset>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-info">Send</button>
+                        </div>
+                    </div>
+
+                </fieldset>
             </form>
         </div>
     </div>
