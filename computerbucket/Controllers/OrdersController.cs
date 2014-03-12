@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using computerbucket.Models;
 
 namespace computerbucket.Controllers
 {
@@ -181,9 +182,55 @@ namespace computerbucket.Controllers
             return PartialView("_BuildPC", item);
         }
 
-        public ActionResult Checkout(int id)
+        public ActionResult Checkout()
         {
+            
             return View("Checkout");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Checkout(CustomerModel custumer)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer c = new Customer {
+                    ContactName=custumer.ContactName, 
+                    Address=custumer.Address, 
+                    City=custumer.City, 
+                    Region=custumer.Region,
+                    PostalCode= custumer.PostalCode,
+                    Country=custumer.Country,
+                    Phone=custumer.Phone,
+                    Email=custumer.Email
+                };
+                db.Customers.Add(c);
+                db.SaveChanges();
+
+                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+                var order = db.Orders.Find(orderID);
+                order.CustomerID = c.CustomerID;
+                order.OrderStatus = "In Progress";
+                db.Orders.Attach(order);
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+
+                //Not deleting cookie
+                HttpCookie cookie = new HttpCookie("OrderID");
+                cookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(cookie);
+
+                
+
+                return RedirectToAction("Success");
+            }
+
+            return View("Checkout",custumer);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
         }
 
         //
