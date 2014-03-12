@@ -2,7 +2,7 @@
 @model IEnumerable<computerbucket.Product>
 
 @{
-    ViewBag.Title = "searchProducts";
+    ViewBag.Title = "Products";
 }
 
 <div class="pageHeading">
@@ -35,7 +35,7 @@
         </form>*@
     <div id="productSearchInfo" class="row">
         <div class=" col-md-12">
-            @Model.Count(x => true) results for @ViewBag.searchTerm
+            @Model.Count(x => true) @ViewBag.searchTerm
         </div>
     </div>
 
