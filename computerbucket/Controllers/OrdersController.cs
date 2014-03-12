@@ -145,6 +145,23 @@ namespace computerbucket.Controllers
             return RedirectToAction("Index", "Orders");
         }
 
+        public int getNumberOfItems()
+        {
+            int items = 0;
+            if (Request.Cookies["OrderId"] == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+                var order = db.Orders.Find(orderID);
+                items = order.OrderItems.Count;
+            }
+
+            return items;
+        }
+
 
         public ActionResult Checkout(int id)
         {

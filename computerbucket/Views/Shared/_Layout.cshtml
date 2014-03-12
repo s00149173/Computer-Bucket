@@ -34,18 +34,23 @@
                     <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     <li>@Html.ActionLink("About", "Index", "About")</li>
                 </ul>
-                @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
+                 @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
                 {
                     @Html.TextBox("searchTerm")
                 }
+                
                 <ul class="nav navbar-nav navbar-right">
+                    @*<li style="margin: 8px 15px 0 0;">
+                        Items(0)
+                    </li>*@
 
-                    <li style="margin: 8px 15px 0 0;">
-
-                        <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket" onclick="location.href='@Url.Action("Index", "Orders")'" />
+                    <li style="margin: 8px 15px 0 0;" onclick="location.href='@Url.Action("Index", "Orders")'">
+                    @*<li style="margin: 8px 15px 0 0;" onclick="@Html.Action("Index", "Orders")">*@
+                        Items(@Html.Action("getNumberOfItems","Orders"))
+                        <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket"  />
 
                     </li>
-
+                    
                 </ul>
             </div>
         </div>
