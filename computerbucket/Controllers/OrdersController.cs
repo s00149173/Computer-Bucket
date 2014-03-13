@@ -18,7 +18,7 @@ namespace computerbucket.Controllers
 
 
             //var cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
-            if (Request.Cookies["OrderId"] == null)
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
                 ViewBag.OrderStatus = "You have no items for the moment!";
                 var order = db.Orders.Find(1);
@@ -34,8 +34,8 @@ namespace computerbucket.Controllers
 
         public ActionResult InsertBuildPc(int id)
         {
-            //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
-            if (Request.Cookies["OrderId"] == null)
+            int tempOrder = 0;
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
                 Order o = new Order { OrderDate = DateTime.Now };
                 db.Orders.Add(o);
@@ -43,11 +43,16 @@ namespace computerbucket.Controllers
 
                 HttpCookie cookie = new HttpCookie("OrderId");
                 cookie.Value = o.OrderID + "";
+                tempOrder = o.OrderID;
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
             }
+            else
+            {
+                tempOrder = Int32.Parse(Request.Cookies["OrderId"].Value);
+            }
 
-            OrderItem item = new OrderItem { BuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+            OrderItem item = new OrderItem { BuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
             db.OrderItems.Add(item);
             db.SaveChanges();
 
@@ -60,13 +65,14 @@ namespace computerbucket.Controllers
         {
 
             bool inserted = false;
+            int tempOrder = 0;
             //int cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
-            if (Request.Cookies["OrderId"] == null)
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
                 Order o = new Order { OrderDate = DateTime.Now };
                 db.Orders.Add(o);
                 db.SaveChanges();
-
+                tempOrder = o.OrderID;
                 HttpCookie cookie = new HttpCookie("OrderId");
                 cookie.Value = o.OrderID + "";
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
@@ -74,9 +80,9 @@ namespace computerbucket.Controllers
             }
             else
             {
+                tempOrder = Int32.Parse(Request.Cookies["OrderId"].Value);
                 //code to update the order quantity in case of the prebuild computer selected be already on the order
-                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
-                var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+                var orders = db.OrderItems.Where(i => i.OrderID == tempOrder);
 
                 foreach (var item in orders.ToList())
                 {
@@ -95,11 +101,12 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
 
+            inserted = false;
 
             return RedirectToAction("Index", "Orders");
         }
@@ -107,7 +114,8 @@ namespace computerbucket.Controllers
         public ActionResult InsertProduct(int id)
         {
             bool inserted = false;
-            if (Request.Cookies["OrderId"] == null)
+            int tempOrder = 0;
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
                 Order o = new Order { OrderDate = DateTime.Now };
                 db.Orders.Add(o);
@@ -115,13 +123,17 @@ namespace computerbucket.Controllers
 
                 HttpCookie cookie = new HttpCookie("OrderId");
                 cookie.Value = o.OrderID + "";
+                tempOrder = o.OrderID;
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
+                
                 Response.Cookies.Add(cookie);
             }
+            else
+            {
+                tempOrder = Int32.Parse(Request.Cookies["OrderId"].Value);
+            }
 
-            //code to update the order quantity in case of the prebuild computer selected be already on the order
-            int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
-            var orders = db.OrderItems.Where(i => i.OrderID == orderID);
+            var orders = db.OrderItems.Where(i => i.OrderID == tempOrder);
 
             foreach (var item in orders.ToList())
             {
@@ -137,7 +149,7 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { ProductID = id, OrderID = Int32.Parse(Request.Cookies["OrderId"].Value), Discount = 0, Quantity = 1 };
+                OrderItem newItem = new OrderItem { ProductID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
@@ -149,7 +161,7 @@ namespace computerbucket.Controllers
         public int getNumberOfItems()
         {
             int items = 0;
-            if (Request.Cookies["OrderId"] == null)
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
                 return 0;
             }
@@ -162,6 +174,35 @@ namespace computerbucket.Controllers
 
             return items;
         }
+
+        public ActionResult _Product(OrderItem item)
+        {
+            return PartialView(item);
+        }
+
+        public ActionResult DeleteItem(int id)
+        {
+            var item = db.OrderItems.Find(id);
+            var order = item.Order;
+            db.OrderItems.Remove(item);
+            db.SaveChanges();
+
+            if (order.OrderItems.Count == 0)
+            {
+                db.Orders.Remove(order);
+                db.SaveChanges();
+                
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = "1";
+                cookie.Expires = DateTime.Now.AddMinutes(60);
+                Response.Cookies.Add(cookie);
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+                
+            }
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult _PreBuildPC(OrderItem item)
         {
@@ -215,9 +256,9 @@ namespace computerbucket.Controllers
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
 
-                //Not deleting cookie
-                HttpCookie cookie = new HttpCookie("OrderID");
-                cookie.Expires = DateTime.Now.AddDays(-1d);
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = "1";
+                //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
 
                 
@@ -232,6 +273,10 @@ namespace computerbucket.Controllers
         {
             return View();
         }
+
+
+
+
 
         //
         // GET: /Orders/Details/5

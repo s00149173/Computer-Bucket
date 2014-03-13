@@ -18,9 +18,13 @@
             <br />
             <h5>Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
         </div>
-        <div class="col-md-1" style="margin-top: 3%;">
-            <a class="btn btn-primary">Details</a>
-            @*@Html.ActionLink("Details", "InsertProduct", "Orders", new { id = item.ProductID }, new { @class = "btn btn-success" })*@
+        <div class="col-md-1 ">
+            <div class="row text-center">
+                <a class="btn btn-primary">Details</a>
+            </div><br/>
+            <div class=" row text-center">
+                @Html.ActionLink("Delete Item", "DeleteItem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })
+            </div>
         </div>
     </div>
 </div>

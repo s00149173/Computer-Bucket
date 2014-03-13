@@ -15,9 +15,17 @@
 
         <div class="col-md-2">
             <h5>Quantity : @Html.DisplayFor(model => model.Quantity)</h5><br />
-           <h5>Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
+            <h5>Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
 
         </div>
-
+        
+        <div class="col-md-1 ">
+            <div class="row text-center">
+                <a class="btn btn-primary">Details</a>
+            </div><br/>
+            <div class=" row text-center">
+                @Html.ActionLink("Delete Item", "Deleteitem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
     </div>
 </div>

@@ -33,7 +33,7 @@
             {
                 if (item.ProductID != null)
                 {
-                @Html.Partial("_Product", item);
+                @Html.Action("_Product", new { item = item });
                 }
                 else if (item.PreBuildPCID != null)
                 {
