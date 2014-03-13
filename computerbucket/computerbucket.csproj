@@ -323,6 +323,7 @@
     <Content Include="Images\itsligo.png" />
     <Content Include="Images\Jaroslaw.jpg" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\mainLogo.png" />
     <Content Include="Images\Marco.jpg" />
     <Content Include="Images\my_computer_w.png" />
     <Content Include="Images\Payment1.png" />

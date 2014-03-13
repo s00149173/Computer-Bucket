@@ -186,3 +186,28 @@ footer {
 #helpTopics {
     background-color: white;
 }
+
+.heading {
+    font-size: 21px;
+    color: #252526;
+    line-height: 29px;
+    font-weight: normal;
+    margin: 0 0 16px 0;
+}
+
+.newStyle {
+    color: #3F3F3F;
+    line-height: 24px;
+    margin: 0 0 10px;
+}
+
+.section_header {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+#about_us {
+    margin-bottom: 90px;
+    margin-top: 70px;
+    min-height:900px;
+}
