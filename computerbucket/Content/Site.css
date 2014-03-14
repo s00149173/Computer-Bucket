@@ -86,7 +86,7 @@
     border-radius: 20px 20px 20px 20px;
     color: #efefef;
     font: 12px Arial, Helvetica, Sans-serif;
-    margin-top: 5px;
+    margin-top: 3px;
     padding: 2px 15px 2px 25px;
     width: 80px;
     border-radius: 20px;
@@ -169,7 +169,7 @@ footer {
 }
 
 #basket {
-    margin: 8px 5px 0 0;
+    margin: 10px 5px 0 0;
 }
 
 #contactForm {
