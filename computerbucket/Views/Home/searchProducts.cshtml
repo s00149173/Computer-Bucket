@@ -11,8 +11,8 @@
             <h2 style="margin-top: 0;">Browse all products here</h2>
             <p>
                 You can use the search box at the top right corner to find the product
-             <br/>
-             <br/>
+                <br />
+                <br />
             </p>
         </div>
     </div>
@@ -21,18 +21,6 @@
 
 
 <div class="container">
-    @* <form method="get">
-            <div class="row" role="form">
-                <div class="form-group col-md-2">
-                    <button type="submit" class="btn btn-primary form-control">
-                        <span class="glyphicon glyphicon-search"></span> Search
-                    </button>
-                </div>
-                <div class="form-group col-md-10">
-                    <input type="text" name="searchTerm" class="form-control">
-                </div>
-            </div>
-        </form>*@
     <div id="productSearchInfo" class="row">
         <div class=" col-md-12">
             @Model.Count(x => true) @ViewBag.searchTerm
@@ -44,11 +32,14 @@
         <div class="product">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100px; height: 100px; background-image: url(/Images/my_computer_w.png);" />
+                    <a href='@Html.DisplayFor(modelItem => item.ImageUrl)' class='cloud-zoom' id='zoom1'
+                       rel="adjustX: 10, adjustY:-4, softFocus:true">
+                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt='' align="left" title="" style="width: 150px; height: 150px; background-image:url(/Images/my_computer_w.png)" />
+                    </a>
                 </div>
 
                 <div class="col-md-5">
-                    <h4>@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                    <h4 style="font-weight:500;">@Html.DisplayFor(modelItem => item.ProductName)</h4>
                     <h5>Price : @Html.DisplayFor(modelItem => item.UnitPrice)</h5>
                 </div>
 
@@ -58,10 +49,11 @@
 
                 </div>
                 <div class="col-md-1" style="margin-top:3%;">
-                    @Html.ActionLink("Add to basket", "InsertProduct", "Orders", new {id=item.ProductID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Add to basket", "InsertProduct", "Orders", new { id = item.ProductID }, new { @class = "btn btn-info" })
                 </div>
             </div>
         </div>
+
     }
 
 </div>

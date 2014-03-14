@@ -1,4 +1,5 @@
-﻿@model IEnumerable<computerbucket.Models.ProductModel>
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<computerbucket.Models.ProductModel>
 
 
 
@@ -9,7 +10,9 @@
             <h5>@Html.DisplayFor(modelItem => item.ProductName)</h5>
         </div>
         <div class="panel-body">
-            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100%; height: 150px;" />
+            <a href='@Html.DisplayFor(modelItem => item.ImageUrl)' style="width: 100%; height: 150px;" class="cloud-zoom" id="zoom1" rel="adjustX: 10, adjustY:-4, softFocus:true">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100%; height: 150px;" alt='' align="left" title="Optional title display" />
+            </a>           
             <span style="font-weight:bold">ID :</span>
             @Html.DisplayFor(modelItem => item.ProductId)
             <br/>   
@@ -26,5 +29,3 @@
 
 
 }
-
-

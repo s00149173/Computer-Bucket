@@ -253,6 +253,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cloud-zoom.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -331,6 +332,7 @@
     <Content Include="Images\my_computer_w.png" />
     <Content Include="Images\Payment1.png" />
     <Content Include="Images\Payment2.png" />
+    <Content Include="Images\ProductImages\sku_173092_5.jpg" />
     <Content Include="Images\q_icon.png" />
     <Content Include="Images\Ronan.jpg" />
     <Content Include="Images\search-dark.png" />
@@ -359,6 +361,7 @@
       <DependentUpon>ComputerBucket.edmx</DependentUpon>
       <LastGenOutput>ComputerBucket.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\cloud-zoom.1.0.2.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
