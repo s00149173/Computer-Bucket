@@ -4,15 +4,13 @@
     ViewBag.Title = "Checkout";
 }
 
-<h2>Checkout</h2>
+<div class="default_min_height">
+    <h2>Checkout</h2>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>CustomerModel</legend>
-
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
         <div class="editor-label">
             @Html.LabelFor(model => model.ContactName)
         </div>
@@ -81,13 +79,14 @@
             <input type="submit" value="Create" />
             <input type="button" value="Register" />
         </p>
-    </fieldset>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

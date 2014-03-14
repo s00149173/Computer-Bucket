@@ -103,6 +103,7 @@
 #main {
     overflow: auto;
     padding-bottom: 150px; /* this needs to be bigger than footer height*/
+    min-height:800px;
 }
 
 footer {
@@ -259,4 +260,8 @@ footer {
 
 #submit_button {
     margin: 0;
+}
+
+.default_min_height {
+    min-width:800px;
 }
