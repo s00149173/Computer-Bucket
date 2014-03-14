@@ -320,6 +320,9 @@
     <Content Include="Images\Delivery.png" />
     <Content Include="Images\download.jpg" />
     <Content Include="Images\Exchange.png" />
+    <Content Include="Images\formmail.png" />
+    <Content Include="Images\formname.png" />
+    <Content Include="Images\formphone.png" />
     <Content Include="Images\itsligo.png" />
     <Content Include="Images\Jaroslaw.jpg" />
     <Content Include="Images\Logo.png" />
