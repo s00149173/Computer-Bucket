@@ -17,79 +17,87 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-@*<legend>Customer Details</legend>*@
+
             <div class="col-md-6">
                 <div class="row">
-                    @Html.LabelFor(model => model.ContactName)
+                    @Html.LabelFor(model => model.ContactName, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.ContactName, new { @class = "input-xs form-control" })
+                    @Html.EditorFor(model => model.ContactName, new { @class = "input-xs form-control effect6" })
                 </div>
                 <div class="row">
-                    @Html.ValidationMessageFor(model => model.ContactName)
+                    @Html.ValidationMessageFor(model => model.ContactName, null, new { @class = "label-danger" })
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.Phone)
+                    @Html.LabelFor(model => model.Phone, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.Phone, new { @class = "input-xs form-control" })
+                    @Html.EditorFor(model => model.Phone, new { @class = "input-xs form-control effect6" })
                 </div>
                 <div class="row">
-                    @Html.ValidationMessageFor(model => model.Phone)
+                    @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "label-danger" })
                 </div>
 
                 <div class="row">
-                    @Html.LabelFor(model => model.Email)
+                    @Html.LabelFor(model => model.Email, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.Email, new { @class = "input-xs form-control" })
+                    @Html.EditorFor(model => model.Email, new { @class = "input-xs form-control effect6" })
                 </div>
                 <div class="row">
-                    @Html.ValidationMessageFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "label-danger" })
                 </div>
                 <div class="row">
-                    @Html.LabelFor(model => model.Address)
+                    @Html.LabelFor(model => model.Address, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.Address, new { @class = "form-control" })
+                    @Html.EditorFor(model => model.Address, new { @class = "input-xs form-control effect6" })
                 </div>
                 <div class="row">
-                    @Html.ValidationMessageFor(model => model.Address)
+                    @Html.ValidationMessageFor(model => model.Address, null, new { @class = "label-danger" })
                 </div>
 
             </div>
             <div class="col-md-6">
 
                 <div class="row">
-                    @Html.LabelFor(model => model.City)
+                    @Html.LabelFor(model => model.City, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.City, new { @class = "input-xs form-control" })
-                    @Html.ValidationMessageFor(model => model.City)
-                </div>
-
-                <div class="row">
-                    @Html.LabelFor(model => model.Region)
+                    @Html.EditorFor(model => model.City, new { @class = "input-xs form-control effect6" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.Region, new { @class = "input-xs form-control" })
-                    @Html.ValidationMessageFor(model => model.Region)
+                    @Html.ValidationMessageFor(model => model.City, null, new { @class = "label-danger" })
                 </div>
 
                 <div class="row">
-                    @Html.LabelFor(model => model.PostalCode)
+                    @Html.LabelFor(model => model.Region, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.PostalCode, new { @class = "input-xs form-control" })
-                    @Html.ValidationMessageFor(model => model.PostalCode)
+                    @Html.EditorFor(model => model.Region, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.Region, null, new { @class = "label-danger" })
                 </div>
 
                 <div class="row">
-                    @Html.LabelFor(model => model.Country)
+                    @Html.LabelFor(model => model.PostalCode, new { @class = "h4" })
                 </div>
                 <div class="row">
-                    @Html.EditorFor(model => model.Country, new { @class = "input-xs form-control" })
-                    @Html.ValidationMessageFor(model => model.Country)
+                    @Html.EditorFor(model => model.PostalCode, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.PostalCode, null, new { @class = "label-danger" })
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.Country, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Country, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.Country, null, new { @class = "label-danger" })
                 </div>
 
             </div>
@@ -126,6 +134,6 @@
     </div>
 
     <div class="col-md-6">
-        @Html.Action("_OrderItemsList", new {id = ViewBag.OrderID})
+        @Html.Action("_OrderItemsList", new { id = ViewBag.OrderID })
     </div>
 </div>

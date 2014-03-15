@@ -31,7 +31,7 @@ namespace computerbucket.Models
         public string Country { get; set; }
 
         [Display(Name="Phone Number")]
-        [Range(typeof(decimal), "0", "9999999999999999")]
+        [Range(typeof(decimal), "0", "9999999999999999", ErrorMessage = "Enter a valid phone number!")]
         public string Phone { get; set; }
 
         [Display(Name="Email Adress")]

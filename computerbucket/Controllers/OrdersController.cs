@@ -117,7 +117,7 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1};
+                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1, UnitPrice = db.PreBuildPCs.Find(id).Price };
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
@@ -165,7 +165,7 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { ProductID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
+                OrderItem newItem = new OrderItem { ProductID = id, OrderID = tempOrder, Discount = 0, Quantity = 1, UnitPrice = db.Products.Find(id).UnitPrice};
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
