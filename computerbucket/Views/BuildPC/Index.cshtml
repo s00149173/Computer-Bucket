@@ -69,7 +69,7 @@
                         <p>A Graphics card is an expansion card which generates a feed of output images to a display (such as a computer monitor).</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("GraphicsCard",
+                        @Html.DropDownList("GraphicCard",
                             new SelectList(ViewBag.GraphicCards, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>
@@ -80,7 +80,7 @@
                         <p>Random-access memory (RAM /ræm/) is a form of computer data storage. A random-access device allows stored data to be accessed directly in any random order.</p>
                     </div>
                     <div class="panel-body">
-                        @Html.DropDownList("Ram",
+                        @Html.DropDownList("RAM",
                             new SelectList(ViewBag.RAMs, "id", "brand", 0),
                             "Please choose", new { onChange = "proDetail(this.value)", @class = "form-control" })
                     </div>

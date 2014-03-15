@@ -38,7 +38,27 @@ namespace computerbucket.Controllers
             BuildPC aux = new BuildPC { Motherboad = pc.Motherboard, Processor = pc.Processor, GraphicCard = pc.GraphicCard, RAM = pc.GraphicCard, Hard_Drive = pc.HardDrive, SSD = pc.Ssd, PowerSupply = pc.PowerSupply, CPUCooling = pc.CpuCooling, ThermalPaste = pc.ThermalPaste, InternalDrive = pc.InternalDrive, OperatingSystem = pc.Os, ComputerCase = pc.ComputerCase };
             _db.BuildPCs.Add(aux);
             _db.SaveChanges();
-            //var id = aux.BuildPCID;
+
+            var computer = _db.BuildPCs.Find(aux.BuildPCID);
+            var computerParts = new List<Product>()
+            {
+                _db.Products.Find(int.Parse(computer.Motherboad)),
+                _db.Products.Find(int.Parse(computer.Processor)),
+                _db.Products.Find(int.Parse(computer.GraphicCard)),
+                _db.Products.Find(int.Parse(computer.RAM)),
+                _db.Products.Find(int.Parse(computer.Hard_Drive)),
+                _db.Products.Find(int.Parse(computer.SSD)),
+                _db.Products.Find(int.Parse(computer.PowerSupply)),
+                _db.Products.Find(int.Parse(computer.CPUCooling)),
+                _db.Products.Find(int.Parse(computer.ThermalPaste)),
+                _db.Products.Find(int.Parse(computer.InternalDrive)),
+                _db.Products.Find(int.Parse(computer.OperatingSystem)),
+                _db.Products.Find(int.Parse(computer.ComputerCase))
+            };
+
+            computer.Price = ComputerPrice(computerParts);
+            _db.Entry(computer).State = System.Data.EntityState.Modified;
+            _db.SaveChanges();
 
             return RedirectToAction("InsertBuildPc", "Orders", new { id = aux.BuildPCID });
         }
@@ -66,19 +86,6 @@ namespace computerbucket.Controllers
                 finalPrice += (decimal)prod.UnitPrice;
             }
             return finalPrice;
-        }
-
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Order order)
-        {
-            return View();
         }
 
       

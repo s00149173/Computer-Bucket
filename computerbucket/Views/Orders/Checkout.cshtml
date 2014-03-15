@@ -4,89 +4,128 @@
     ViewBag.Title = "Checkout";
 }
 
-<div class="default_min_height">
-    <h2>Checkout</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ContactName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ContactName)
-            @Html.ValidationMessageFor(model => model.ContactName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.City)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.City)
-            @Html.ValidationMessageFor(model => model.City)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Region)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Region)
-            @Html.ValidationMessageFor(model => model.Region)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PostalCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PostalCode)
-            @Html.ValidationMessageFor(model => model.PostalCode)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Country)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Country)
-            @Html.ValidationMessageFor(model => model.Country)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Phone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-            <input type="button" value="Register" />
-        </p>
-
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<h2><b>Checkout Page </b>- Insert your personal details</h2>
+<div class="row">
+    <div class="col-md-6">
 
+        @*    <div class="default_min_height">*@
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+@*<legend>Customer Details</legend>*@
+            <div class="col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.ContactName)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.ContactName, new { @class = "input-xs form-control" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.ContactName)
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.Phone)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Phone, new { @class = "input-xs form-control" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.Phone)
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Email, new { @class = "input-xs form-control" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.Address)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Address, new { @class = "form-control" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.Address)
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">
+                    @Html.LabelFor(model => model.City)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.City, new { @class = "input-xs form-control" })
+                    @Html.ValidationMessageFor(model => model.City)
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.Region)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Region, new { @class = "input-xs form-control" })
+                    @Html.ValidationMessageFor(model => model.Region)
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.PostalCode)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.PostalCode, new { @class = "input-xs form-control" })
+                    @Html.ValidationMessageFor(model => model.PostalCode)
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.Country)
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.Country, new { @class = "input-xs form-control" })
+                    @Html.ValidationMessageFor(model => model.Country)
+                </div>
+
+            </div>
+            
+@*@Html.Action("Back to Basket", "Index", "Orders", null, new { @class = "btn-xs btn-danger" })*@
+            <div class="row">
+                <div class="col-sm-6">
+                    <input class="btn-sm btn-primary" value="Register" />
+                </div>
+
+                <div class="col-sm-6">
+                    <input type="submit" class="btn-sm btn-success" value="Confirm and to Payment" />
+                </div>
+            </div>
+            
+            
+            
+            <br />
+            <div class="col-sm-6">
+                <div class="row">
+                    <br />
+                    <button class="btn btn-danger" value="Go to Basket" onclick="location.href='@Url.Action("Index", "Orders")'">
+                        Back to Basket
+                    </button>
+                </div>
+            </div>
+        
+
+        }
+
+
+        @*   </div>*@
+
+    </div>
+
+    <div class="col-md-6">
+        @Html.Action("_OrderItemsList", new {id = ViewBag.OrderID})
+    </div>
+</div>

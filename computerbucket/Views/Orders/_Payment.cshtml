@@ -1,0 +1,63 @@
+﻿@model computerbucket.Models.PaymentModal
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Payment Details</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CardNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CardNumber)
+            @Html.ValidationMessageFor(model => model.CardNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpirationMonth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpirationMonth)
+            @Html.ValidationMessageFor(model => model.ExpirationMonth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpirationYear)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpirationYear)
+            @Html.ValidationMessageFor(model => model.ExpirationYear)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CardSecurityCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CardSecurityCode)
+            @Html.ValidationMessageFor(model => model.CardSecurityCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CardHolder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CardHolder)
+            @Html.ValidationMessageFor(model => model.CardHolder)
+        </div>
+
+        <p>
+            @*<input type="submit" value="Create" />*@
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

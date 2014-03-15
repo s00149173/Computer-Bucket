@@ -15,8 +15,6 @@ namespace computerbucket.Controllers
 
         public ActionResult Index()
         {
-
-
             //var cookie = Convert.ToInt32(Request.Cookies["OrderId"].Value);
             if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
             {
@@ -30,6 +28,23 @@ namespace computerbucket.Controllers
                 return View(query);
 
             }
+        }
+
+        public int getNumberOfItems()
+        {
+            int items = 0;
+            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
+            {
+                return 0;
+            }
+            else
+            {
+                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+                var order = db.Orders.Find(orderID);
+                items = order.OrderItems.Count;
+            }
+
+            return items;
         }
 
         public ActionResult InsertBuildPc(int id)
@@ -52,7 +67,8 @@ namespace computerbucket.Controllers
                 tempOrder = Int32.Parse(Request.Cookies["OrderId"].Value);
             }
 
-            OrderItem item = new OrderItem { BuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
+
+            OrderItem item = new OrderItem { BuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1, UnitPrice = db.BuildPCs.Find(id).Price };
             db.OrderItems.Add(item);
             db.SaveChanges();
 
@@ -101,7 +117,7 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1 };
+                OrderItem newItem = new OrderItem { PreBuildPCID = id, OrderID = tempOrder, Discount = 0, Quantity = 1};
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
@@ -125,7 +141,7 @@ namespace computerbucket.Controllers
                 cookie.Value = o.OrderID + "";
                 tempOrder = o.OrderID;
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
-                
+
                 Response.Cookies.Add(cookie);
             }
             else
@@ -158,51 +174,11 @@ namespace computerbucket.Controllers
             return RedirectToAction("Index", "Orders");
         }
 
-        public int getNumberOfItems()
-        {
-            int items = 0;
-            if (Request.Cookies["OrderId"] == null || Request.Cookies["OrderId"].Value.Equals("") || Request.Cookies["OrderId"].Value.Equals("1"))
-            {
-                return 0;
-            }
-            else
-            {
-                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
-                var order = db.Orders.Find(orderID);
-                items = order.OrderItems.Count;
-            }
-
-            return items;
-        }
 
         public ActionResult _Product(OrderItem item)
         {
             return PartialView(item);
         }
-
-        public ActionResult DeleteItem(int id)
-        {
-            var item = db.OrderItems.Find(id);
-            var order = item.Order;
-            db.OrderItems.Remove(item);
-            db.SaveChanges();
-
-            if (order.OrderItems.Count == 0)
-            {
-                db.Orders.Remove(order);
-                db.SaveChanges();
-                
-                HttpCookie cookie = new HttpCookie("OrderId");
-                cookie.Value = "1";
-                cookie.Expires = DateTime.Now.AddMinutes(60);
-                Response.Cookies.Add(cookie);
-                Session.Clear();
-                return RedirectToAction("Index", "Home");
-                
-            }
-            return RedirectToAction("Index");
-        }
-
 
         public ActionResult _PreBuildPC(OrderItem item)
         {
@@ -219,14 +195,67 @@ namespace computerbucket.Controllers
             var pc = db.BuildPCs.Find(item.BuildPCID);
             int pcCase = Int32.Parse(pc.ComputerCase);
             ViewBag.ImageUrl = db.Products.Find(pcCase).ImageUrl;
-            
+
             return PartialView("_BuildPC", item);
         }
 
-        public ActionResult Checkout()
+
+        public ActionResult DeleteItem(int id)
         {
-            
+            var item = db.OrderItems.Find(id);
+            var order = item.Order;
+            db.OrderItems.Remove(item);
+            db.SaveChanges();
+
+            if (order.OrderItems.Count == 0)
+            {
+                db.Orders.Remove(order);
+                db.SaveChanges();
+
+                HttpCookie cookie = new HttpCookie("OrderId");
+                cookie.Value = "1";
+                cookie.Expires = DateTime.Now.AddMinutes(60);
+                Response.Cookies.Add(cookie);
+                Session.Clear();
+                return RedirectToAction("Index", "Home");
+
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Checkout(int id)
+        {
+            ViewBag.OrderID = id;
             return View("Checkout");
+        }
+
+        public ActionResult _OrderItemsList(int id)
+        {
+            var items = db.Orders.Find(id).OrderItems.ToList();
+            return PartialView(items);
+        }
+
+        public string GetItemName(int id)
+        {
+            var item = db.OrderItems.Find(id);
+            if (item.BuildPCID != null)
+                return "Build PC";
+            if (item.PreBuildPCID != null)
+                return "Pre Build PC";
+            if (item.ProductID != null)
+                return item.Product.ProductName;
+            return "Unknown item";
+        }
+
+        public decimal CalculatePrice(decimal q, decimal up)
+        {
+            return q * up;
+        }
+
+        public ActionResult _Payment()
+        {
+            return PartialView();
         }
 
         [HttpPost]
@@ -235,15 +264,16 @@ namespace computerbucket.Controllers
         {
             if (ModelState.IsValid)
             {
-                Customer c = new Customer {
-                    ContactName=custumer.ContactName, 
-                    Address=custumer.Address, 
-                    City=custumer.City, 
-                    Region=custumer.Region,
-                    PostalCode= custumer.PostalCode,
-                    Country=custumer.Country,
-                    Phone=custumer.Phone,
-                    Email=custumer.Email
+                Customer c = new Customer
+                {
+                    ContactName = custumer.ContactName,
+                    Address = custumer.Address,
+                    City = custumer.City,
+                    Region = custumer.Region,
+                    PostalCode = custumer.PostalCode,
+                    Country = custumer.Country,
+                    Phone = custumer.Phone,
+                    Email = custumer.Email
                 };
                 db.Customers.Add(c);
                 db.SaveChanges();
@@ -261,13 +291,14 @@ namespace computerbucket.Controllers
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
 
-                
+
 
                 return RedirectToAction("Success");
             }
 
-            return View("Checkout",custumer);
+            return View("Checkout", custumer);
         }
+
 
         public ActionResult Success()
         {

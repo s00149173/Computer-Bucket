@@ -1,0 +1,40 @@
+﻿@model IEnumerable<computerbucket.OrderItem>
+
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            Item Price
+        </th>
+        
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Action("GetItemName", "Orders", new{id=item.ItemID})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.Action("CalculatePrice", "Orders", new {q=item.Quantity, up=item.UnitPrice})
+        </td>
+       
+    </tr>
+}
+
+</table>

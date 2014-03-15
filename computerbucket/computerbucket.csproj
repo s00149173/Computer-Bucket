@@ -225,6 +225,7 @@
     </Compile>
     <Compile Include="Models\BuildPCModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\PaymentModal.cs" />
     <Compile Include="Models\PreBuildModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Order.cs">
@@ -437,6 +438,8 @@
     <Content Include="Views\Orders\_BuildPC.cshtml" />
     <Content Include="Views\Orders\Checkout.cshtml" />
     <Content Include="Views\Orders\Success.cshtml" />
+    <Content Include="Views\Orders\_Payment.cshtml" />
+    <Content Include="Views\Orders\_OrderItemsList.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
