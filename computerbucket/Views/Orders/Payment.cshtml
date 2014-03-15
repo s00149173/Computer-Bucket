@@ -1,0 +1,112 @@
+﻿@model computerbucket.Models.PaymentModal
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<h2><b>Checkout Page </b>- Insert your personal details</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-sm-offset-2 col-md-10">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+            
+                <div class="row">
+                    @Html.LabelFor(model => model.CardNumber, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.CardNumber, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.CardNumber, null, new { @class = "label-danger" })
+                </div>
+                <div class="row">
+                    <h4>Expiration Date</h4>
+                    <div class="col-md-3">
+                        @*<div class="row">
+                            @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
+                        </div>*@
+                        <div class="row">
+                            @Html.DropDownList("model => model.ExpirationMonth",
+                                new SelectList(ViewBag.Months),
+                                "Month", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        @*<div class="row">
+                            @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
+                        </div>*@
+                        <div class="row">
+                            @Html.DropDownList("model => model.ExpirationYear",
+                                new SelectList(ViewBag.Years),
+                                "Year", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+@*<div class="row">
+                    @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.ExpirationMonth, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.ExpirationMonth, null, new { @class = "label-danger" })
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.ExpirationYear, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.ExpirationYear, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.ExpirationYear, null, new { @class = "label-danger" })
+                </div>*@
+                <div class="row">
+                    @Html.LabelFor(model => model.CardSecurityCode, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.CardSecurityCode, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.CardSecurityCode, null, new { @class = "label-danger" })
+                </div>
+
+            
+
+                <div class="row">
+                    @Html.LabelFor(model => model.CardHolder, new { @class = "h4" })
+                </div>
+                <div class="row">
+                    @Html.EditorFor(model => model.CardHolder, new { @class = "input-xs form-control effect6" })
+                </div>
+                <div class="row">
+                    @Html.ValidationMessageFor(model => model.CardHolder, null, new { @class = "label-danger" })
+                </div>
+                <div class="row">
+                    <input type="submit" class="btn-sm btn-success" value="Pay and Finish Order" />
+                </div>
+             
+                <br />
+                <div class="row">
+                    <br />
+                    <button class="btn btn-danger" value="Go to Basket" onclick="location.href='@Url.Action("Index", "Orders")'">
+                        Back to Basket
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+        @Html.Action("_OrderItemsList", new { id = ViewBag.OrderID })
+    </div>
+</div>
+

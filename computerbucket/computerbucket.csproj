@@ -438,8 +438,8 @@
     <Content Include="Views\Orders\_BuildPC.cshtml" />
     <Content Include="Views\Orders\Checkout.cshtml" />
     <Content Include="Views\Orders\Success.cshtml" />
-    <Content Include="Views\Orders\_Payment.cshtml" />
     <Content Include="Views\Orders\_OrderItemsList.cshtml" />
+    <Content Include="Views\Orders\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

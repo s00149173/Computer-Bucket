@@ -253,11 +253,7 @@ namespace computerbucket.Controllers
             return q * up;
         }
 
-        public ActionResult _Payment()
-        {
-            return PartialView();
-        }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(CustomerModel custumer)
@@ -281,6 +277,66 @@ namespace computerbucket.Controllers
                 int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
                 var order = db.Orders.Find(orderID);
                 order.CustomerID = c.CustomerID;
+                db.Orders.Attach(order);
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Payment");
+            }
+
+            return View("Checkout", custumer);
+        }
+
+
+        [HttpGet]
+        public ActionResult Payment()
+        {
+            ViewBag.Months = MonthsList();
+            ViewBag.Years = YearsList();
+            ViewBag.OrderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+            return View();
+        }
+
+        public List<int> MonthsList()
+        {
+            List<int> list = new List<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            list.Add(6);
+            list.Add(7);
+            list.Add(8);
+            list.Add(9);
+            list.Add(10);
+            list.Add(11); 
+            list.Add(12); 
+            return list;
+        }
+
+        public List<int> YearsList()
+        {
+            List<int> list = new List<int>();
+            list.Add(2014);
+            list.Add(2015);
+            list.Add(2016);
+            list.Add(2017);
+            list.Add(2018);
+            list.Add(2019);
+            return list;
+        }
+
+
+
+
+        [HttpPost]
+        public ActionResult Payment(PaymentModal payment)
+        {
+            if (ModelState.IsValid)
+            {
+                int orderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+                var order = db.Orders.Find(orderID);
                 order.OrderStatus = "In Progress";
                 db.Orders.Attach(order);
                 db.Entry(order).State = EntityState.Modified;
@@ -290,15 +346,14 @@ namespace computerbucket.Controllers
                 cookie.Value = "1";
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
-
-
-
+                
                 return RedirectToAction("Success");
             }
-
-            return View("Checkout", custumer);
+            ViewBag.Months = MonthsList();
+            ViewBag.Years = YearsList();
+            ViewBag.OrderID = Int32.Parse(Request.Cookies["OrderId"].Value);
+            return View("Payment", payment);
         }
-
 
         public ActionResult Success()
         {
