@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<computerbucket.Models.Status>
 
-    <table class="table text-center">
+    <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StatusField)
@@ -16,6 +19,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StatusField)

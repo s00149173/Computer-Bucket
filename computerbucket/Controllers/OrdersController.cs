@@ -468,7 +468,9 @@ namespace computerbucket.Controllers
                          select new Status()
                          {
                              OrderID = o.OrderID,
+                             Name = c.ContactName,
                              StatusField = o.OrderStatus
+
 
                          };
            

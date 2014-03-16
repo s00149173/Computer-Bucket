@@ -9,5 +9,6 @@ namespace computerbucket.Models
     {
         public int OrderID { get; set; }
         public string StatusField { get; set; }
+        public string Name { get; set; }
     }
 }
