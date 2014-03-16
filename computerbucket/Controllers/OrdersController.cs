@@ -165,7 +165,7 @@ namespace computerbucket.Controllers
 
             if (!inserted)
             {
-                OrderItem newItem = new OrderItem { ProductID = id, OrderID = tempOrder, Discount = 0, Quantity = 1, UnitPrice = db.Products.Find(id).UnitPrice};
+                OrderItem newItem = new OrderItem { ProductID = id, OrderID = tempOrder, Discount = 0, Quantity = 1, UnitPrice = db.Products.Find(id).UnitPrice };
                 db.OrderItems.Add(newItem);
                 db.SaveChanges();
             }
@@ -253,7 +253,7 @@ namespace computerbucket.Controllers
             return q * up;
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Checkout(CustomerModel custumer)
@@ -310,8 +310,8 @@ namespace computerbucket.Controllers
             list.Add(8);
             list.Add(9);
             list.Add(10);
-            list.Add(11); 
-            list.Add(12); 
+            list.Add(11);
+            list.Add(12);
             return list;
         }
 
@@ -326,9 +326,6 @@ namespace computerbucket.Controllers
             list.Add(2019);
             return list;
         }
-
-
-
 
         [HttpPost]
         public ActionResult Payment(PaymentModal payment)
@@ -346,7 +343,7 @@ namespace computerbucket.Controllers
                 cookie.Value = "1";
                 //cookie.Expires = DateTime.Now.AddMinutes(60);
                 Response.Cookies.Add(cookie);
-                
+
                 return RedirectToAction("Success");
             }
             ViewBag.Months = MonthsList();
@@ -359,10 +356,6 @@ namespace computerbucket.Controllers
         {
             return View();
         }
-
-
-
-
 
         //
         // GET: /Orders/Details/5
@@ -459,6 +452,27 @@ namespace computerbucket.Controllers
             db.Orders.Remove(orders);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult OrderStatus()
+        {
+            return View("OrderStatus");
+        }
+
+    
+        public ActionResult StatusInfo(string email)
+        {            
+            var status = from c in db.Customers
+                         join o in db.Orders on c.CustomerID equals o.CustomerID
+                         where c.Email == email
+                         select new Status()
+                         {
+                             OrderID = o.OrderID,
+                             StatusField = o.OrderStatus
+
+                         };
+           
+                return PartialView("_StatusInfo", status);              
         }
 
         protected override void Dispose(bool disposing)

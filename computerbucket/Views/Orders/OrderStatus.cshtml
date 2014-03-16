@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Order Status";
+}
+<script type="text/javascript">
+    //get status
+    function getStatus(email) {
+        $.ajax({
+            url: '@Url.Action("StatusInfo")',
+            data: { email: email },
+            success: function (data) {
+                $('#status_info').html(data);
+            }
+        });
+    }
+</script>
+
+<h2 style="text-align:center">Order Status</h2>
+<p class="well" style="text-align:center">Please enter you email in the box provided</p>
+<div style="margin:0 auto; width:300px;">
+    <input type="text" name="email" id="email">
+    <input type="submit" class="btn btn-info" value="Submit" onclick="getStatus(document.getElementById('email').value)" />
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div id="status_info"></div>
+    </div>
+</div>
+
+
+
+
+

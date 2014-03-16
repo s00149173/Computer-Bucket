@@ -4,15 +4,14 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Computer Bucket</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" /> 
+    <meta name="viewport" content="width=device-width" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/JavaScript" src="/Scripts/cloud-zoom.1.0.2.js"></script>
-
+    <script type="text/JavaScript" src="/Scripts/cloud-zoom.1.0.2.js"></script>   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -34,17 +33,31 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("BuildPC", "Index", "BuildPC")</li>
                     <li>@Html.ActionLink("Products", "SearchProducts", "Home")</li>
-                    <li>@Html.ActionLink("Help", "Index", "Help")</li>
-                    <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
-                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Help", "Index", "Help")</li>
+                            <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                            <li>@Html.ActionLink("About", "Index", "About")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Help", "Index", "Help")</li>
+                            <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
+                            <li>@Html.ActionLink("Order Status", "OrderStatus", "Orders")</li>
+                        </ul>
+                    </li>
+
                 </ul>
                 @using (Html.BeginForm("SearchProducts", "Home", FormMethod.Get, new { @id = "search" }))
                 {
                     @Html.TextBox("searchTerm")
                 }
 
-                <ul class="nav navbar-nav navbar-right">                 
-                    <li id="basket" onclick="location.href='@Url.Action("Index", "Orders")'">                      
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="basket" onclick="location.href='@Url.Action("Index", "Orders")'">
                         <span style="color:white; margin-top:3px;">Items(@Html.Action("getNumberOfItems", "Orders"))</span>
                         <img src="/../Images/cart.png" data-toggle="tooltip" title="Shop Basket" />
                     </li>

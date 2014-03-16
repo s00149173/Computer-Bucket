@@ -1,0 +1,27 @@
+﻿@model IEnumerable<computerbucket.Models.Status>
+
+    <table class="table text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusField)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusField)
+                </td>
+
+            </tr>
+        }
+
+    </table>
