@@ -3,55 +3,77 @@
 @{
     ViewBag.Title = "Shop Basket";
 }
+<link rel="stylesheet" href="css/themename/jquery-ui.custom.css" />
+@section scripts
+{
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.custom.min.js"></script>
+
+    <script>
+        function ItemDetails(itemId) {
+            $.ajax({
+                url: '@Url.Action("_ItemDetails", "Orders")',
+                data: { id: itemId },
+                success: function (data) {
+                    $('#itemDetails').html(data).modal("show");
+                }
+            });
+        }
+    </script>
+}
 
 
-    <div class="pageHeading">
-        <div class="container">
-            <div class="col-md-12">
-                <h2 style="margin-top: 0;">Shop Basket</h2>
-                <p>
-                    See all your ordered items and details in here.
-                </p>
-            </div>
+<div class="pageHeading">
+    <div class="container">
+        <div class="col-md-12">
+            <h2 style="margin-top: 0;">Shop Basket</h2>
+            <p>
+                See all your ordered items and details in here.
+            </p>
         </div>
     </div>
+</div>
 
 
-    <div class="container">
+<div class="container">
 
 
-        @if (Model.OrderID == 1)
-        {
-            <h3>Your Basket is empty!</h3>
+    @if (Model.OrderID == 1)
+    {
+        <h3>Your Basket is empty!</h3>
 
-        }
-        else
-        {
-            <h3>Date: @Html.DisplayFor(model => model.OrderDate) </h3>
-            <div class="container">
-                @*@Html.Partial("_OrderItems", Model.OrderItems)*@
-                @foreach (var item in Model.OrderItems)
+    }
+    else
+    {
+        <h3>Date: @Html.DisplayFor(model => model.OrderDate) </h3>
+        <div class="container">
+            @*@Html.Partial("_OrderItems", Model.OrderItems)*@
+            @foreach (var item in Model.OrderItems)
+            {
+                if (item.ProductID != null)
                 {
-                    if (item.ProductID != null)
-                    {
-                        @Html.Action("_Product", new { item = item });
-                    }
-                    else if (item.PreBuildPCID != null)
-                    {
-                        @Html.Action("_PreBuildPC", new { item = item });
-                    }
-                    else if (item.BuildPCID != null)
-                    {
-                        @Html.Action("_BuildPC", new { item = item });
-                    }
+                @Html.Action("_Product", new { item = item });
                 }
-            </div>
-            <div class="container text-right">
-                @Html.ActionLink("Checkout & Payment", "Checkout", "Orders", new {id=Model.OrderID}, new { @class = "btn btn-success" })
-            </div>
-        }
+                else if (item.PreBuildPCID != null)
+                {
+                @Html.Action("_PreBuildPC", new { item = item });
+                }
+                else if (item.BuildPCID != null)
+                {
+                @Html.Action("_BuildPC", new { item = item });
+                }
+            }
+        </div>
+        <div class="container text-right">
+            @Html.ActionLink("Checkout & Payment", "Checkout", "Orders", new { id = Model.OrderID }, new { @class = "btn btn-success" })
+        </div>
+    }
 
 
-    </div>
+</div>
 <div class="default_min_height">
+</div>
+
+<div class="modal fade" id="itemDetails" tabindex="-1" role="dialog" aria-labelledby="ItemDetailsLabel" aria-hidden="true">
 </div>

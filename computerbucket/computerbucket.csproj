@@ -430,7 +430,6 @@
     <Content Include="Views\BuildPC\Index.cshtml" />
     <Content Include="Views\BuildPC\_prodDetails.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\Orders\OldCheckout.cshtml" />
     <Content Include="Views\Home\PreBuildComputers.cshtml" />
     <Content Include="Views\Home\SearchProducts.cshtml" />
     <Content Include="Views\Home\_PreBuildComputer.cshtml" />
@@ -443,6 +442,7 @@
     <Content Include="Views\Orders\Payment.cshtml" />
     <Content Include="Views\Orders\OrderStatus.cshtml" />
     <Content Include="Views\Orders\_StatusInfo.cshtml" />
+    <Content Include="Views\Orders\_ItemDetails.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -469,7 +469,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50439</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:43337/</IISUrl>
+          <IISUrl>http://localhost:43222/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

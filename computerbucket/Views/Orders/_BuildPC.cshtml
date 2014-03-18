@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-1 ">
             <div class="row text-center">
-                <a class="btn btn-primary">Details</a>
+                <a class="btn btn-primary" onclick="ItemDetails(@Model.ItemID)">Details</a>
             </div><br/>
             <div class=" row text-center">
                 @Html.ActionLink("Delete Item", "DeleteItem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })

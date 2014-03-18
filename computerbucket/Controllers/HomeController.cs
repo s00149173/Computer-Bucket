@@ -45,6 +45,22 @@ namespace computerbucket.Controllers
             ViewBag.Image = _db.Products.Find(int.Parse(computer.ComputerCase)).ImageUrl;
             ViewBag.PreBuildPCID = computer.PreBuildPCID;
 
+            var computerParts = getPreBuildPCPartsList(computer);
+
+            computer.Price = ComputerPrice(computerParts);
+            _db.Entry(computer).State = System.Data.EntityState.Modified;
+            _db.SaveChanges();
+
+            if (computer.Price != null && computer.Price != 0)
+                ViewBag.price = computer.Price;
+            else
+                ViewBag.price = "Not Defined!";
+
+            return PartialView("_PreBuildComputer", computerParts);
+        }
+
+        public List<Product> getPreBuildPCPartsList(PreBuildPC computer)
+        {
             var computerParts = new List<Product>()
             {
                 _db.Products.Find(int.Parse(computer.Motherboad)),
@@ -61,16 +77,8 @@ namespace computerbucket.Controllers
                 _db.Products.Find(int.Parse(computer.ComputerCase))
             };
 
-            computer.Price = ComputerPrice(computerParts);
-            _db.Entry(computer).State = System.Data.EntityState.Modified;
-            _db.SaveChanges();
-
-            if (computer.Price != null && computer.Price != 0)
-                ViewBag.price = computer.Price;
-            else
-                ViewBag.price = "Not Defined!";
-
-            return PartialView("_PreBuildComputer", computerParts);
+            return computerParts;
+        
         }
 
         public decimal ComputerPrice(List<Product> products)

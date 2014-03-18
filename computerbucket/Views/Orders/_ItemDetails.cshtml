@@ -1,0 +1,38 @@
+﻿@model IEnumerable<computerbucket.Product>
+
+
+
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                @if (ViewBag.description== null)
+                { 
+                    <h3 class="modal-title text-center" id="ItemDetailsLabel">Build PC @ViewBag.id</h3>
+                }
+                else
+                {
+                    <h3 class="modal-title text-center">Pre Build @ViewBag.description @ViewBag.id</h3>
+                }
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <b>@Html.DisplayFor(modelItem => item.Category.CategoryName)</b>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>

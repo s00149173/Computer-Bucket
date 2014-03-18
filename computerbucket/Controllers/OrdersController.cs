@@ -200,6 +200,74 @@ namespace computerbucket.Controllers
         }
 
 
+        public ActionResult _ItemDetails(int id)
+        {
+            var item = db.OrderItems.Find(id);
+            var computerParts = new List<Product>();
+
+            if (item.PreBuildPCID != 0 && item.PreBuildPCID != null)
+            {
+                PreBuildPC pc = db.PreBuildPCs.Find(item.PreBuildPCID);
+                computerParts = getPreBuildPCPartsList(pc);
+                ViewBag.description = pc.PCType.TypeName;
+                ViewBag.id = pc.PreBuildPCID;
+            }
+            else
+            {
+                BuildPC pc = db.BuildPCs.Find(item.BuildPCID);
+                computerParts = getBuildPCPartsList(pc);
+                ViewBag.description = null;
+                ViewBag.id = pc.BuildPCID;
+            }
+            
+            return PartialView("_ItemDetails", computerParts);
+        }
+
+        public List<Product> getPreBuildPCPartsList(PreBuildPC computer)
+        {
+            var computerParts = new List<Product>()
+            {
+                db.Products.Find(int.Parse(computer.Motherboad)),
+                db.Products.Find(int.Parse(computer.Processor)),
+                db.Products.Find(int.Parse(computer.GraphicCard)),
+                db.Products.Find(int.Parse(computer.RAM)),
+                db.Products.Find(int.Parse(computer.Hard_Drive)),
+                db.Products.Find(int.Parse(computer.SSD)),
+                db.Products.Find(int.Parse(computer.PowerSupply)),
+                db.Products.Find(int.Parse(computer.CPUCooling)),
+                db.Products.Find(int.Parse(computer.ThermalPaste)),
+                db.Products.Find(int.Parse(computer.InternalDrive)),
+                db.Products.Find(int.Parse(computer.OperatingSystem)),
+                db.Products.Find(int.Parse(computer.ComputerCase))
+            };
+
+            return computerParts;
+
+        }
+
+        public List<Product> getBuildPCPartsList(BuildPC computer)
+        {
+            var computerParts = new List<Product>()
+            {
+                db.Products.Find(int.Parse(computer.Motherboad)),
+                db.Products.Find(int.Parse(computer.Processor)),
+                db.Products.Find(int.Parse(computer.GraphicCard)),
+                db.Products.Find(int.Parse(computer.RAM)),
+                db.Products.Find(int.Parse(computer.Hard_Drive)),
+                db.Products.Find(int.Parse(computer.SSD)),
+                db.Products.Find(int.Parse(computer.PowerSupply)),
+                db.Products.Find(int.Parse(computer.CPUCooling)),
+                db.Products.Find(int.Parse(computer.ThermalPaste)),
+                db.Products.Find(int.Parse(computer.InternalDrive)),
+                db.Products.Find(int.Parse(computer.OperatingSystem)),
+                db.Products.Find(int.Parse(computer.ComputerCase))
+            };
+
+            return computerParts;
+
+        }
+
+
         public ActionResult DeleteItem(int id)
         {
             var item = db.OrderItems.Find(id);
