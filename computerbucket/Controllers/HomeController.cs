@@ -29,6 +29,8 @@ namespace computerbucket.Controllers
             }
             
             var query = _db.Products.OrderBy(p => p.ProductName).Where(pr => searchTerm == null || pr.ProductName.Contains(searchTerm));
+            //Hack
+            ViewBag.jpg = ".jpg";
             return View(query);
         }
 

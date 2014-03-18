@@ -28,9 +28,9 @@
         <div class="product">
             <div class="row">
                 <div class="col-md-2">
-                    <a href='@Html.DisplayFor(modelItem => item.ImageUrl)' class='cloud-zoom' id='zoom1'
+                    <a href="../Images/ProductImages/@item.ProductID.ToString()@ViewBag.jpg" class='cloud-zoom' id='zoom1'
                        rel="adjustX: 10, adjustY:-4, softFocus:true">
-                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt='' align="left" title="" style="width: 150px; height: 150px; background-image:url(/Images/my_computer_w.png)" />
+                        <img src="../Images/ProductImages/@item.ProductID.ToString()@ViewBag.jpg" alt='' align="left" title="" style="width: 150px; height: 150px; background-image:url(/Images/my_computer_w.png)" />
                     </a>
                 </div>
 
