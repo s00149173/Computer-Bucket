@@ -5,16 +5,10 @@
     ViewBag.Title = "Products";
 }
 <div class="pageHeading">
-    <div class="container">
-        <div class="col-md-12">
-            <h2 style="margin-top: 0;">Browse all products here</h2>
-            <p>
-                You can use the search box at the top right corner to find the product
-                <br />
-                <br />
-            </p>
-        </div>
-    </div>
+    <h2 style="margin-top: 0;">Browse all products here</h2>
+    <p>
+        You can use the search box at the top right corner to find the product      
+    </p>
 </div>
 <div class="container">
     <div id="productSearchInfo" class="row">
@@ -35,16 +29,16 @@
                 </div>
 
                 <div class="col-md-5">
-                    <h4 style="font-weight:500;">@Html.DisplayFor(modelItem => item.ProductName)</h4>
-                    <h5>Price : @Html.DisplayFor(modelItem => item.UnitPrice)</h5>
+                    <h4 class="product_h4">@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                    <h5 class="span_red">Price : @Html.DisplayFor(modelItem => item.UnitPrice)</h5>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     Units in Stock : @Html.DisplayFor(modelItem => item.UnitsInStock)<br /><br />
                     Units on Order @Html.DisplayFor(modelItem => item.UnitsOnOrder)
 
                 </div>
-                <div class="col-md-1" style="margin-top:3%;">
+                <div class="col-md-1">
                     @Html.ActionLink("Add to basket", "InsertProduct", "Orders", new { id = item.ProductID }, new { @class = "btn btn-info" })
                 </div>
             </div>

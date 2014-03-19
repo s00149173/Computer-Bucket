@@ -21,21 +21,17 @@
 </script>
 
 <div class="pageHeading">
-    <div class="container">
-        <div class="col-md-12">
-            <h2 style="margin-top: 0;">Build your PC here!</h2>
-            <p>
-                Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product, please chick on the product and additional information will be shown in the right panel.
-            </p>
-        </div>
-    </div>
+    <h2 style="margin-top: 0;">Build your PC here!</h2>
+    <p>
+        Welcome to the build-pc form. Use this form to build your computer. If you have any querys about any product, please chick on the product and additional information will be shown in the right panel.
+    </p>
 </div>
 <div class="container">
     @using (@Html.BeginForm())
     {
         <div class="row">
             <div class="col-md-3">
-                
+
                 <div id="prodDetail" style="position: fixed; width: 220px;">
 
                 </div>
@@ -181,14 +177,13 @@
 
 
                 <div class="row form-group">
-                    <div class="col-lg-4">
-
+                    <div class="col-lg-7">
                     </div>
-                    <div class="col-md-8">
-                        <button type="submit" value="Check out" class="checkoutbtn" onclick=>
+                    <div class="col-md-5">
+                        <button type="submit" value="Check out" class="btn btn-info">
                             <span class="glyphicon glyphicon-ok"></span> CONTINUE
                         </button>
-                        <button type="reset" value="Reset form" class="form-reset">
+                        <button type="reset" value="Reset form" class="btn btn-danger">
                             <span class=" glyphicon glyphicon-refresh">
                             </span> RESET FORM
                         </button>
@@ -198,7 +193,7 @@
 
             </div>
         </div>
-    }   
+    }
 </div>
 
 
