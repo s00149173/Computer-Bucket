@@ -73,7 +73,8 @@ namespace computerbucket.Controllers
                            UnitPrice = (decimal) e.UnitPrice,
                            UnitsInStock = (int) e.UnitsInStock,
                            ImageUrl = e.ImageUrl                                                                                                
-                      };          
+                      };
+            ViewBag.jpg = ".jpg";
             return PartialView("_prodDetails", prod);
            
         }

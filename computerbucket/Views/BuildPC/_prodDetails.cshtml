@@ -1,5 +1,4 @@
-﻿@using Microsoft.Ajax.Utilities
-@model IEnumerable<computerbucket.Models.ProductModel>
+﻿@model IEnumerable<computerbucket.Models.ProductModel>
 
 
 
@@ -10,22 +9,23 @@
             <h5>@Html.DisplayFor(modelItem => item.ProductName)</h5>
         </div>
         <div class="panel-body">
-            <a href='@Html.DisplayFor(modelItem => item.ImageUrl)' style="width: 100%; height: 150px;" class="cloud-zoom" id="zoom1" rel="adjustX: 10, adjustY:-4, softFocus:true">
-                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" style="width: 100%; height: 150px;" alt='' align="left" title="Optional title display" />
-            </a>           
-            <span style="font-weight:bold">ID :</span>
-            @Html.DisplayFor(modelItem => item.ProductId)
-            <br/>   
-            <span style="font-weight:bold">Description :</span>
+            <a href="../Images/ProductImages/@item.ProductId.ToString()@ViewBag.jpg" class='cloud-zoom' id='zoom1'
+                       rel="adjustX: 10, adjustY:-4, softFocus:true">
+                <img src="../Images/ProductImages/@item.ProductId.ToString()@ViewBag.jpg" alt='' align="left" title="" style="width: 150px; height: 150px; background-image:url(/Images/my_computer_w.png)" />
+            </a>
+            @*<span style="font-weight: bold">ID :</span>
+            @Html.DisplayFor(modelItem => item.ProductId)*@
+            <br />
+            <span style="font-weight: bold">Description :</span>
             @Html.DisplayFor(modelItem => item.Description)
             <br />
-            <span style="font-weight:bold">Unit price :</span>
+            <span style="font-weight: bold">Unit price :</span>
             @Html.DisplayFor(modelItem => item.UnitPrice)
-            <br/>
-            <span style="font-weight:bold">Units in stock :</span>
+            <br />
+            <span style="font-weight: bold">Units in stock :</span>
             @Html.DisplayFor(modelItem => item.UnitsInStock)
-           </div>
         </div>
+    </div>
 
 
 }

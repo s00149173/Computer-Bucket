@@ -13,7 +13,14 @@
 <div class="container">
     <div id="productSearchInfo" class="row">
         <div class=" col-md-12">
-            @Model.Count(x => true) @ViewBag.searchTerm
+            @if (!(ViewBag.searchTerm).Equals(" "))
+            {
+                <h4>@Model.Count(x => true) @ViewBag.searchTerm</h4>
+            }
+            else
+            {
+                <h4>Listing all products</h4>
+            }
         </div>
     </div>
 

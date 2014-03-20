@@ -62,6 +62,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="ComputerBucketModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
           <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />

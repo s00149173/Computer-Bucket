@@ -20,13 +20,9 @@
             <br />
             <h5 class="span_red">Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
         </div>
-        <div class="col-md-1 ">
-            <div class="row text-center">
-                <a class="btn btn-primary" onclick="ItemDetails(@Model.ItemID)">Details</a>
-            </div><br/>
-            <div class=" row text-center">
-                @Html.ActionLink("Delete Item", "DeleteItem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })
-            </div>
+        <div class="col-md-3" id="product_button_panel">
+            <a class="btn btn-primary" onclick="ItemDetails(@Model.ItemID)">Details</a>
+            @Html.ActionLink("Delete Item", "DeleteItem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })
         </div>
     </div>
 </div>
