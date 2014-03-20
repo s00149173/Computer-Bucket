@@ -177,6 +177,7 @@ namespace computerbucket.Controllers
 
         public ActionResult _Product(OrderItem item)
         {
+            ViewBag.jpg = ".jpg";
             return PartialView(item);
         }
 
@@ -184,8 +185,9 @@ namespace computerbucket.Controllers
         {
             var pc = db.PreBuildPCs.Find(item.PreBuildPCID);
             int pcCase = Int32.Parse(pc.ComputerCase);
-            ViewBag.ImageUrl = db.Products.Find(pcCase).ImageUrl;
+            ViewBag.ImageUrl = db.Products.Find(pcCase).ProductID;
             ViewBag.PcType = pc.PCType.TypeName;
+            ViewBag.jpg = ".jpg";
 
             return PartialView("_PreBuildPC", item);
         }
@@ -194,7 +196,8 @@ namespace computerbucket.Controllers
         {
             var pc = db.BuildPCs.Find(item.BuildPCID);
             int pcCase = Int32.Parse(pc.ComputerCase);
-            ViewBag.ImageUrl = db.Products.Find(pcCase).ImageUrl;
+            ViewBag.ImageUrl = db.Products.Find(pcCase).ProductID;
+            ViewBag.jpg = ".jpg";
 
             return PartialView("_BuildPC", item);
         }

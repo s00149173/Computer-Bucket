@@ -2,18 +2,21 @@
 <div class="product">
     <div class="row">
         <div class="col-md-2">
-            <img class="productImage" src="@Html.DisplayFor(model => model.Product.ImageUrl)" />
+            <a href="../Images/ProductImages/@Model.ProductID.ToString()@ViewBag.jpg" class='cloud-zoom' id='zoom1'
+                       rel="adjustX: 10, adjustY:-4, softFocus:true">
+                <img src="../Images/ProductImages/@Model.ProductID.ToString()@ViewBag.jpg" alt='' align="left" title="" style="width: 150px; height: 150px; background-image:url(/Images/my_computer_w.png)" />
+            </a>
         </div>
         <div class="col-md-5">
             <p><b>Product:</b></p>
             <h4>@Html.DisplayFor(model => model.Product.ProductName)</h4>
         </div>
         <div class="col-md-2">
-            <h5>Quantity : @Html.DisplayFor(model => model.Quantity)</h5><br />
+            <h5>Quantity : @Html.DisplayFor(model => model.Quantity)</h5>
+            <br />
             <h5 class="span_red">Price : @Html.DisplayFor(model => model.UnitPrice)</h5>
         </div>
         <div id="product_button_panel" class="col-md-3">
-            <a class="btn btn-primary">Details</a>
             @Html.ActionLink("Delete Item", "Deleteitem", "Orders", new { id = @Model.ItemID }, new { @class = "btn btn-danger" })
         </div>
     </div>
