@@ -11,8 +11,6 @@
 <div class="row">
     <div class="col-md-6">
 
-        @*    <div class="default_min_height">*@
-
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -99,21 +97,17 @@
                 <div class="row">
                     @Html.ValidationMessageFor(model => model.Country, null, new { @class = "label-danger" })
                 </div>
-
             </div>
             
-@*@Html.Action("Back to Basket", "Index", "Orders", null, new { @class = "btn-xs btn-danger" })*@
             <div class="row">
-                <div class="col-sm-6">
-                    <input class="btn-sm btn-primary" value="Register" />
+                <div class="col-sm-6 text-center">
+                    <input type="#" class="btn-sm btn-info" value="Register" />
                 </div>
 
                 <div class="col-sm-6">
-                    <input type="submit" class="btn-sm btn-success" value="Confirm and to Payment" />
+                    <input type="submit" class="btn-sm btn-success" value="Confirm and Go to Payment" />
                 </div>
             </div>
-            
-            
             
             <br />
             <div class="col-sm-6">
@@ -124,13 +118,7 @@
                     </button>
                 </div>
             </div>
-        
-
         }
-
-
-        @*   </div>*@
-
     </div>
 
     <div class="col-md-6">

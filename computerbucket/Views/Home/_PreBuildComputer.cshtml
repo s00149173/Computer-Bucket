@@ -1,13 +1,18 @@
 ﻿
 @using System.Activities.Expressions
 @using System.Web.Mvc.Html
+@using System.Web.UI.WebControls
 @model IEnumerable<computerbucket.Product>
 <div class="col-md-4">
     <div class="row">
         <div class="container">
             @if (@ViewBag.Image != null)
             { 
-                <img src="@ViewBag.Image" style="width: 250px; height: 250px;" />
+                @*<img src="@ViewBag.Image" style="width: 250px; height: 250px;" />*@
+                <a href="../Images/ProductImages/@ViewBag.Image.ToString()@ViewBag.jpg" class='cloud-zoom' id='zoom1'
+                       rel="adjustX: 10, adjustY:-4, softFocus:true">
+                        <img src="../Images/ProductImages/@ViewBag.Image.ToString()@ViewBag.jpg" alt='' align="left" title="" style="width: 250px; height: 250px; background-image:url(/Images/my_computer_w.png)" />
+                    </a>
             }
             else
             {

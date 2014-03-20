@@ -7,7 +7,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<h2><b>Checkout Page </b>- Insert your personal details</h2>
+<h2><b>Checkout Page </b>- Insert your payment details</h2>
 
 <div class="row">
     <div class="col-md-6">
@@ -31,9 +31,6 @@
                 <div class="row">
                     <h4>Expiration Date</h4>
                     <div class="col-md-3">
-                        @*<div class="row">
-                            @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
-                        </div>*@
                         <div class="row">
                             @Html.DropDownList("model => model.ExpirationMonth",
                                 new SelectList(ViewBag.Months),
@@ -41,9 +38,6 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        @*<div class="row">
-                            @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
-                        </div>*@
                         <div class="row">
                             @Html.DropDownList("model => model.ExpirationYear",
                                 new SelectList(ViewBag.Years),
@@ -51,25 +45,6 @@
                         </div>
                     </div>
                 </div>
-@*<div class="row">
-                    @Html.LabelFor(model => model.ExpirationMonth, new { @class = "h4" })
-                </div>
-                <div class="row">
-                    @Html.EditorFor(model => model.ExpirationMonth, new { @class = "input-xs form-control effect6" })
-                </div>
-                <div class="row">
-                    @Html.ValidationMessageFor(model => model.ExpirationMonth, null, new { @class = "label-danger" })
-                </div>
-
-                <div class="row">
-                    @Html.LabelFor(model => model.ExpirationYear, new { @class = "h4" })
-                </div>
-                <div class="row">
-                    @Html.EditorFor(model => model.ExpirationYear, new { @class = "input-xs form-control effect6" })
-                </div>
-                <div class="row">
-                    @Html.ValidationMessageFor(model => model.ExpirationYear, null, new { @class = "label-danger" })
-                </div>*@
                 <div class="row">
                     @Html.LabelFor(model => model.CardSecurityCode, new { @class = "h4" })
                 </div>
@@ -79,9 +54,6 @@
                 <div class="row">
                     @Html.ValidationMessageFor(model => model.CardSecurityCode, null, new { @class = "label-danger" })
                 </div>
-
-            
-
                 <div class="row">
                     @Html.LabelFor(model => model.CardHolder, new { @class = "h4" })
                 </div>
