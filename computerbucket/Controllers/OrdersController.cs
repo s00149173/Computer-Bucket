@@ -25,6 +25,7 @@ namespace computerbucket.Controllers
             else
             {
                 var query = db.Orders.Find(Int32.Parse(Request.Cookies["OrderId"].Value));
+                
                 return View(query);
 
             }
@@ -72,8 +73,8 @@ namespace computerbucket.Controllers
             db.OrderItems.Add(item);
             db.SaveChanges();
 
-
-
+            UpdateOrderPrice();
+            
             return RedirectToAction("Index", "Orders");
         }
 
@@ -123,6 +124,7 @@ namespace computerbucket.Controllers
             }
 
             inserted = false;
+            UpdateOrderPrice();
 
             return RedirectToAction("Index", "Orders");
         }
@@ -170,8 +172,28 @@ namespace computerbucket.Controllers
                 db.SaveChanges();
             }
 
-
+            UpdateOrderPrice();
             return RedirectToAction("Index", "Orders");
+        }
+
+        public void UpdateOrderPrice()
+        {
+            int orderId = Int32.Parse(Request.Cookies["OrderId"].Value);
+            var order = db.Orders.Find(orderId);
+            var orderItems = order.OrderItems;
+
+            decimal result = new decimal(0);
+            
+            foreach (var item in orderItems)
+            {
+                //order.OrderPrice = order.OrderPrice + Decimal.Multiply((new decimal(item.Quantity)),new decimal(item.UnitPrice));
+                decimal unit = item.UnitPrice.GetValueOrDefault();
+                result = result + (decimal.Multiply(unit, new decimal(item.Quantity)));
+            }
+            order.OrderPrice = result;
+            db.Entry(order).State = EntityState.Modified;
+            db.SaveChanges();
+
         }
 
 
@@ -291,6 +313,7 @@ namespace computerbucket.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
+            UpdateOrderPrice();
             return RedirectToAction("Index");
         }
 
@@ -303,6 +326,7 @@ namespace computerbucket.Controllers
 
         public ActionResult _OrderItemsList(int id)
         {
+            ViewBag.OrderPrice = db.Orders.Find(id).OrderPrice;
             var items = db.Orders.Find(id).OrderItems.ToList();
             return PartialView(items);
         }

@@ -105,6 +105,7 @@
           <Property Name="CustomerID" Type="int" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="OrderStatus" Type="nchar" MaxLength="20" />
+          <Property Name="OrderPrice" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="PCTypes">
           <Key>
@@ -346,6 +347,7 @@
           <NavigationProperty Name="Customer" Relationship="ComputerBucketModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="OrderItems" Relationship="ComputerBucketModel.FK_OrderItems_Orders" FromRole="Orders" ToRole="OrderItems" />
           <Property Type="String" Name="OrderStatus" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="Decimal" Name="OrderPrice" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="PCType">
           <Key>
@@ -546,6 +548,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="ComputerBucketModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />

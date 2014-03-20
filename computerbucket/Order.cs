@@ -23,6 +23,7 @@ namespace computerbucket
         public Nullable<int> CustomerID { get; set; }
         public System.DateTime OrderDate { get; set; }
         public string OrderStatus { get; set; }
+        public Nullable<decimal> OrderPrice { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
