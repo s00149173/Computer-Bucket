@@ -533,3 +533,4 @@ H:\Computer-Bucket\computerbucket\bin\zh-Hant\System.Spatial.resources.dll
 H:\Computer-Bucket\computerbucket\obj\Debug\computerbucket.csprojResolveAssemblyReference.cache
 H:\Computer-Bucket\computerbucket\obj\Debug\computerbucket.dll
 H:\Computer-Bucket\computerbucket\obj\Debug\computerbucket.pdb
+C:\Users\MNLyle\Desktop\Computer-Bucket\computerbucket\bin\DotNetOpenAuth.OpenId.dll
